@@ -1,15 +1,19 @@
-**Alien VS Zombie**
+# Alien VS Zombie
 
-Contributors
+## Contributors
+- Ian
+- Sterbanger
+- Anglified
+
+## Compilation Instructions
 
 
-Compilation Instructions
+## User Manual
 
 
-User Manual
-
-
-Progress Log
+## Progress Log
+- [Part 1](PART1.md)
+- [Part 2](PART2.md)
 
 
 
