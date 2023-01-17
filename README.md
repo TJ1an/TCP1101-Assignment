@@ -7,6 +7,9 @@
 
 ## Compilation Instructions
 
+```g++ main.cpp folder1\code.cpp folder2\code.cpp ......```
+
+
 
 ## User Manual
 
