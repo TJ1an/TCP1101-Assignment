@@ -1,9 +1,9 @@
 # Alien VS Zombie
 
 ## Contributors
-- Ian
-- Sterbanger
-- Anglified
+- Ian Leong Tsung Jii
+- Chong Yi Jing
+- Khoo Jen Au
 
 ## Compilation Instructions
 
