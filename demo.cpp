@@ -28,6 +28,12 @@
 #include <iostream>
 using namespace std;
 
+void DemoGameSettings()
+{
+   pf::GameSettings();
+   cout << endl;
+}
+
 void DemoPause()
 {
     cout << "Pausing Now" << endl;
@@ -53,12 +59,7 @@ void DemoCreateGameBoard()
 #ifdef DEMO
 int main()
 {
-    cout << "===== Begin Demo =====" << endl;
-    
-    // DemoPause();
-    // DemoClearScreen();
-    DemoCreateGameBoard();
+   DemoGameSettings();   
 
-    cout << "===== End Demo =====" << endl;
 }
 #endif

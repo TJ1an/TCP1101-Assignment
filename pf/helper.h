@@ -8,6 +8,7 @@ namespace pf
 
     void CreateGameBoard();
     void ShowGameBoard();
+    void GameSettings();
 }
 
 #endif

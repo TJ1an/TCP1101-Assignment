@@ -2,9 +2,10 @@
 #include <cstdlib>
 #include <iostream>
 
+
 namespace pf
 {
-    const int kRows = 3;
+    const int kRows = 5;
     const int kColumns = 5;
     char kBoard[kRows][kColumns];
 
@@ -49,6 +50,32 @@ namespace pf
             }
             std::cout << std::endl;
         }
+
             
     }
-}
+
+    void GameSettings(){
+        char yesorno;
+        std::cout << "Default game setttings  \n" << std::endl;
+        std::cout << "---------------------- \n" << std::endl;
+        std::cout << "board rows : " << kRows << std::endl;
+        std::cout << "board columns : "<< kColumns << std::endl;
+        std::cout << " " << std::endl;
+        std::cout << "do you want to change the game settings? (y/n) => ";
+        std::cin >> yesorno;
+
+        if (yesorno == 'y'){
+            std::cout << "bruh" << std::endl;
+        }
+        else if (yesorno == 'n')
+        {
+          std::cout << "i want to die" << std::endl;
+        }
+        else
+        {
+          std::cout << "i want to sleep" << std::endl;    
+
+        }
+        
+        }
+    }
