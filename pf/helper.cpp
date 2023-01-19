@@ -65,15 +65,23 @@ namespace pf
         std::cin >> yesorno;
 
         if (yesorno == 'y'){
-            std::cout << "bruh" << std::endl;
+            int newRows;
+            int newColumns;
+            ClearScreen();
+             std::cout << "board rows : ";
+             std::cin >> newRows;
+             std::cout << "board columns : ";
+             std::cin >> newColumns;
         }
         else if (yesorno == 'n')
         {
-          std::cout << "i want to die" << std::endl;
+         ClearScreen();
+         CreateGameBoard();
+         ShowGameBoard(); 
         }
         else
         {
-          std::cout << "i want to sleep" << std::endl;    
+          std::cout << "bruh" << std::endl;    
 
         }
         

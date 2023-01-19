@@ -14,9 +14,14 @@
 #include <iostream>
 using namespace std;
 
+void MainGameSettings()
+{
+   pf::GameSettings();
+   cout << endl;
+}
+
+
 int main()
 {
-    cout << "Assignment (Part 1)" << endl;
-    cout << "Let's Get Started!" << endl;
-    pf::Pause();
+  MainGameSettings();
 }
