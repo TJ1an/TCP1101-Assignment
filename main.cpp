@@ -96,6 +96,7 @@ void GameSettings(int& rows, int& columns)
     else if (yesorno == 'n')
     
     {
+        board.resize(rows);
         for (int i = 0; i < rows; ++i)
         {
           board[i].resize(columns);
