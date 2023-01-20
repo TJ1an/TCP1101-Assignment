@@ -36,14 +36,17 @@ int Pause()
 
 void CreateBoard(int rows,int columns)
 {
+  srand((unsigned) time(NULL));
     for (int row = 0; row < rows; ++row)
         for (int col = 0; col < columns; ++col)
         {
-            int random_number = std::rand() % 2;
-            if (random_number)
+            int random_number = rand() % 2;
+            if (random_number){
                 board[row][col] = '*';
-            else
+            }
+            else{
                 board[row][col] = 'r';
+            }
         }
 }
 
