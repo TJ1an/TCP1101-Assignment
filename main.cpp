@@ -13,7 +13,6 @@
 #include <vector>
 #include <cstdlib>
 #include <iostream>
-#include "board.cpp"
 using namespace std;
 
 int main()
