@@ -86,18 +86,24 @@ void GameSettings(int& rows, int& columns)
         int newRows;
         int newColumns;
         ClearScreen();
-        cout << "board rows : ";
-        cin >> newRows;
-        cout << "board columns : ";
-        cin >> newColumns;
+        std::cout << "Board Settings \n"
+              << std::endl;
+        std::cout << "-------------- \n"<< std::endl;
+        std::cout << "board rows : ";
+        std::cin >> newRows;
+        std::cout << "board columns : ";
+        std::cin >> newColumns;
         rows = newRows;
         columns = newColumns;
         board.resize(rows);
         for (int i = 0; i < rows; ++i)
         {
-            board[i].resize(columns);
+          board[i].resize(columns);
         }
         CreateBoard(rows, columns);
+        cout << "\nSettings Updated" << endl;
+        Pause();
+        cout << endl;
         ShowGameBoard(rows, columns);
     }
     else if (yesorno == 'n')
