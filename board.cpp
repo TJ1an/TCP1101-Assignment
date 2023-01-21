@@ -38,7 +38,7 @@ void CreateBoard(int rows,int columns) //Responsible for placing objects and pow
             int noObj = rand() % noOfObj;
             board[row][col] = Obj[noObj];
         }
-    board[rows][columns/2] = 'A';
+    board[rows-1][columns/2] = 'A'; // Spawns Alien 
 }
 
 void ShowGameBoard(int rows, int columns)
