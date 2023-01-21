@@ -82,6 +82,9 @@ void GameSettings(int& rows, int& columns)
         int newRows;
         int newColumns;
         ClearScreen();
+        std::cout << "Board Settings \n"
+              << std::endl;
+        std::cout << "-------------- \n"<< std::endl;
         std::cout << "board rows : ";
         std::cin >> newRows;
         std::cout << "board columns : ";
@@ -94,6 +97,9 @@ void GameSettings(int& rows, int& columns)
           board[i].resize(columns);
         }
         CreateBoard(rows, columns);
+        cout << "\nSettings Updated" << endl;
+        Pause();
+        cout << endl;
         ShowGameBoard(rows, columns);
     }
     else if (yesorno == 'n')
