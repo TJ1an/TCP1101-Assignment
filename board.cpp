@@ -23,20 +23,22 @@ int Pause()
 #endif
 }
 
-void CreateBoard(int rows,int columns)
+void CreateBoard(int rows,int columns) //Responsible for placing objects and powerups into the vector + starting point of Alien
 {
     srand((unsigned) time(NULL));
+    
+    // List (and probability) of rock and powerup generation
+    // "r" for Rock and "!" for powerup
+    char Obj[]= {' ',' ',' ',' ',' ',' ',' ','r','r','r','!'};
+    int noOfObj = size(Obj);
     for (int row = 0; row < rows; ++row)
         for (int col = 0; col < columns; ++col)
         {
-            int random_number = rand() % 2;
-            if (random_number){
-                board[row][col] = '*';
-            }
-            else{
-                board[row][col] = 'r';
-            }
+            // Rock and Powerup randomizer
+            int noObj = rand() % noOfObj;
+            board[row][col] = Obj[noObj];
         }
+    board[rows][columns/2] = 'A';
 }
 
 void ShowGameBoard(int rows, int columns)
