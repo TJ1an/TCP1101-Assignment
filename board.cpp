@@ -1,3 +1,4 @@
+#include "alien.h"
 #include <vector>
 #include <cstdlib>
 #include <iostream>
@@ -22,25 +23,6 @@ int Pause()
     return system(R"(read -p "Press any key to continue . . . " dummy)");
 #endif
 }
-
-void CreateBoard(int rows,int columns) //Responsible for placing objects and powerups into the vector + starting point of Alien
-{
-    srand((unsigned) time(NULL));
-    
-    // List (and probability) of rock and powerup generation
-    // "r" for Rock and "!" for powerup
-    char Obj[]= {' ',' ',' ',' ',' ',' ',' ','r','r','r','!'};
-    int noOfObj = size(Obj);
-    for (int row = 0; row < rows; ++row)
-        for (int col = 0; col < columns; ++col)
-        {
-            // Rock and Powerup randomizer
-            int noObj = rand() % noOfObj;
-            board[row][col] = Obj[noObj];
-        }
-    board[rows/2][columns/2] = 'A'; // Spawns Alien 
-}
-
 void ShowGameBoard(int rows, int columns)
     {
         for (int row = 0; row < rows; ++row)
@@ -69,6 +51,31 @@ void ShowGameBoard(int rows, int columns)
             cout << "+";
             cout << endl;            
     }
+
+
+void CreateBoard(int rows,int columns){ 
+    srand((unsigned) time(NULL));
+    
+    // List (and probability) of rock and powerup generation
+    // "r" for Rock and "!" for powerup
+    char Obj[]= {' ',' ',' ',' ',' ',' ','h','r','r','r','!'};
+    int noOfObj = size(Obj);
+    for (int row = 0; row < rows; ++row)
+        for (int col = 0; col < columns; ++col)
+        {
+            // Rock and Powerup randomizer
+            int noObj = rand() % noOfObj;
+            board[row][col] = Obj[noObj];
+        }
+    board[rows/2][columns/2] = 'A'; // Spawns Alien
+    ShowGameBoard(rows, columns);
+    int x = rows/2, y = columns/2;
+    while(true){
+    MoveAlien(x, y, rows, columns);
+    ShowGameBoard(rows, columns);
+}
+}
+
 
 void GameSettings(int& rows, int& columns)
 {
