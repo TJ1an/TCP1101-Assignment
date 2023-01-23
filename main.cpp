@@ -21,3 +21,4 @@ int main()
     int kColumns = 5;
     GameSettings(kRows, kColumns);
 }
+

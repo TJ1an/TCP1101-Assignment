@@ -22,23 +22,26 @@ void MoveAlien(int &x, int &y, int rows, int columns, int health, int attack)
     string direction;
     int alienHealth;
     int alienAttack;
+    alienAttack = 0;
     health = alienHealth;
     attack = alienAttack;
+    
     cout << "Alien Health: " << alienHealth;
     cout << " Alien Attack: " << alienAttack << endl;
     cout << "Enter the direction you want to move the alien (up, down, left, right): ";
     cin >> direction;
-    if (direction == "up")
+
+    if (direction == "up") // UP Input
     {
         while(true)
         {
-            if (x - 1 >= 0 && board[x - 1][y] == ' ')
+            if (x - 1 >= 0 && board[x - 1][y] == ' ') //Empty path
             {
                 board[x][y] = '.';
                 x--;
                 board[x][y] = 'A';
             }
-            else if(x - 1 >= 0 && board[x - 1][y] == 'h')
+            else if(x - 1 >= 0 && board[x - 1][y] == 'h') //Path with healthpack
             {
             board[x][y] = '.';
             x--;
@@ -48,7 +51,7 @@ void MoveAlien(int &x, int &y, int rows, int columns, int health, int attack)
             cout << "You gained 20 Health!" << endl;
             break;
             }
-            else if(x - 1 >= 0 && board[x - 1][y] == '<')
+            else if(x - 1 >= 0 && board[x - 1][y] == '<') //Left boost/dash
             {
             board[x][y] = '.';
             x--;
@@ -58,7 +61,7 @@ void MoveAlien(int &x, int &y, int rows, int columns, int health, int attack)
             cout << "You gained 20 Attack!" << endl;
             break;
             }
-            else if(x - 1 >= 0 && board[x - 1][y] == '>')
+            else if(x - 1 >= 0 && board[x - 1][y] == '>') //Right boost/dash
             {
             board[x][y] = '.';
             x--;
@@ -68,7 +71,7 @@ void MoveAlien(int &x, int &y, int rows, int columns, int health, int attack)
             cout << "You gained 20 Attack!" << endl;
             break;
             }
-            else if(x - 1 >= 0 && board[x - 1][y] == '^')
+            else if(x - 1 >= 0 && board[x - 1][y] == '^') //Up boost/dash
             {
             board[x][y] = '.';
             x--;
@@ -78,7 +81,7 @@ void MoveAlien(int &x, int &y, int rows, int columns, int health, int attack)
             cout << "You gained 20 Attack!" << endl;
             break;
             }
-            else if(x - 1 >= 0 && board[x - 1][y] == 'v')
+            else if(x - 1 >= 0 && board[x - 1][y] == 'v') //Down boost/dash
             {
             board[x][y] = '.';
             x--;
@@ -88,14 +91,14 @@ void MoveAlien(int &x, int &y, int rows, int columns, int health, int attack)
             cout << "You gained 20 Attack!" << endl;
             break;
             }
-            else
+            else //Invalid move
             {
                 cout << "Invalid move" << endl;
                 break;
             }
         }
     }
-    else if (direction == "down") {
+    else if (direction == "down") { //DOWN Input
         while(true)
         {
             if (x + 1 < rows && board[x + 1][y] == ' ')
@@ -161,7 +164,7 @@ void MoveAlien(int &x, int &y, int rows, int columns, int health, int attack)
             }
     }
     }
-    else if (direction == "left") {
+    else if (direction == "left") { //LEFT Input
         while(true)
         {
             if (y - 1 >= 0 && board[x][y - 1] == ' ')
@@ -227,7 +230,7 @@ void MoveAlien(int &x, int &y, int rows, int columns, int health, int attack)
             }
         }
     }
-    else if (direction == "right")
+    else if (direction == "right") //RIGHT Input
     {
         while(true)
         {
