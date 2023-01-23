@@ -59,7 +59,7 @@ void CreateBoard(int rows, int columns)
 
     // List (and probability) of rock and powerup generation
     // "r" for Rock and "!" for powerup
-    char Obj[] = {'^', 'V', '<', '>', ' ', ' ', ' ', 'h', 'r', 'r', 'r', 'p'};
+    char Obj[] = {'^', 'v', '<', '>', ' ', ' ', ' ', 'h', 'r', 'r', 'r', 'p'};
     int noOfObj = size(Obj);
     for (int row = 0; row < rows; ++row)
         for (int col = 0; col < columns; ++col)
