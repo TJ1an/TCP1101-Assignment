@@ -23,34 +23,35 @@ int Pause()
     return system(R"(read -p "Press any key to continue . . . " dummy)");
 #endif
 }
+
 void ShowGameBoard(int rows, int columns)
+{
+    for (int row = 0; row < rows; ++row)
     {
-        for (int row = 0; row < rows; ++row)
+        //Displaying the top border
+        for (int col = 0; col < columns; ++col)
         {
-            //Displaying the top border
-            for (int col = 0; col < columns; ++col)
-            {
-                cout << "+-";
-            }
-            cout << "+";
-            cout << endl;
-            //Displaying content (including their LEFT and RIGHT borders)
-            for (int col = 0; col < columns; ++col)
-            {
-                cout << "|";
-                cout << board[row][col];
-            }
-            cout << "|";
-            cout << endl;
+            cout << "+-";
         }
-        //Displaying the final bottom border
-            for (int col = 0; col < columns; ++col)
-            {
-                cout << "+-";
-            }
-            cout << "+";
-            cout << endl;            
+        cout << "+";
+        cout << endl;
+        //Displaying content (including their LEFT and RIGHT borders)
+        for (int col = 0; col < columns; ++col)
+        {
+            cout << "|";
+            cout << board[row][col];
+        }
+        cout << "|";
+        cout << endl;
     }
+    //Displaying the final bottom border
+        for (int col = 0; col < columns; ++col)
+        {
+            cout << "+-";
+        }
+        cout << "+";
+        cout << endl;            
+}
 
 
 void CreateBoard(int rows,int columns){ 
@@ -95,25 +96,35 @@ void GameSettings(int& rows, int& columns)
         int newRows;
         int newColumns;
         ClearScreen();
-        std::cout << "Board Settings \n"
-              << std::endl;
-        std::cout << "-------------- \n"<< std::endl;
-        std::cout << "board rows : ";
-        std::cin >> newRows;
-        std::cout << "board columns : ";
-        std::cin >> newColumns;
+        cout << "Board Settings \n" << endl;
+        cout << "-------------- \n"<< endl;
+        //Input the new rows and columns
+        cout << "Board rows : ";
+        cin >> newRows;
+        cout << "Board columns : ";
+        cin >> newColumns;
+        //Accepts odd numbers ONLY
+        while(!(newRows%2==1 && newColumns%2==1)){
+            cout << "Both numbers are not ODD" <<endl;
+            cout << "Board rows : ";
+            cin >> newRows;
+            cout << "Board columns : ";
+            cin >> newColumns;
+        }
         rows = newRows;
         columns = newColumns;
+        //Resizing the board 
         board.resize(rows);
         for (int i = 0; i < rows; ++i)
         {
-          board[i].resize(columns);
+            board[i].resize(columns);
         }
         CreateBoard(rows, columns);
         cout << "\nSettings Updated" << endl;
         Pause();
         cout << endl;
         ShowGameBoard(rows, columns);
+        
     }
     else if (yesorno == 'n')
     
@@ -128,6 +139,6 @@ void GameSettings(int& rows, int& columns)
     }
     else
     {
-        cout << "bruh" << endl;
+        cout << "Ever considered puttin y/n only? " << endl;
     }
 }
