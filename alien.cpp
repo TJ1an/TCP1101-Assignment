@@ -17,15 +17,13 @@ int alienHealth()
     return alienhealth;
 }
 
-void MoveAlien(int &x, int &y, int rows, int columns, int health, int attack)
+int alienAttack = 0;
+
+void MoveAlien(int &x, int &y, int rows, int columns, int health)
 {
     string direction;
     int alienHealth;
-    int alienAttack;
-    alienAttack = 0;
     health = alienHealth;
-    attack = alienAttack;
-    
     cout << "Alien Health: " << alienHealth;
     cout << " Alien Attack: " << alienAttack << endl;
     cout << "Enter the direction you want to move the alien (up, down, left, right): ";
@@ -66,7 +64,7 @@ void MoveAlien(int &x, int &y, int rows, int columns, int health, int attack)
             board[x][y] = '.';
             x--;
             board[x][y] = 'A';          
-            alienAttack = alienHealth + 20;
+            alienAttack = alienAttack + 20;
             cout << " " << endl;
             cout << "You gained 20 Attack!" << endl;
             break;
@@ -132,7 +130,7 @@ void MoveAlien(int &x, int &y, int rows, int columns, int health, int attack)
             board[x][y] = '.';
             x++;
             board[x][y] = 'A';          
-            alienAttack = alienHealth + 20;
+            alienAttack = alienAttack + 20;
             cout << " " << endl;
             cout << "You gained 20 Attack!" << endl;
             break;
@@ -198,7 +196,7 @@ void MoveAlien(int &x, int &y, int rows, int columns, int health, int attack)
             board[x][y] = '.';
             y--;
             board[x][y] = 'A';          
-            alienAttack = alienHealth + 20;
+            alienAttack = alienAttack + 20;
             cout << " " << endl;
             cout << "You gained 20 Attack!" << endl;
             break;
@@ -265,7 +263,7 @@ void MoveAlien(int &x, int &y, int rows, int columns, int health, int attack)
             board[x][y] = '.';
             y++;
             board[x][y] = 'A';          
-            alienAttack = alienHealth + 20;
+            alienAttack = alienAttack + 20;
             cout << " " << endl;
             cout << "You gained 20 Attack!" << endl;
             break;

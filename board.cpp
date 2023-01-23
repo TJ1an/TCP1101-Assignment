@@ -71,11 +71,10 @@ void CreateBoard(int rows, int columns)
     board[rows / 2][columns / 2] = 'A'; // Spawns Alien
     ShowGameBoard(rows, columns);
     int x = rows / 2, y = columns / 2;
-    int alienattack = 0;
     int alienhealth = alienHealth();
     while (true)
     {
-        MoveAlien(x, y, rows, columns, alienhealth, alienattack);
+        MoveAlien(x, y, rows, columns, alienhealth);
         ShowGameBoard(rows, columns);
     }
 }
