@@ -1,14 +1,59 @@
+//switch(board[x - 1][y]) { 
+//    case ' ': //Empty path
+//        board[x][y] = '.';
+//        board[x-1][y] = 'A';
+//        break;
+//    case 'h': //Healthpack
+//        board[x][y] = '.';
+//        board[x-1][y] = 'A';          
+//        alienHealth = alienHealth + 20;
+//        cout << " " << endl;
+//        cout << "You gained 20 Health!" << endl;
+//        break;
+//    case '<': //Left boost
+//        board[x][y] = '.';
+//        board[x-1][y] = 'A';          
+//        alienAttack = alienAttack + 20;
+//        cout << " " << endl;
+//        cout << "You gained 20 Attack!" << endl;
+//        break;
+//    case '>': //Right boost
+//        board[x][y] = '.';
+//        board[x-1][y] = 'A';          
+//        alienAttack = alienHealth + 20;
+//        cout << " " << endl;
+//        cout << "You gained 20 Attack!" << endl;
+//        break;
+//    case '^': //Up boost
+//        board[x][y] = '.';
+//        board[x-1][y] = 'A';          
+//        alienAttack = alienAttack + 20;
+//        cout << " " << endl;
+//        cout << "You gained 20 Attack!" << endl;
+//        break;
+//    case 'v': //Down boost
+//        board[x][y] = '.';
+//        board[x-1][y] = 'A';          
+//        alienAttack = alienAttack + 20;
+//        cout << " " << endl;
+//        cout << "You gained 20 Attack!" << endl;
+//        break;
+//    default:
+//        cout << "Invalid move" << endl;
+//        break;
+//}
+//
 #include "board.h"
-#include "alien.h"
 #include <string>
 #include <vector>
 #include <cstdlib>
 #include <iostream>
+#include "alien.h"
 using namespace std;
 
 extern vector< vector<char> > board;
 
-int alienhp()
+int alienHealth()
 {
     srand((unsigned) time(NULL));
     int alienHealths[] = {100,150,200,250};
@@ -18,11 +63,12 @@ int alienhp()
 }
 
 int alienAttack = 0;
-int alienHealth = alienhp();
 
-void MoveAlien(int &x, int &y, int rows, int columns)
+void MoveAlien(int &x, int &y, int rows, int columns, int health)
 {
     string direction;
+    int alienHealth;
+    health = alienHealth;
     cout << "Alien Health: " << alienHealth;
     cout << " Alien Attack: " << alienAttack << endl;
     cout << "Enter the direction you want to move the alien (up, down, left, right): ";
@@ -35,14 +81,12 @@ void MoveAlien(int &x, int &y, int rows, int columns)
             if (x - 1 >= 0 && board[x - 1][y] == ' ') //Empty path
             {
                 board[x][y] = '.';
-                x--;
-                board[x][y] = 'A';
+                board[x-1][y] = 'A';
             }
             else if(x - 1 >= 0 && board[x - 1][y] == 'h') //Path with healthpack
             {
             board[x][y] = '.';
-            x--;
-            board[x][y] = 'A';          
+            board[x-1][y] = 'A';          
             alienHealth = alienHealth + 20;
             cout << " " << endl;
             cout << "You gained 20 Health!" << endl;
@@ -51,8 +95,7 @@ void MoveAlien(int &x, int &y, int rows, int columns)
             else if(x - 1 >= 0 && board[x - 1][y] == '<') //Left boost/dash
             {
             board[x][y] = '.';
-            x--;
-            board[x][y] = 'A';          
+            board[x-1][y] = 'A';          
             alienAttack = alienAttack + 20;
             cout << " " << endl;
             cout << "You gained 20 Attack!" << endl;
@@ -61,8 +104,7 @@ void MoveAlien(int &x, int &y, int rows, int columns)
             else if(x - 1 >= 0 && board[x - 1][y] == '>') //Right boost/dash
             {
             board[x][y] = '.';
-            x--;
-            board[x][y] = 'A';          
+            board[x-1][y] = 'A';          
             alienAttack = alienAttack + 20;
             cout << " " << endl;
             cout << "You gained 20 Attack!" << endl;
@@ -71,8 +113,7 @@ void MoveAlien(int &x, int &y, int rows, int columns)
             else if(x - 1 >= 0 && board[x - 1][y] == '^') //Up boost/dash
             {
             board[x][y] = '.';
-            x--;
-            board[x][y] = 'A';          
+            board[x-1][y] = 'A';          
             alienAttack = alienAttack + 20;
             cout << " " << endl;
             cout << "You gained 20 Attack!" << endl;
@@ -81,8 +122,7 @@ void MoveAlien(int &x, int &y, int rows, int columns)
             else if(x - 1 >= 0 && board[x - 1][y] == 'v') //Down boost/dash
             {
             board[x][y] = '.';
-            x--;
-            board[x][y] = 'A';          
+            board[x-1][y] = 'A';          
             alienAttack = alienAttack + 20;
             cout << " " << endl;
             cout << "You gained 20 Attack!" << endl;
@@ -98,27 +138,24 @@ void MoveAlien(int &x, int &y, int rows, int columns)
     else if (direction == "down") { //DOWN Input
         while(true)
         {
-            if (x + 1 < rows && board[x + 1][y] == ' ')
+            if (x + 1 < rows && board[x + 1][y] == ' ') //Empty path
             {
                 board[x][y] = '.';
-                x++;
-                board[x][y] = 'A';
+                board[x+1][y] = 'A';
             }
-            else if(x + 1 < rows && board[x + 1][y] == 'h')
+            else if(x + 1 < rows && board[x + 1][y] == 'h') //Path with healthpack
             {
             board[x][y] = '.';
-            x++;
-            board[x][y] = 'A';
+            board[x+1][y] = 'A';
             alienHealth = alienHealth + 20;
             cout << " " << endl;
             cout << "You gained 20 Health!" << endl;
             break;
             }
-            else if(x + 1 < rows && board[x + 1][y] == '<')
+            else if(x + 1 < rows && board[x + 1][y] == '<') //
             {
             board[x][y] = '.';
-            x++;
-            board[x][y] = 'A';          
+            board[x+1][y] = 'A';          
             alienAttack = alienAttack + 20;
             cout << " " << endl;
             cout << "You gained 20 Attack!" << endl;
@@ -127,8 +164,7 @@ void MoveAlien(int &x, int &y, int rows, int columns)
             else if(x + 1 < rows && board[x + 1][y] == '>')
             {
             board[x][y] = '.';
-            x++;
-            board[x][y] = 'A';          
+            board[x+1][y] = 'A';          
             alienAttack = alienAttack + 20;
             cout << " " << endl;
             cout << "You gained 20 Attack!" << endl;
@@ -137,8 +173,7 @@ void MoveAlien(int &x, int &y, int rows, int columns)
             else if(x + 1 < rows && board[x + 1][y] == '^')
             {
             board[x][y] = '.';
-            x++;
-            board[x][y] = 'A';          
+            board[x+1][y] = 'A';          
             alienAttack = alienAttack + 20;
             cout << " " << endl;
             cout << "You gained 20 Attack!" << endl;
@@ -147,8 +182,7 @@ void MoveAlien(int &x, int &y, int rows, int columns)
             else if(x + 1 < rows && board[x + 1][y] == 'v')
             {
             board[x][y] = '.';
-            x++;
-            board[x][y] = 'A';          
+            board[x+1][y] = 'A';          
             alienAttack = alienAttack + 20;
             cout << " " << endl;
             cout << "You gained 20 Attack!" << endl;

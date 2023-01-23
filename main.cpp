@@ -9,7 +9,8 @@
 // ********************************************************* 
 
 // TODO: Fill in the missing information above and delete this line.
-#include "board.cpp"
+#include "board.h"
+#include "alien.h"
 #include <vector>
 #include <cstdlib>
 #include <iostream>
