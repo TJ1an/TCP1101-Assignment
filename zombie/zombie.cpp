@@ -8,10 +8,13 @@ using namespace std;
 
 extern vector< vector<char> > board;
 
+
 void zombieSpawn() {
     
 }
+
 void Zombie::Stats(int zombieHealth, int zombieAttack, int zombieRange) {
+    srand((unsigned)time(NULL));
     //Range of Stats
     int zombieHPs[] = {100,150,200,250};
     int zombieATKs[] = {5,10,15,20};

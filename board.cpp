@@ -62,6 +62,7 @@ void CreateBoard(int rows, int columns, int Zombie)
     char Obj[] = {'^', 'v', '<', '>', ' ', ' ', ' ', 'h', 'r', 'r', 'p',' ',' ',' ',' '};
     int noOfObj = size(Obj);
     int zombieSpawns = 0;
+    int count = 49; // Starts at '1' (for zombie spawning)
     for (int row = 0; row < rows; ++row)
         for (int col = 0; col < columns; ++col)
         {
@@ -74,14 +75,15 @@ void CreateBoard(int rows, int columns, int Zombie)
     while (zombieSpawns < Zombie) { //Spawns a maximum number of Zombies
         int x = rand() % rows;
         int y = rand() % columns;
-        if (board[x][y] == 'Z' ){ //Rerolls x,y dimensions if Zombie is present in point.
+        if (board[x][y] == '1' || board[x][y] == '2' || board[x][y] == 'A'){ //Rerolls x,y dimensions if entities are present in point.
             x = rand() % rows;
             y = rand() % columns;
         }
         else {
-            board [x][y] = 'Z'; //Places zombie based on radomizer
+            board [x][y] = char(count); //Places zombie based on randomizer
         }
         zombieSpawns++;
+        count++;
     }
     ShowGameBoard(rows, columns, Zombie);
     int x = rows / 2, y = columns / 2;

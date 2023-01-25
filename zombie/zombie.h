@@ -9,6 +9,8 @@ private:
     int zombieHealth;
     int zombieAttack;
     int zombieRange;
+    int zom_dimX;
+    int zom_dimY;
 };
 
 #endif
