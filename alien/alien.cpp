@@ -38,6 +38,12 @@ void MoveAlien(int &x, int &y, int rows, int columns)
                 x--;
                 board[x][y] = 'A';
             }
+            else if (x - 1 >= 0 && board[x - 1][y] == '.') //Trail path
+            {
+                board[x][y] = '.';
+                x--;
+                board[x][y] = 'A';
+            }
             else if(x - 1 >= 0 && board[x - 1][y] == 'h') //Path with healthpack
             {
             board[x][y] = '.';
@@ -99,6 +105,12 @@ void MoveAlien(int &x, int &y, int rows, int columns)
         while(true)
         {
             if (x + 1 < rows && board[x + 1][y] == ' ')
+            {
+                board[x][y] = '.';
+                x++;
+                board[x][y] = 'A';
+            }
+            else if (x + 1 < rows && board[x + 1][y] == '.')
             {
                 board[x][y] = '.';
                 x++;
@@ -170,6 +182,12 @@ void MoveAlien(int &x, int &y, int rows, int columns)
                 y--;
                 board[x][y] = 'A';
             }
+            else if (y - 1 >= 0 && board[x][y - 1] == '.')
+            {
+                board[x][y] = '.';
+                y--;
+                board[x][y] = 'A';
+            }
             else if(y - 1 >= 0 && board[x][y - 1] == 'h')
             {
             board[x][y] = '.';
@@ -232,6 +250,12 @@ void MoveAlien(int &x, int &y, int rows, int columns)
         while(true)
         {
             if (y + 1 < columns && board[x][y + 1] == ' ')
+            {
+                board[x][y] = '.';
+                y++;
+                board[x][y] = 'A';
+            }
+            else if (y + 1 < columns && board[x][y + 1] == '.')
             {
                 board[x][y] = '.';
                 y++;
