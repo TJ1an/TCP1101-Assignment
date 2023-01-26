@@ -2,4 +2,8 @@
 #define ALIEN_H
 int alienhp();
 void MoveAlien(int &x, int &y, int rows, int columns);
+void moveleft(int &x, int &y, int rows, int columns);
+void moveright(int &x, int &y, int rows, int columns);
+void moveup(int &x, int &y, int rows, int columns);
+void movedown(int &x, int &y, int rows, int columns);
 #endif
