@@ -2,7 +2,7 @@
 #include <vector>
 #include <cstdlib>
 #include <iostream>
-#include "board.h"
+//#include "board.h"
 #include "zombie.h"
 using namespace std;
 

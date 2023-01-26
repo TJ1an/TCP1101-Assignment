@@ -11,6 +11,7 @@
 // TODO: Fill in the missing information above and delete this line.
 #include "board.h"
 #include "alien/alien.h"
+#include "zombie/zombie.h"
 #include <vector>
 #include <cstdlib>
 #include <iostream>

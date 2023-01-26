@@ -1,4 +1,5 @@
 #include "alien/alien.h"
+#include "zombie/zombie.h"
 #include <vector>
 #include <cstdlib>
 #include <iostream>
@@ -24,7 +25,7 @@ int Pause()
 #endif
 }
 
-void ShowGameBoard(int rows, int columns, int Zombie)
+void ShowGameBoard(int rows, int columns, int zombie)
 {
     for (int row = 0; row < rows; ++row)
     {
@@ -53,7 +54,7 @@ void ShowGameBoard(int rows, int columns, int Zombie)
     cout << endl;
 }
 
-void CreateBoard(int rows, int columns, int Zombie)
+void CreateBoard(int rows, int columns, int zombie)
 {
     srand((unsigned)time(NULL));
 
@@ -71,8 +72,17 @@ void CreateBoard(int rows, int columns, int Zombie)
             board[row][col] = Obj[noObj];
         }
     board[rows / 2][columns / 2] = 'A'; // Spawns Alien
+
     // Zombie Spawning
-    while (zombieSpawns < Zombie) { //Spawns a maximum number of Zombies
+    std::vector<Zombie*> zombieList;
+    for(int i = 0; i < zombie; i++) {
+        Zombie* zomb = new Zombie();
+        zombieList.push_back(zomb);
+    }
+
+    for(auto i = zombieList.begin(); i != zombieList.end(); i++) {
+        //Each instance of i will return a Zombie* (pointer to a Zombie class object).
+
         int x = rand() % rows;
         int y = rand() % columns;
         if (board[x][y] == '1' || board[x][y] == '2' || board[x][y] == 'A'){ //Rerolls x,y dimensions if entities are present in point.
@@ -85,23 +95,16 @@ void CreateBoard(int rows, int columns, int Zombie)
         zombieSpawns++;
         count++;
     }
-    ShowGameBoard(rows, columns, Zombie);
-    int x = rows / 2, y = columns / 2;
-    while (true)
-    {
-        MoveAlien(x, y, rows, columns);
-        ShowGameBoard(rows, columns, Zombie);
-    }
 }
 
-void GameSettings(int &rows, int &columns, int Zombie)
+void GameSettings(int &rows, int &columns, int zombie)
 {
     char yesorno;
     cout << "Default game setttings  \n"<< endl;
     cout << "---------------------- \n"<< endl;
     cout << "board rows : " << rows << endl;
     cout << "board columns : " << columns << endl;
-    cout << "zombie count : " << Zombie << endl;
+    cout << "zombie count : " << zombie << endl;
     cout << " " << endl;
     cout << "do you want to change the game settings? (y/n) => ";
     cin >> yesorno;
@@ -133,7 +136,7 @@ void GameSettings(int &rows, int &columns, int Zombie)
         }
         rows = newRows;
         columns = newColumns;
-        Zombie = newZombies;
+        zombie = newZombies;
         //Resizing the board 
         board.resize(rows);
         for (int i = 0; i < rows; ++i)
@@ -143,8 +146,8 @@ void GameSettings(int &rows, int &columns, int Zombie)
         cout << "\nSettings Updated" << endl;
         Pause();
         ClearScreen();
-        CreateBoard(rows, columns, Zombie);
-        ShowGameBoard(rows, columns, Zombie);
+        CreateBoard(rows, columns, zombie);
+        ShowGameBoard(rows, columns, zombie);
         
     }
     else if (yesorno == 'n')
