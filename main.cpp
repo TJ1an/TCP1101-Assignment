@@ -19,9 +19,31 @@ using namespace std;
 
 int main()
 {   
+    int menuSelection;
     int kRows = 5;
     int kColumns = 5;
     int kZombie = 1;
-    GameSettings(kRows, kColumns, kZombie);
-}
+    cout << " " << endl;
+    cout << "Alien Vs Zombie" << endl;
+    cout << "1. Play" << endl;
+    cout << "2. Load" << endl;
+    cout << "3. Quit" << endl;
+    cout << endl;
+    cout << "Insert number on which action you want to perform (1, 2, 3)." << endl;
+    cout << "=> ";
+    cin >> menuSelection;
+    switch (menuSelection)
+    {
+        case 1:
+        GameSettings(kRows, kColumns, kZombie);
+        break;
 
+        case 2:
+        cout << "test 2 works"<< endl;
+        break;
+
+        case 3:
+        cout << "test 3 works"<< endl;
+        break;
+    }
+}
