@@ -32,7 +32,7 @@ void Zombie::Location(int x, int y) {
     this->zom_dimY = y;
 }
 
-void Zombie::displayStats(Zombie &zombieList) {
+void Zombie::displayStats() {
     cout << "HP: " <<zombieHealth << " ATK: " << zombieAttack << " R: "<< zombieRange << " dimX: " <<  zom_dimX << " dimY: "<< zom_dimY <<endl;
 }
 

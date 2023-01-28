@@ -27,7 +27,17 @@ int Pause()
 
 void ShowGameBoard(int rows, int columns, int zombie)
 {
+    //For when the board is bigger than 9 columns, the ".: Alien Vs Zombie :." text tries to center itself
+    if (columns > 9)
+    {
+        for (int spaces = 0; spaces < columns - 10 ; spaces++)
+        {
+            cout << " ";
+        }
+    }
     cout << ".: Alien Vs Zombie :." << endl;
+    cout << endl;
+
     for (int row = 0; row < rows; ++row)
     {
         // Displaying the top border
@@ -80,7 +90,7 @@ void CreateBoard(int rows, int columns, int zombie)
         Zombie* zomb = new Zombie();
         zombieList.push_back(zomb);
     }
-
+    // Spawns zombies
     while(zombieSpawns < zombie) {  // Spawns zombies based on input
         //All possible zombie entities
         srand((unsigned) time(NULL));
@@ -95,7 +105,6 @@ void CreateBoard(int rows, int columns, int zombie)
                 break;
             }
         }
-
         if ( gotEntity || board[x][y] == 'A'){ //Rerolls x,y dimensions if entities are present in point.
             x = rand() % rows;
             y = rand() % columns;
@@ -111,18 +120,13 @@ void CreateBoard(int rows, int columns, int zombie)
             zombieList[zombieSpawns]->Stats();
         }    
     }
+
     ShowGameBoard(rows, columns, zombie);
     int x = rows/2, y = columns/2;
     // Starts the game
     while(true) {
         MoveAlien(x, y, rows, columns);
         ShowGameBoard(rows, columns, zombie);
-    }
-    ShowGameBoard(rows, columns, zombie);
-    int x = rows/2, y = columns/2;
-    while(true) {
-    MoveAlien(x, y, rows, columns);
-    ShowGameBoard(rows, columns, zombie);
     }
 }
 
@@ -183,12 +187,12 @@ void GameSettings(int &rows, int &columns, int zombie)
     else if (yesorno == 'n')
 
     {
+        ClearScreen();
         board.resize(rows);
         for (int i = 0; i < rows; ++i)
         {
             board[i].resize(columns);
         }
-        ClearScreen();
         CreateBoard(5, 5, 1);
         ShowGameBoard(5, 5, 1);
     }
