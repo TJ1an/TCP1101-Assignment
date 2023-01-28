@@ -51,7 +51,7 @@ void ShowGameBoard(int rows, int columns, int zombie)
         cout << "+-";
     }
     cout << "+";
-    cout << endl;
+    cout << endl;    
 }
 
 void CreateBoard(int rows, int columns, int zombie)
@@ -94,6 +94,13 @@ void CreateBoard(int rows, int columns, int zombie)
         }
         zombieSpawns++;
         count++;
+    }
+    ShowGameBoard(rows, columns, zombie);
+    int x = rows / 2, y = columns / 2;
+    while (true)
+    {
+        MoveAlien(x, y, rows, columns);
+        ShowGameBoard(rows, columns, zombie);
     }
 }
 
