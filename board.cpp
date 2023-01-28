@@ -71,7 +71,7 @@ void CreateBoard(int rows, int columns, int zombie)
     srand((unsigned)time(NULL));
     // List (and probability) of rock and powerup generation
     // "r" for Rock and "!" for powerup
-    char Obj[] = {'^', 'v', '<', '>', ' ', ' ', ' ', 'h', 'r', ' ', 'p',' ',' ',' ',' '};
+    char Obj[] = {'^', 'v', '<', '>', ' ', ' ', ' ', 'h', 'r', ' ', 'p'};
     int noOfObj = size(Obj);
     int zombieSpawns = 0;
     int count = 49; // Starts at '1' (for zombie spawning)
