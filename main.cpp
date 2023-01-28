@@ -24,7 +24,7 @@ int main()
     int kColumns = 5;
     int kZombie = 1;
     cout << " " << endl;
-    cout << "Alien Vs Zombie" << endl;
+    cout << ".: Alien Vs Zombie :." << endl;
     cout << "1. Play" << endl;
     cout << "2. Load" << endl;
     cout << "3. Quit" << endl;
@@ -43,7 +43,7 @@ int main()
         break;
 
         case 3:
-        cout << "test 3 works"<< endl;
+        cout << "Thanks for playing." << endl;
         break;
     }
 }

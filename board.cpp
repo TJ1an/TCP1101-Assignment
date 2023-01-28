@@ -27,6 +27,7 @@ int Pause()
 
 void ShowGameBoard(int rows, int columns, int zombie)
 {
+    cout << ".: Alien Vs Zombie :." << endl;
     for (int row = 0; row < rows; ++row)
     {
         // Displaying the top border
@@ -96,24 +97,23 @@ void CreateBoard(int rows, int columns, int zombie)
         count++;
     }
     ShowGameBoard(rows, columns, zombie);
-    int x = rows / 2, y = columns / 2;
-    while (true)
-    {
-        MoveAlien(x, y, rows, columns);
-        ShowGameBoard(rows, columns, zombie);
+    int x = rows/2, y = columns/2;
+    while(true) {
+    MoveAlien(x, y, rows, columns);
+    ShowGameBoard(rows, columns, zombie);
     }
 }
 
 void GameSettings(int &rows, int &columns, int zombie)
 {
     char yesorno;
-    cout << "Default game setttings  \n"<< endl;
+    cout << "Default game settings  \n"<< endl;
     cout << "---------------------- \n"<< endl;
-    cout << "board rows : " << rows << endl;
-    cout << "board columns : " << columns << endl;
-    cout << "zombie count : " << zombie << endl;
+    cout << "Board rows : " << rows << endl;
+    cout << "Board columns : " << columns << endl;
+    cout << "Zombie count : " << zombie << endl;
     cout << " " << endl;
-    cout << "do you want to change the game settings? (y/n) => ";
+    cout << "Do you want to change the game settings? (y/n) => ";
     cin >> yesorno;
 
     if (yesorno == 'y')
@@ -123,7 +123,8 @@ void GameSettings(int &rows, int &columns, int zombie)
         int newZombies;
         ClearScreen();
         cout << "Board Settings \n" << endl;
-        cout << "-------------- \n"<< endl;
+        cout << "Max: Both numbers are ODD and less than 3 Zombies" << endl;
+        cout << "------------------------------------------------- \n"<< endl;
         //Input the new rows and columns
         cout << "Board rows : ";
         cin >> newRows;
