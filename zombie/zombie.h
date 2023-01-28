@@ -3,14 +3,16 @@
 
 class Zombie {
 public:
-    void Stats(int zombieHealth, int zombieAttack, int zombieRange);
+    // Functions
+    void Stats();
+    void Location(int zom_dimX, int zom_dimY);
     void moveZombie();
-private:
+    void displayStats();
+    // Variables
     int zombieHealth;
     int zombieAttack;
     int zombieRange;
-    int zom_dimX;
-    int zom_dimY;
+    int zom_dimX, zom_dimY;
 };
 
 #endif

@@ -327,12 +327,13 @@ while(true)
             }
         }
 }
-
-void MoveAlien(int &x, int &y, int rows, int columns)
-{
-    string direction;
+void displayAlien(){
     cout << "Alien Health: " << alienHealth;
     cout << " Alien Attack: " << alienAttack << endl;
+}
+void MoveAlien(int &x, int &y, int rows, int columns)
+{   
+    string direction;
     cout << "Enter the direction you want to move the alien (up, down, left, right): ";
     cin >> direction;
 
