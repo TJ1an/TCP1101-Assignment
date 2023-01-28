@@ -63,6 +63,7 @@ void ShowGameBoard(int rows, int columns, int zombie)
     }
     cout << "+";
     cout << endl;
+    displayAlien();
 }
 
 void CreateBoard(int rows, int columns, int zombie)
