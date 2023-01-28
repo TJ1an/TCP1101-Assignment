@@ -54,6 +54,7 @@ void moveup(int &x, int &y, int rows, int columns)
             alienAttack = alienAttack + 20;
             cout << " " << endl;
             cout << "You gained 20 Attack!" << endl;
+            moveleft(x, y, rows, columns);
             break;
             }
             else if(x - 1 >= 0 && board[x - 1][y] == '>') //Right boost/dash
@@ -64,6 +65,7 @@ void moveup(int &x, int &y, int rows, int columns)
             alienAttack = alienAttack + 20;
             cout << " " << endl;
             cout << "You gained 20 Attack!" << endl;
+            moveright(x, y, rows, columns);
             break;
             }
             else if(x - 1 >= 0 && board[x - 1][y] == '^') //Up boost/dash
@@ -74,6 +76,7 @@ void moveup(int &x, int &y, int rows, int columns)
             alienAttack = alienAttack + 20;
             cout << " " << endl;
             cout << "You gained 20 Attack!" << endl;
+            moveup(x, y, rows, columns);
             break;
             }
             else if(x - 1 >= 0 && board[x - 1][y] == 'v') //Down boost/dash
@@ -84,6 +87,7 @@ void moveup(int &x, int &y, int rows, int columns)
             alienAttack = alienAttack + 20;
             cout << " " << endl;
             cout << "You gained 20 Attack!" << endl;
+            movedown(x, y, rows, columns);
             break;
             }
             else //Invalid move
@@ -128,6 +132,7 @@ void movedown(int &x, int &y, int rows, int columns)
             alienAttack = alienAttack + 20;
             cout << " " << endl;
             cout << "You gained 20 Attack!" << endl;
+            moveleft(x, y, rows, columns);
             break;
             }
             else if(x + 1 < rows && board[x + 1][y] == '>')
@@ -138,6 +143,7 @@ void movedown(int &x, int &y, int rows, int columns)
             alienAttack = alienAttack + 20;
             cout << " " << endl;
             cout << "You gained 20 Attack!" << endl;
+            moveright(x, y, rows, columns);
             break;
             }
             else if(x + 1 < rows && board[x + 1][y] == '^')
@@ -148,6 +154,7 @@ void movedown(int &x, int &y, int rows, int columns)
             alienAttack = alienAttack + 20;
             cout << " " << endl;
             cout << "You gained 20 Attack!" << endl;
+            moveup(x, y, rows, columns);
             break;
             }
             else if(x + 1 < rows && board[x + 1][y] == 'v')
@@ -158,6 +165,7 @@ void movedown(int &x, int &y, int rows, int columns)
             alienAttack = alienAttack + 20;
             cout << " " << endl;
             cout << "You gained 20 Attack!" << endl;
+            movedown(x, y, rows, columns);
             break;
             }
             else
@@ -200,6 +208,7 @@ while(true)
             alienAttack = alienAttack + 20;
             cout << " " << endl;
             cout << "You gained 20 Attack!" << endl;
+            moveleft(x, y, rows, columns);
             break;
             }
             else if(y - 1 >= 0 && board[x][y - 1] == '>')
@@ -210,6 +219,7 @@ while(true)
             alienAttack = alienAttack + 20;
             cout << " " << endl;
             cout << "You gained 20 Attack!" << endl;
+            moveright(x, y, rows, columns);
             break;
             }
             else if(y - 1 >= 0 && board[x][y - 1] == '^')
@@ -220,6 +230,7 @@ while(true)
             alienAttack = alienAttack + 20;
             cout << " " << endl;
             cout << "You gained 20 Attack!" << endl;
+            moveup(x, y, rows, columns);
             break;
             }
             else if(y - 1 >= 0 && board[x][y - 1] == 'v')
@@ -230,6 +241,7 @@ while(true)
             alienAttack = alienAttack + 20;
             cout << " " << endl;
             cout << "You gained 20 Attack!" << endl;
+            movedown(x, y, rows, columns);
             break;
             }
             else
@@ -272,6 +284,7 @@ while(true)
             alienAttack = alienAttack + 20;
             cout << " " << endl;
             cout << "You gained 20 Attack!" << endl;
+            moveleft(x, y, rows, columns);
             break;
             }
             else if(y + 1 < columns && board[x][y + 1] == '>')
@@ -282,6 +295,7 @@ while(true)
             alienAttack = alienAttack + 20;
             cout << " " << endl;
             cout << "You gained 20 Attack!" << endl;
+            moveright(x, y, rows, columns);
             break;
             }
             else if(y + 1 < columns && board[x][y + 1] == '^')
@@ -292,6 +306,7 @@ while(true)
             alienAttack = alienAttack + 20;
             cout << " " << endl;
             cout << "You gained 20 Attack!" << endl;
+            moveup(x, y, rows, columns);
             break;
             }
             else if(y + 1 < columns && board[x][y + 1] == 'v')
@@ -302,6 +317,7 @@ while(true)
             alienAttack = alienAttack + 20;
             cout << " " << endl;
             cout << "You gained 20 Attack!" << endl;
+            movedown(x, y, rows, columns);
             break;
             }
             else
