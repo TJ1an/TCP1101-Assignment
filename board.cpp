@@ -53,6 +53,9 @@ void ShowGameBoard(int rows, int columns, int zombie)
     }
     cout << "+";
     cout << endl;
+    // Display alien stats
+    displayAlien();
+    // Display zombie (not sure)
 }
 
 void CreateBoard(int rows, int columns, int zombie)
