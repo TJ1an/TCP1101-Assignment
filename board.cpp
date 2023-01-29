@@ -82,7 +82,9 @@ void ShowGameBoard(int rows, int columns, int zombie)
 //    }                                                                         //
 //////////////////////////////////////////////////////////////////////////////////
     cout << endl;
+    // Display alien stats
     displayAlien();
+    // Display zombie (not sure)
 }
 
 void CreateBoard(int rows, int columns, int zombie)
@@ -110,7 +112,7 @@ void CreateBoard(int rows, int columns, int zombie)
         Zombie* zomb = new Zombie();
         zombieList.push_back(zomb);
     }
-    // Spawns zombies
+
     while(zombieSpawns < zombie) {  // Spawns zombies based on input
         //All possible zombie entities
         srand((unsigned) time(NULL));
@@ -125,6 +127,7 @@ void CreateBoard(int rows, int columns, int zombie)
                 break;
             }
         }
+
         if ( gotEntity || board[x][y] == 'A'){ //Rerolls x,y dimensions if entities are present in point.
             x = rand() % rows;
             y = rand() % columns;
@@ -140,7 +143,6 @@ void CreateBoard(int rows, int columns, int zombie)
             zombieList[zombieSpawns]->Stats();
         }    
     }
-
     ShowGameBoard(rows, columns, zombie);
     int x = rows/2, y = columns/2;
     // Starts the game
@@ -207,12 +209,12 @@ void GameSettings(int &rows, int &columns, int zombie)
     else if (yesorno == 'n')
 
     {
-        ClearScreen();
         board.resize(rows);
         for (int i = 0; i < rows; ++i)
         {
             board[i].resize(columns);
         }
+        ClearScreen();
         CreateBoard(5, 5, 1);
         ShowGameBoard(5, 5, 1);
     }
