@@ -47,15 +47,7 @@
         "deque": "cpp",
         "string": "cpp",
         "unordered_map": "cpp",
-        "string_view": "cpp",
-        "*.tcc": "cpp",
-        "cwctype": "cpp",
-        "algorithm": "cpp",
-        "functional": "cpp",
-        "memory_resource": "cpp",
-        "numeric": "cpp",
-        "random": "cpp",
-        "numbers": "cpp"
+        "string_view": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

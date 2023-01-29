@@ -23,17 +23,15 @@ int main()
     int kRows = 5;
     int kColumns = 5;
     int kZombie = 1;
-
     cout << " " << endl;
     cout << ".: Alien Vs Zombie :." << endl;
-    cout << "   1. Play" << endl;
-    cout << "   2. Load" << endl;
-    cout << "   3. Quit" << endl;
+    cout << "1. Play" << endl;
+    cout << "2. Load" << endl;
+    cout << "3. Quit" << endl;
     cout << endl;
     cout << "Insert number on which action you want to perform (1, 2, 3)." << endl;
     cout << "=> ";
     cin >> menuSelection;
-    ClearScreen();
     switch (menuSelection)
     {
         case 1:
@@ -45,13 +43,7 @@ int main()
         break;
 
         case 3:
-        ClearScreen();
         cout << "Thanks for playing." << endl;
         break;
-
-        default:
-        cout << "Invalid input. Please retry.";
-        cout << endl;
-        return main();
     }
 }
