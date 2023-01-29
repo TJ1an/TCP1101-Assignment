@@ -122,6 +122,11 @@ void CreateBoard(int rows, int columns, int zombie)
         ShowGameBoard(rows, columns, zombie);
     }
     ShowGameBoard(rows, columns, zombie);
+    int x = rows/2, y = columns/2;
+    while(true) {
+    MoveAlien(x, y, rows, columns);
+    ShowGameBoard(rows, columns, zombie);
+    }
 }
 
 void GameSettings(int &rows, int &columns, int zombie)
