@@ -36,7 +36,6 @@ void ShowGameBoard(int rows, int columns, int zombie)
         }
     }
     cout << ".: Alien Vs Zombie :." << endl;
-    cout << endl;
 
     for (int row = 0; row < rows; ++row)
     {
@@ -54,14 +53,34 @@ void ShowGameBoard(int rows, int columns, int zombie)
             cout << board[row][col];
         }
         cout << "|";
+//////////////////////////////////////////////        
+//        // Displaying the row number      //
+//        cout << " " << row + 1;           //
+//////////////////////////////////////////////
         cout << endl;
+        
     }
     // Displaying the final bottom border
     for (int col = 0; col < columns; ++col)
     {
         cout << "+-";
     }
-    cout << "+";
+
+    // Displaying the final "+" edge for the board
+    cout << "+"; 
+    cout << endl;
+//////////////////////////////////////////////////////////////////////////////////
+//    // Displaying the column number                                           //
+//    for (int columnNumber = 1; columnNumber <= columns; ++columnNumber)       //
+//    {                                                                         //
+//        if (columnNumber < 10) { // Column 0 to 9                             //
+//            cout << " " << columnNumber;                                      //
+//        }                                                                     //
+//        else if (columnNumber > 9) { // Column 10 and above                   //
+//            cout << " " << columnNumber;                                      //
+//        }                                                                     //
+//    }                                                                         //
+//////////////////////////////////////////////////////////////////////////////////
     cout << endl;
     displayAlien();
 }
