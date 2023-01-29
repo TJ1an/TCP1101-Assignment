@@ -47,7 +47,7 @@ int main()
         case 3:
         ClearScreen();
         cout << "Thanks for playing." << endl;
-        break;
+        abort();
 
         default:
         cout << "Invalid input. Please retry.";
