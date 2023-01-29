@@ -53,10 +53,10 @@ void ShowGameBoard(int rows, int columns, int zombie)
             cout << board[row][col];
         }
         cout << "|";
-//////////////////////////////////////////////        
-//        // Displaying the row number      //
-//        cout << " " << row + 1;           //
-//////////////////////////////////////////////
+
+        // Displaying the row number
+        cout << " " << row + 1;
+
         cout << endl;
         
     }
@@ -69,18 +69,29 @@ void ShowGameBoard(int rows, int columns, int zombie)
     // Displaying the final "+" edge for the board
     cout << "+"; 
     cout << endl;
-//////////////////////////////////////////////////////////////////////////////////
-//    // Displaying the column number                                           //
-//    for (int columnNumber = 1; columnNumber <= columns; ++columnNumber)       //
-//    {                                                                         //
-//        if (columnNumber < 10) { // Column 0 to 9                             //
-//            cout << " " << columnNumber;                                      //
-//        }                                                                     //
-//        else if (columnNumber > 9) { // Column 10 and above                   //
-//            cout << " " << columnNumber;                                      //
-//        }                                                                     //
-//    }                                                                         //
-//////////////////////////////////////////////////////////////////////////////////
+
+    // Displaying the column number
+    cout << " ";
+    
+    // First row code
+    for (int columnNumber1 = 0; columnNumber1 < columns; ++columnNumber1)
+    {
+        cout << columnNumber1 / 10 << " ";
+    }
+    cout << endl;
+
+    // Second row code
+    for (int columnNumber2 = 1; columnNumber2 <= columns; ++columnNumber2) 
+    {
+        if (columnNumber2 < 10){
+        cout << " " << columnNumber2;
+        }
+
+        else if (columnNumber2 >= 10) {
+            cout << " " << columnNumber2 % 10;
+        }
+    }
+
     cout << endl;
     // Display alien stats
     displayAlien();
