@@ -44,6 +44,11 @@ int main()
 
         case 3:
         cout << "Thanks for playing." << endl;
-        break;
+        abort();
+
+        default:
+        cout << "Invalid input. Please retry.";
+        cout << endl;
+        return main();
     }
 }

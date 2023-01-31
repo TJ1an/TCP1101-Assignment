@@ -27,7 +27,16 @@ int Pause()
 
 void ShowGameBoard(int rows, int columns, int zombie)
 {
+    //For when the board is bigger than 9 columns, the ".: Alien Vs Zombie :." text tries to center itself
+    if (columns > 9)
+    {
+        for (int spaces = 0; spaces < columns - 10 ; spaces++)
+        {
+            cout << " ";
+        }
+    }
     cout << ".: Alien Vs Zombie :." << endl;
+
     for (int row = 0; row < rows; ++row)
     {
         // Displaying the top border
@@ -44,14 +53,45 @@ void ShowGameBoard(int rows, int columns, int zombie)
             cout << board[row][col];
         }
         cout << "|";
+
+        // Displaying the row number
+        cout << " " << row + 1;
+
         cout << endl;
+        
     }
     // Displaying the final bottom border
     for (int col = 0; col < columns; ++col)
     {
         cout << "+-";
     }
-    cout << "+";
+
+    // Displaying the final "+" edge for the board
+    cout << "+"; 
+    cout << endl;
+
+    // Displaying the column number
+    cout << " ";
+    
+    // First row code
+    for (int columnNumber1 = 0; columnNumber1 < columns; ++columnNumber1)
+    {
+        cout << columnNumber1 / 10 << " ";
+    }
+    cout << endl;
+
+    // Second row code
+    for (int columnNumber2 = 1; columnNumber2 <= columns; ++columnNumber2) 
+    {
+        if (columnNumber2 < 10){
+        cout << " " << columnNumber2;
+        }
+
+        else if (columnNumber2 >= 10) {
+            cout << " " << columnNumber2 % 10;
+        }
+    }
+
     cout << endl;
     // Display alien stats
     displayAlien();
