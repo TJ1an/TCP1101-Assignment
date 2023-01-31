@@ -35,6 +35,7 @@ int main()
     switch (menuSelection)
     {
         case 1:
+        ClearScreen();
         GameSettings(kRows, kColumns, kZombie);
         break;
 
@@ -49,6 +50,7 @@ int main()
         default:
         cout << "Invalid input. Please retry.";
         cout << endl;
+        ClearScreen();
         return main();
     }
 }

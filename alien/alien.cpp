@@ -11,6 +11,15 @@ extern vector<vector<char>> board;
 int alienAttack = 0;
 int alienHealth = alienhp();
 
+
+void myPause()
+{
+	std::cout << "Press ENTER to continue..."; 
+	std::cin.clear();
+	std::cin.sync();
+	std::cin.get();
+}
+
 int alienhp()
 {
     srand((unsigned)time(NULL));
@@ -44,7 +53,9 @@ void moveup(int &x, int &y, int rows, int columns)
             board[x][y] = 'A';
             alienHealth = alienHealth + 20;
             cout << " " << endl;
+            cout << "Alien finds a Healthpack!" << endl;
             cout << "You gained 20 Health!" << endl;
+            cout << " " << endl;
             break;
         }
         else if (x - 1 >= 0 && board[x - 1][y] == 'r') // Path with rock
@@ -54,6 +65,8 @@ void moveup(int &x, int &y, int rows, int columns)
                 board[x][y] = 'A';
                 cout << " " << endl;
                 cout << "You hit a rock!" << endl;
+                cout << " " << endl;
+                myPause();
                 rockrandomobject(x, y, rows, columns);
                 cout << " " << endl;              
             }
@@ -64,7 +77,10 @@ void moveup(int &x, int &y, int rows, int columns)
             board[x][y] = 'A';
             alienAttack = alienAttack + 20;
             cout << " " << endl;
+            cout << "Alien finds a left arrow" << endl;
             cout << "You gained 20 Attack!" << endl;
+            cout << " " << endl;
+            myPause();
             moveleft(x, y, rows, columns);
             break;
         }
@@ -75,7 +91,10 @@ void moveup(int &x, int &y, int rows, int columns)
             board[x][y] = 'A';
             alienAttack = alienAttack + 20;
             cout << " " << endl;
+            cout << "Alien finds a right arrow" << endl;
             cout << "You gained 20 Attack!" << endl;
+            cout << " " << endl;
+            myPause();
             moveright(x, y, rows, columns);
             break;
         }
@@ -86,7 +105,10 @@ void moveup(int &x, int &y, int rows, int columns)
             board[x][y] = 'A';
             alienAttack = alienAttack + 20;
             cout << " " << endl;
+            cout << "Alien finds an up arrow" << endl;
             cout << "You gained 20 Attack!" << endl;
+            cout << " " << endl;
+            myPause();
             moveup(x, y, rows, columns);
             break;
         }
@@ -97,13 +119,17 @@ void moveup(int &x, int &y, int rows, int columns)
             board[x][y] = 'A';
             alienAttack = alienAttack + 20;
             cout << " " << endl;
+            cout << "Alien finds a down arrow" << endl;
             cout << "You gained 20 Attack!" << endl;
+            cout << " " << endl;
+            myPause();
             movedown(x, y, rows, columns);
             break;
         }
         else // Invalid move
         {
             cout << "Invalid move" << endl;
+            cout << " " << endl;
             break;
         }
     }
@@ -132,7 +158,9 @@ void movedown(int &x, int &y, int rows, int columns)
             board[x][y] = 'A';
             alienHealth = alienHealth + 20;
             cout << " " << endl;
+            cout << "Alien finds a Healthpack!" << endl;
             cout << "You gained 20 Health!" << endl;
+            cout << " " << endl;
             break;
         }
         else if (x + 1 >= 0 && board[x + 1][y] == 'r') // Path with rock
@@ -142,6 +170,8 @@ void movedown(int &x, int &y, int rows, int columns)
                 board[x][y] = 'A';
                 cout << " " << endl;
                 cout << "You hit a rock!" << endl;
+                cout << " " << endl;
+                myPause();
                 rockrandomobject(x, y, rows, columns);
                 cout << " " << endl;
             }
@@ -152,7 +182,10 @@ void movedown(int &x, int &y, int rows, int columns)
             board[x][y] = 'A';
             alienAttack = alienAttack + 20;
             cout << " " << endl;
+            cout << "Alien finds a left arrow" << endl;
             cout << "You gained 20 Attack!" << endl;
+            cout << " " << endl;
+            myPause();
             moveleft(x, y, rows, columns);
             break;
         }
@@ -163,7 +196,10 @@ void movedown(int &x, int &y, int rows, int columns)
             board[x][y] = 'A';
             alienAttack = alienAttack + 20;
             cout << " " << endl;
+            cout << "Alien finds a right arrow" << endl;
             cout << "You gained 20 Attack!" << endl;
+            cout << " " << endl;
+            myPause();
             moveright(x, y, rows, columns);
             break;
         }
@@ -174,7 +210,10 @@ void movedown(int &x, int &y, int rows, int columns)
             board[x][y] = 'A';
             alienAttack = alienAttack + 20;
             cout << " " << endl;
+            cout << "Alien finds an up arrow" << endl;
             cout << "You gained 20 Attack!" << endl;
+            cout << " " << endl;
+            myPause();
             moveup(x, y, rows, columns);
             break;
         }
@@ -185,13 +224,17 @@ void movedown(int &x, int &y, int rows, int columns)
             board[x][y] = 'A';
             alienAttack = alienAttack + 20;
             cout << " " << endl;
+            cout << "Alien finds a down arrow" << endl;
             cout << "You gained 20 Attack!" << endl;
+            cout << " " << endl;
+            myPause();
             movedown(x, y, rows, columns);
             break;
         }
         else
         {
             cout << "Invalid move" << endl;
+            cout << " " << endl;
             break;
         }
     }
@@ -219,7 +262,9 @@ void moveleft(int &x, int &y, int rows, int columns)
             board[x][y] = 'A';
             alienHealth = alienHealth + 20;
             cout << " " << endl;
+            cout << "Alien finds a Healthpack!" << endl;
             cout << "You gained 20 Health!" << endl;
+            cout << " " << endl;
             break;
         }
         else if (y - 1 >= 0 && board[x][y - 1] == 'r') // Path with rock
@@ -229,8 +274,8 @@ void moveleft(int &x, int &y, int rows, int columns)
                 board[x][y] = 'A';
                 cout << " " << endl;
                 cout << "You hit a rock!" << endl;
-                rockrandomobject(x, y, rows, columns);
                 cout << " " << endl;
+                rockrandomobject(x, y, rows, columns);
             }
         else if (y - 1 >= 0 && board[x][y - 1] == '<')
         {
@@ -239,7 +284,10 @@ void moveleft(int &x, int &y, int rows, int columns)
             board[x][y] = 'A';
             alienAttack = alienAttack + 20;
             cout << " " << endl;
+            cout << "Alien finds a left arrow" << endl;
             cout << "You gained 20 Attack!" << endl;
+            cout << " " << endl;
+            myPause();
             moveleft(x, y, rows, columns);
             break;
         }
@@ -250,7 +298,10 @@ void moveleft(int &x, int &y, int rows, int columns)
             board[x][y] = 'A';
             alienAttack = alienAttack + 20;
             cout << " " << endl;
+            cout << "Alien finds a right arrow" << endl;
             cout << "You gained 20 Attack!" << endl;
+            cout << " " << endl;
+            myPause();
             moveright(x, y, rows, columns);
             break;
         }
@@ -261,7 +312,10 @@ void moveleft(int &x, int &y, int rows, int columns)
             board[x][y] = 'A';
             alienAttack = alienAttack + 20;
             cout << " " << endl;
+            cout << "Alien finds an up arrow" << endl;
             cout << "You gained 20 Attack!" << endl;
+            cout << " " << endl;
+            myPause();
             moveup(x, y, rows, columns);
             break;
         }
@@ -272,13 +326,17 @@ void moveleft(int &x, int &y, int rows, int columns)
             board[x][y] = 'A';
             alienAttack = alienAttack + 20;
             cout << " " << endl;
+            cout << "Alien finds a down arrow" << endl;
             cout << "You gained 20 Attack!" << endl;
+            cout << " " << endl;
+            myPause();
             movedown(x, y, rows, columns);
             break;
         }
         else
         {
             cout << "Invalid move" << endl;
+            cout << " " << endl;
             break;
         }
     }
@@ -306,7 +364,9 @@ void moveright(int &x, int &y, int rows, int columns)
             board[x][y] = 'A';
             alienHealth = alienHealth + 20;
             cout << " " << endl;
+            cout << "Alien finds a Healthpack!" << endl;
             cout << "You gained 20 Health!" << endl;
+            cout << " " << endl;
             break;
         }
         else if (y + 1 >= 0 && board[x][y + 1] == 'r') // Path with rock
@@ -316,6 +376,7 @@ void moveright(int &x, int &y, int rows, int columns)
                 board[x][y] = 'A';
                 cout << " " << endl;
                 cout << "You hit a rock!" << endl;   
+                cout << " " << endl;
                 rockrandomobject(x, y, rows, columns);
                 cout << " " << endl;
             }
@@ -326,7 +387,10 @@ void moveright(int &x, int &y, int rows, int columns)
             board[x][y] = 'A';
             alienAttack = alienAttack + 20;
             cout << " " << endl;
+            cout << "Alien finds a left arrow" << endl;
             cout << "You gained 20 Attack!" << endl;
+            cout << " " << endl;
+            myPause();
             moveleft(x, y, rows, columns);
             break;
         }
@@ -337,7 +401,10 @@ void moveright(int &x, int &y, int rows, int columns)
             board[x][y] = 'A';
             alienAttack = alienAttack + 20;
             cout << " " << endl;
+            cout << "Alien finds a right arrow" << endl;
             cout << "You gained 20 Attack!" << endl;
+            cout << " " << endl;
+            myPause();
             moveright(x, y, rows, columns);
             break;
         }
@@ -348,7 +415,10 @@ void moveright(int &x, int &y, int rows, int columns)
             board[x][y] = 'A';
             alienAttack = alienAttack + 20;
             cout << " " << endl;
+            cout << "Alien finds an up arrow" << endl;
             cout << "You gained 20 Attack!" << endl;
+            cout << " " << endl;
+            myPause();
             moveup(x, y, rows, columns);
             break;
         }
@@ -359,13 +429,17 @@ void moveright(int &x, int &y, int rows, int columns)
             board[x][y] = 'A';
             alienAttack = alienAttack + 20;
             cout << " " << endl;
+            cout << "Alien finds a down arrow" << endl;
             cout << "You gained 20 Attack!" << endl;
+            cout << " " << endl;
+            myPause();
             movedown(x, y, rows, columns);
             break;
         }
         else
         {
             cout << "Invalid move" << endl;
+            cout << " " << endl;
             break;
         }
     }
@@ -383,7 +457,6 @@ void rockrandomobject(int &x, int &y, int rows, int columns)
         alienHealth = alienHealth + 20;
         cout << " " << endl;
         cout << "You gained 20 Health!" << endl;
-        alienHealth = alienHealth + 20;
         cout << " " << endl;
         break;
     case 'p':
@@ -437,7 +510,9 @@ void MoveAlien(int &x, int &y, int rows, int columns)
                 board[x][y] = 'A';
                 alienHealth = alienHealth + 20;
                 cout << " " << endl;
+                cout << "Alien finds a Healthpack!" << endl;
                 cout << "You gained 20 Health!" << endl;
+                cout << " " << endl;
                 break;
             }
             else if (x - 1 >= 0 && board[x - 1][y] == 'r') // Path with rock
@@ -447,6 +522,8 @@ void MoveAlien(int &x, int &y, int rows, int columns)
                 board[x][y] = 'A';
                 cout << " " << endl;
                 cout << "You hit a rock!" << endl;
+                cout << " " << endl;
+                myPause();
                 rockrandomobject(x, y, rows, columns);
                 cout << " " << endl;
             }
@@ -457,9 +534,11 @@ void MoveAlien(int &x, int &y, int rows, int columns)
                 board[x][y] = 'A';
                 alienAttack = alienAttack + 20;
                 cout << " " << endl;
+                cout << "Alien finds a left arrow" << endl;
                 cout << "You gained 20 Attack!" << endl;
+                cout << " " << endl;
+                myPause();
                 moveleft(x, y, rows, columns);
-                break;
             }
             else if (x - 1 >= 0 && board[x - 1][y] == '>') // Right boost/dash
             {
@@ -468,9 +547,11 @@ void MoveAlien(int &x, int &y, int rows, int columns)
                 board[x][y] = 'A';
                 alienAttack = alienAttack + 20;
                 cout << " " << endl;
+                cout << "Alien finds a right arrow" << endl;
                 cout << "You gained 20 Attack!" << endl;
+                cout << " " << endl;
+                myPause();
                 moveright(x, y, rows, columns);
-                break;
             }
             else if (x - 1 >= 0 && board[x - 1][y] == '^') // Up boost/dash
             {
@@ -479,9 +560,11 @@ void MoveAlien(int &x, int &y, int rows, int columns)
                 board[x][y] = 'A';
                 alienAttack = alienAttack + 20;
                 cout << " " << endl;
+                cout << "Alien finds an up arrow" << endl;
                 cout << "You gained 20 Attack!" << endl;
+                cout << " " << endl;
+                myPause();
                 moveup(x, y, rows, columns);
-                break;
             }
             else if (x - 1 >= 0 && board[x - 1][y] == 'v') // Down boost/dash
             {
@@ -490,9 +573,11 @@ void MoveAlien(int &x, int &y, int rows, int columns)
                 board[x][y] = 'A';
                 alienAttack = alienAttack + 20;
                 cout << " " << endl;
+                cout << "Alien finds a down arrow" << endl;
                 cout << "You gained 20 Attack!" << endl;
+                cout << " " << endl;
+                myPause();
                 movedown(x, y, rows, columns);
-                break;
             }
             else // Invalid move
             {
@@ -524,7 +609,9 @@ void MoveAlien(int &x, int &y, int rows, int columns)
                 board[x][y] = 'A';
                 alienHealth = alienHealth + 20;
                 cout << " " << endl;
+                cout << "Alien finds a Healthpack!" << endl;
                 cout << "You gained 20 Health!" << endl;
+                cout << " " << endl;
                 break;
             }
             else if (x + 1 >= 0 && board[x + 1][y] == 'r') // Path with rock
@@ -534,6 +621,8 @@ void MoveAlien(int &x, int &y, int rows, int columns)
                 board[x][y] = 'A';
                 cout << " " << endl;
                 cout << "You hit a rock!" << endl;
+                cout << " " << endl;
+                myPause();
                 rockrandomobject(x, y, rows, columns);
                 cout << " " << endl;
             }
@@ -544,7 +633,10 @@ void MoveAlien(int &x, int &y, int rows, int columns)
                 board[x][y] = 'A';
                 alienAttack = alienAttack + 20;
                 cout << " " << endl;
+                cout << "Alien finds a left arrow" << endl;
                 cout << "You gained 20 Attack!" << endl;
+                cout << " " << endl;
+                myPause();
                 moveleft(x, y, rows, columns);
                 break;
             }
@@ -555,7 +647,10 @@ void MoveAlien(int &x, int &y, int rows, int columns)
                 board[x][y] = 'A';
                 alienAttack = alienAttack + 20;
                 cout << " " << endl;
+                cout << "Alien finds a right arrow" << endl;
                 cout << "You gained 20 Attack!" << endl;
+                cout << " " << endl;
+                myPause();
                 moveright(x, y, rows, columns);
                 break;
             }
@@ -566,7 +661,10 @@ void MoveAlien(int &x, int &y, int rows, int columns)
                 board[x][y] = 'A';
                 alienAttack = alienAttack + 20;
                 cout << " " << endl;
+                cout << "Alien finds an up arrow" << endl;
                 cout << "You gained 20 Attack!" << endl;
+                cout << " " << endl;
+                myPause();
                 moveup(x, y, rows, columns);
                 break;
             }
@@ -577,7 +675,10 @@ void MoveAlien(int &x, int &y, int rows, int columns)
                 board[x][y] = 'A';
                 alienAttack = alienAttack + 20;
                 cout << " " << endl;
+                cout << "Alien finds a down arrow" << endl;
                 cout << "You gained 20 Attack!" << endl;
+                cout << " " << endl;
+                myPause();
                 movedown(x, y, rows, columns);
                 break;
             }
@@ -611,7 +712,9 @@ void MoveAlien(int &x, int &y, int rows, int columns)
                 board[x][y] = 'A';
                 alienHealth = alienHealth + 20;
                 cout << " " << endl;
+                cout << "Alien finds a Healthpack!" << endl;
                 cout << "You gained 20 Health!" << endl;
+                cout << " " << endl;
                 break;
             }
             else if (y - 1 >= 0 && board[x][y - 1] == 'r') // Path with rock
@@ -621,6 +724,7 @@ void MoveAlien(int &x, int &y, int rows, int columns)
                 board[x][y] = 'A';
                 cout << " " << endl;
                 cout << "You hit a rock!" << endl;
+                myPause();
                 rockrandomobject(x, y, rows, columns);
                 cout << " " << endl;
             }
@@ -631,7 +735,10 @@ void MoveAlien(int &x, int &y, int rows, int columns)
                 board[x][y] = 'A';
                 alienAttack = alienAttack + 20;
                 cout << " " << endl;
+                cout << "Alien finds a left arrow" << endl;
                 cout << "You gained 20 Attack!" << endl;
+                cout << " " << endl;
+                myPause();
                 moveleft(x, y, rows, columns);
                 break;
             }
@@ -642,7 +749,10 @@ void MoveAlien(int &x, int &y, int rows, int columns)
                 board[x][y] = 'A';
                 alienAttack = alienAttack + 20;
                 cout << " " << endl;
+                cout << "Alien finds a right arrow" << endl;
                 cout << "You gained 20 Attack!" << endl;
+                cout << " " << endl;
+                myPause();
                 moveright(x, y, rows, columns);
                 break;
             }
@@ -653,7 +763,10 @@ void MoveAlien(int &x, int &y, int rows, int columns)
                 board[x][y] = 'A';
                 alienAttack = alienAttack + 20;
                 cout << " " << endl;
+                cout << "Alien finds an up arrow" << endl;
                 cout << "You gained 20 Attack!" << endl;
+                cout << " " << endl;
+                myPause();
                 moveup(x, y, rows, columns);
                 break;
             }
@@ -664,7 +777,10 @@ void MoveAlien(int &x, int &y, int rows, int columns)
                 board[x][y] = 'A';
                 alienAttack = alienAttack + 20;
                 cout << " " << endl;
+                cout << "Alien finds a down arrow" << endl;
                 cout << "You gained 20 Attack!" << endl;
+                cout << " " << endl;
+                myPause();
                 movedown(x, y, rows, columns);
                 break;
             }
@@ -698,7 +814,9 @@ void MoveAlien(int &x, int &y, int rows, int columns)
                 board[x][y] = 'A';
                 alienHealth = alienHealth + 20;
                 cout << " " << endl;
+                cout << "Alien finds a Healthpack!" << endl;
                 cout << "You gained 20 Health!" << endl;
+                cout << " " << endl;
                 break;
             }
             else if (y + 1 >= 0 && board[x][y + 1] == 'r') // Path with rock
@@ -708,6 +826,8 @@ void MoveAlien(int &x, int &y, int rows, int columns)
                 board[x][y] = 'A';
                 cout << " " << endl;
                 cout << "You hit a rock!" << endl;
+                cout << " " << endl;
+                myPause();
                 rockrandomobject(x, y, rows, columns);
                 cout << " " << endl;
             }
@@ -718,7 +838,10 @@ void MoveAlien(int &x, int &y, int rows, int columns)
                 board[x][y] = 'A';
                 alienAttack = alienAttack + 20;
                 cout << " " << endl;
+                cout << "Alien finds a left arrow" << endl;
                 cout << "You gained 20 Attack!" << endl;
+                cout << " " << endl;
+                myPause();
                 moveleft(x, y, rows, columns);
                 break;
             }
@@ -729,7 +852,10 @@ void MoveAlien(int &x, int &y, int rows, int columns)
                 board[x][y] = 'A';
                 alienAttack = alienAttack + 20;
                 cout << " " << endl;
+                cout << "Alien finds a right arrow" << endl;
                 cout << "You gained 20 Attack!" << endl;
+                cout << " " << endl;
+                myPause();
                 moveright(x, y, rows, columns);
                 break;
             }
@@ -740,7 +866,10 @@ void MoveAlien(int &x, int &y, int rows, int columns)
                 board[x][y] = 'A';
                 alienAttack = alienAttack + 20;
                 cout << " " << endl;
+                cout << "Alien finds an up arrow" << endl;
                 cout << "You gained 20 Attack!" << endl;
+                cout << " " << endl;
+                myPause();
                 moveup(x, y, rows, columns);
                 break;
             }
@@ -751,13 +880,17 @@ void MoveAlien(int &x, int &y, int rows, int columns)
                 board[x][y] = 'A';
                 alienAttack = alienAttack + 20;
                 cout << " " << endl;
+                cout << "Alien finds a down arrow" << endl;
                 cout << "You gained 20 Attack!" << endl;
+                cout << " " << endl;
+                myPause();
                 movedown(x, y, rows, columns);
                 break;
             }
             else
             {
                 cout << "Invalid move" << endl;
+                cout << " " << endl;
                 break;
             }
         }
