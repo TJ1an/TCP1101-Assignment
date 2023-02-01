@@ -92,12 +92,11 @@ void ShowGameBoard(int rows, int columns, int zombie)
         }
     }
     cout << endl;
-
     // Display alien stats
     displayAlien();
 
     // Display zombie  stats
-    Zombie zomb;
+    Zombie zomb; // Declaring zombie object of Zombie class
     zomb.readAndDisplay(zombie);
 }
 

@@ -3,7 +3,6 @@
 #include <cstdlib>
 #include <iostream>
 #include "zombie.h"
-#include "../board.h"
 using namespace std;
 
 extern vector< vector<char> > board;
