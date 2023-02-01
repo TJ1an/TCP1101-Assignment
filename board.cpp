@@ -225,8 +225,8 @@ void GameSettings(int &rows, int &columns, int zombie)
             board[i].resize(columns);
         }
         ClearScreen();
-        CreateBoard(5, 5, 1);
-        ShowGameBoard(5, 5, 1);
+        CreateBoard(5, 13, 3);
+        ShowGameBoard(5, 13, 3);
     }
     else
     {

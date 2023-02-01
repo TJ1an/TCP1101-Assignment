@@ -2,7 +2,7 @@
 
 ## Video Demo
 
-Please provide the YouTube link to your [Video Demo](https://youtube.com).
+[Video Demo](https://youtu.be/H_yS6C7VfJ8).
 
 ## Minimum Requirements
 
@@ -26,9 +26,9 @@ List all the features completed.
 3. Zombies
     - MAX(9) unique zombie can spawn on the board.
     - Their stats (which include Health, Attack, Range, X and Y dimensions) are recorded.
-5. Game Objects
+4. Game Objects
     - Arrow, health, rock and empty path are functioning correctly.
-6. Game Controls
+5. Game Controls
     - Up, Down, Left, Right are Completed.
 
 ### To Do
@@ -60,7 +60,7 @@ List all the features not yet done. Remove this section if there is no incomplet
 
 ## Additional Features
 
-Describe the additional features that has been implemented.
+-
 
 ## Contributions
 
@@ -90,8 +90,10 @@ Describe the additional features that has been implemented.
 
 
 ## Problems Encountered & Solutions
+*WIP = Work in Progress
+1. In the main menu, it will break if the input is not an integer. WIP.
+2. The rock breaking mechanic isn't fully functional. WIP.
 
-Describe the problems encountered and provide the solutions / plan for the solutions.
 ### Chong Yi Jing
 
 1. Encountered issues with rand() function to randomly spawn/select objects and powerups for the board since there was a seeding issue where the "seed" remained the same resulting in the same "randomized" output. To solve this issue I implemented srand((unsigned)time(NULL)) before the rand() function to input a random "seed" before executing the code hence giving more random outputs.
@@ -122,4 +124,4 @@ Describe the problems encountered and provide the solutions / plan for the solut
 
 3. Encountered an issue where "system("pause")" doesn't work, therefore I made my own pause function called myPause as an alternative.
 
-4. Encountered an issue where the function for random health generation for alien returns the same value everytime. It turns out we had to add srand((unsigned)time(NULL)) before the rand()     function in order to get more random results.
+4. Encountered an issue where the function for random health generation for alien returns the same value everytime. It turns out we had to add srand((unsigned)time(NULL)) before the rand() function in order to get more random results.
