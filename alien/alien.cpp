@@ -11,13 +11,12 @@ extern vector<vector<char>> board;
 int alienAttack = 0;
 int alienHealth = alienhp();
 
-
 void myPause()
 {
-	cout << "Press ENTER to continue..."; 
-	cin.clear();
+    cout << "Press ENTER to continue...";
+    cin.clear();
     cin.sync();
-	cin.get();
+    cin.get();
 }
 
 int alienhp()
@@ -28,7 +27,6 @@ int alienhp()
     int alienhealth = randomAlienHealth;
     return alienhealth;
 }
-
 
 void moveup(int &x, int &y, int rows, int columns)
 {
@@ -59,17 +57,17 @@ void moveup(int &x, int &y, int rows, int columns)
             break;
         }
         else if (x - 1 >= 0 && board[x - 1][y] == 'r') // Path with rock
-            {
-                board[x][y] = '.';
-                x--;
-                board[x][y] = 'A';
-                cout << " " << endl;
-                cout << "You hit a rock!" << endl;
-                cout << " " << endl;
-                myPause();
-                rockrandomobject(x, y, rows, columns);
-                cout << " " << endl;              
-            }
+        {
+            board[x][y] = '.';
+            x--;
+            board[x][y] = 'A';
+            cout << " " << endl;
+            cout << "You hit a rock!" << endl;
+            cout << " " << endl;
+            myPause();
+            rockrandomobject(x, y, rows, columns);
+            cout << " " << endl;
+        }
         else if (x - 1 >= 0 && board[x - 1][y] == '<') // Left boost/dash
         {
             board[x][y] = '.';
@@ -164,17 +162,17 @@ void movedown(int &x, int &y, int rows, int columns)
             break;
         }
         else if (x + 1 < rows && board[x + 1][y] == 'r') // Path with rock
-            {
-                board[x][y] = '.';
-                x++;
-                board[x][y] = 'A';
-                cout << " " << endl;
-                cout << "You hit a rock!" << endl;
-                cout << " " << endl;
-                myPause();
-                rockrandomobject(x, y, rows, columns);
-                cout << " " << endl;
-            }
+        {
+            board[x][y] = '.';
+            x++;
+            board[x][y] = 'A';
+            cout << " " << endl;
+            cout << "You hit a rock!" << endl;
+            cout << " " << endl;
+            myPause();
+            rockrandomobject(x, y, rows, columns);
+            cout << " " << endl;
+        }
         else if (x + 1 < rows && board[x + 1][y] == '<')
         {
             board[x][y] = '.';
@@ -268,17 +266,17 @@ void moveleft(int &x, int &y, int rows, int columns)
             break;
         }
         else if (y - 1 >= 0 && board[x][y - 1] == 'r') // Path with rock
-            {
-                board[x][y] = '.';
-                y--;
-                board[x][y] = 'A';
-                cout << " " << endl;
-                cout << "You hit a rock!" << endl;
-                cout << " " << endl;
-                myPause();
-                rockrandomobject(x, y, rows, columns);
-                cout << " " << endl;
-            }
+        {
+            board[x][y] = '.';
+            y--;
+            board[x][y] = 'A';
+            cout << " " << endl;
+            cout << "You hit a rock!" << endl;
+            cout << " " << endl;
+            myPause();
+            rockrandomobject(x, y, rows, columns);
+            cout << " " << endl;
+        }
         else if (y - 1 >= 0 && board[x][y - 1] == '<')
         {
             board[x][y] = '.';
@@ -372,16 +370,16 @@ void moveright(int &x, int &y, int rows, int columns)
             break;
         }
         else if (y + 1 < columns && board[x][y + 1] == 'r') // Path with rock
-            {
-                board[x][y] = '.';
-                y++;
-                board[x][y] = 'A';
-                cout << " " << endl;
-                cout << "You hit a rock!" << endl;   
-                cout << " " << endl;
-                rockrandomobject(x, y, rows, columns);
-                cout << " " << endl;
-            }
+        {
+            board[x][y] = '.';
+            y++;
+            board[x][y] = 'A';
+            cout << " " << endl;
+            cout << "You hit a rock!" << endl;
+            cout << " " << endl;
+            rockrandomobject(x, y, rows, columns);
+            cout << " " << endl;
+        }
         else if (y + 1 < columns && board[x][y + 1] == '<')
         {
             board[x][y] = '.';
@@ -463,15 +461,27 @@ void rockrandomobject(int &x, int &y, int rows, int columns)
         cout << " " << endl;
         break;
     case '<':
+        cout << " " << endl;
+        cout << "Alien finds a left arrow" << endl;
+        cout << " " << endl;
         moveleft(x, y, rows, columns);
         break;
     case '>':
+        cout << " " << endl;
+        cout << "Alien finds a right arrow" << endl;
+        cout << " " << endl;
         moveright(x, y, rows, columns);
         break;
     case '^':
+        cout << " " << endl;
+        cout << "Alien finds an up arrow" << endl;
+        cout << " " << endl;
         moveup(x, y, rows, columns);
         break;
     case 'v':
+        cout << " " << endl;
+        cout << "Alien finds a down arrow" << endl;
+        cout << " " << endl;
         movedown(x, y, rows, columns);
         break;
     }
@@ -616,7 +626,7 @@ void MoveAlien(int &x, int &y, int rows, int columns)
                 cout << " " << endl;
                 break;
             }
-            else if  (x + 1 < rows && board[x + 1][y] == 'r') // Path with rock
+            else if (x + 1 < rows && board[x + 1][y] == 'r') // Path with rock
             {
                 board[x][y] = '.';
                 x++;
