@@ -3,14 +3,10 @@
 #include <cstdlib>
 #include <iostream>
 #include "zombie.h"
+#include "../board.h"
 using namespace std;
 
 extern vector< vector<char> > board;
-
-
-void zombieSpawn() {
-    
-}
 
 void Zombie::Stats() {
     //Range of Stats
@@ -27,16 +23,31 @@ void Zombie::Stats() {
     this->zombieRange= randomRG;
 }
 
+void Zombie::GenerateZombie(int count) {
+    for (int i = 0; i < count; i++){
+        Zombie zomb;
+        zombieList.push_back(zomb);
+    }
+}
+void Zombie::readAndDisplay(int count) {
+    for (int i = 0; i < count; i++) {
+        Zombie zomb = zombieList[i]; // Reading zombieList
+        cout << " HP: " << zomb.zombieHealth
+        << " Attack: " << zomb.zombieAttack
+        << " Range: " << zomb.zombieRange << endl;
+    }    
+}
+
+void Zombie::moveZombie() {
+
+} 
+
 void Zombie::Location(int x, int y) {
     this->zom_dimX = x;
     this->zom_dimY = y;
 }
 
-void Zombie::displayStats() {
-    cout << "HP: " <<zombieHealth << " ATK: " << zombieAttack << " R: "<< zombieRange << " dimX: " <<  zom_dimX << " dimY: "<< zom_dimY <<endl;
-}
 
-void Zombie::moveZombie() {
-    
-} 
+
+
 

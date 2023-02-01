@@ -91,11 +91,14 @@ void ShowGameBoard(int rows, int columns, int zombie)
             cout << " " << columnNumber2 % 10;
         }
     }
-
     cout << endl;
+
     // Display alien stats
     displayAlien();
-    // Display zombie (not sure)
+
+    // Display zombie  stats
+    Zombie zomb;
+    zomb.readAndDisplay(zombie);
 }
 
 void CreateBoard(int rows, int columns, int zombie)
@@ -118,11 +121,8 @@ void CreateBoard(int rows, int columns, int zombie)
     board[rows / 2][columns / 2] = 'A'; // Spawns Alien
 
     // Zombie(s) Object Created into zombieList
-    std::vector<Zombie*> zombieList;
-    for(int i = 0; i < zombie; i++) {
-        Zombie* zomb = new Zombie();
-        zombieList.push_back(zomb);
-    }
+    Zombie zomb;
+    zomb.GenerateZombie(zombie);
 
     while(zombieSpawns < zombie) {  // Spawns zombies based on input
         //All possible zombie entities
@@ -150,8 +150,9 @@ void CreateBoard(int rows, int columns, int zombie)
             zombieSpawns++;
             count++;
             // Saves location and fully creates zombie entity (including stats)
-            zombieList[zombieSpawns]->Location(x,y);
-            zombieList[zombieSpawns]->Stats();
+            zomb.zombieList[zombieSpawns].Location(x,y);
+            zomb.zombieList[zombieSpawns].Stats();
+            zomb.zombieList[zombieSpawns].readAndDisplay(zombie);
         }    
     }
     ShowGameBoard(rows, columns, zombie);
@@ -182,7 +183,7 @@ void GameSettings(int &rows, int &columns, int zombie)
         int newZombies;
         ClearScreen();
         cout << "Board Settings \n" << endl;
-        cout << "Max: Both numbers are ODD and less than 3 Zombies" << endl;
+        cout << "Max: Both numbers are ODD and less than 9 Zombies" << endl;
         cout << "------------------------------------------------- \n"<< endl;
         //Input the new rows and columns
         cout << "Board rows : ";
@@ -192,8 +193,8 @@ void GameSettings(int &rows, int &columns, int zombie)
         cout << "No of zombies : ";
         cin >> newZombies;
         //Board dimensions accepts odd numbers ONLY + Max 3 Zombies ONLY
-        while(!(newRows%2==1 && newColumns%2==1 && newZombies<=3)){
-            cout << "Both numbers are not ODD or Zombies beyond 3" <<endl;
+        while(!(newRows%2==1 && newColumns%2==1 && newZombies<=9)){
+            cout << "Both numbers are not ODD or Zombies beyond 9" <<endl;
             cout << "Board rows : ";
             cin >> newRows;
             cout << "Board columns : ";
