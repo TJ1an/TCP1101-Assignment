@@ -14,10 +14,10 @@ int alienHealth = alienhp();
 
 void myPause()
 {
-	std::cout << "Press ENTER to continue..."; 
-	std::cin.clear();
-	std::cin.sync();
-	std::cin.get();
+	cout << "Press ENTER to continue..."; 
+	cin.clear();
+    cin.sync();
+	cin.get();
 }
 
 int alienhp()
@@ -456,6 +456,7 @@ void rockrandomobject(int &x, int &y, int rows, int columns)
     case 'h':
         alienHealth = alienHealth + 20;
         cout << " " << endl;
+        cout << "Alien finds a Healthpack!" << endl;
         cout << "You gained 20 Health!" << endl;
         cout << " " << endl;
         break;
