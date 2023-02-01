@@ -95,9 +95,8 @@ void ShowGameBoard(int rows, int columns, int zombie)
     // Display alien stats
     displayAlien();
 
-    // Display zombie  stats
-    Zombie zomb; // Declaring zombie object of Zombie class
-    zomb.readAndDisplay(zombie);
+    // Display zombie  stats (shelved)
+    
 }
 
 void CreateBoard(int rows, int columns, int zombie)
@@ -151,7 +150,7 @@ void CreateBoard(int rows, int columns, int zombie)
             // Saves location and fully creates zombie entity (including stats)
             zomb.zombieList[zombieSpawns].Location(x,y);
             zomb.zombieList[zombieSpawns].Stats();
-            zomb.zombieList[zombieSpawns].readAndDisplay(zombie);
+
         }    
     }
     ShowGameBoard(rows, columns, zombie);

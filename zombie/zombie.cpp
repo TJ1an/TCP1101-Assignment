@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <iostream>
 #include "zombie.h"
+
 using namespace std;
 
 extern vector< vector<char> > board;
@@ -28,14 +29,14 @@ void Zombie::GenerateZombie(int count) {
         zombieList.push_back(zomb);
     }
 }
-void Zombie::readAndDisplay(int count) {
-    for (int i = 0; i < count; i++) {
-        Zombie zomb = zombieList[i]; // Reading zombieList
-        cout << " HP: " << zomb.zombieHealth
-        << " Attack: " << zomb.zombieAttack
-        << " Range: " << zomb.zombieRange << endl;
-    }    
-}
+
+// void Zombie::readAndDisplay(std::vector<Zombie>zombieList) {
+//     for (int i = 0; i < size(zombieList); i++)
+//     cout << "Zombie " << i+1 
+//     << " HP: " << zombieList[i].zombieHealth
+//     << " Attack: " << zombieList[i].zombieAttack
+//     << " Range: " << zombieList[i].zombieRange << endl;        
+// }
 
 void Zombie::moveZombie() {
 
@@ -43,7 +44,7 @@ void Zombie::moveZombie() {
 
 void Zombie::Location(int x, int y) {
     this->zom_dimX = x;
-    this->zom_dimY = y;
+    this->zom_dimY = y;    
 }
 
 

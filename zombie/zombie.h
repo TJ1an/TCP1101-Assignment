@@ -7,7 +7,7 @@ public:
     // Functions
     void Stats();
     void GenerateZombie(int count);
-    void readAndDisplay(int count);
+    void readAndDisplay();
     void moveZombie();
     void Location(int x, int y);
     
