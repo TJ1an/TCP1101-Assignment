@@ -450,7 +450,7 @@ void moveright(int &x, int &y, int rows, int columns)
 void rockrandomobject(int &x, int &y, int rows, int columns)
 {
     srand((unsigned)time(NULL));
-    char objects[] = {'h', 'p', '<', '>', '^', 'v'};
+    char objects[] = {'h', '<', '>', '^', 'v'};
     char randomobjects = objects[rand() % size(objects)];
     char randomobject = randomobjects;
     switch (randomobject)
@@ -461,8 +461,6 @@ void rockrandomobject(int &x, int &y, int rows, int columns)
         cout << "Alien finds a Healthpack!" << endl;
         cout << "You gained 20 Health!" << endl;
         cout << " " << endl;
-        break;
-    case 'p':
         break;
     case '<':
         moveleft(x, y, rows, columns);
