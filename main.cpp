@@ -40,17 +40,19 @@ int main()
         break;
 
         case 2:
+        ClearScreen();
         cout << "test 2 works"<< endl;
-        break;
+        return main();
 
         case 3:
+        ClearScreen();
         cout << "Thanks for playing." << endl;
         abort();
 
         default:
+        ClearScreen();
         cout << "Invalid input. Please retry.";
         cout << endl;
-        ClearScreen();
         return main();
     }
 }

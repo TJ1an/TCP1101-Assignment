@@ -40,10 +40,13 @@ For example:
 5. Added zombie spawning algorithm while considering various use-cases. 
 6. Added zombie class and implemented code to record zombie data. As well as randomize and display stats.
 
-### Steve Rogers
+### Khoo Jen-Au
 
-1. Zombie movement and attack behaviour.
-2. *add more*
+1. Helped with zombie creation spawning and applies them into a class
+2. Bug fixes, typing errors.
+3. Added the main menu where we have the selection for the game.
+4. Added board row and column numbers.
+5. Finished the main UI fo the game.
 
 ### Dr. Strange
 
@@ -64,3 +67,13 @@ Describe the problems encountered and provide the solutions / plan for the solut
 4. Eventually added numbering to spawn in the zombies, but had to also consider the numbering overlapping causing zombies to not spawn properly. To solve this I made a for loop with boolean to iterate through the possible types of entities in an array to confirm if there are entities within a point. If there were, it would randomize the x,y dimensions and run the loop again, if there weren't it would spawn the zombie onto the point and deduct the number of zombies to be spawned by one.
 
 5. After fully implementing the zombie spawning, I had to consider implementing the Zombie class into the equation. To do this a Zombie class vector was used in this, also added multiple functions and variables to record the x,y dimensions for each time a zombie is spawned by the algorithm as well as running a function for randomizing stats to record under each "Zombie" object as well. Learnt alot about the use of vectors and classes while implementing this.
+
+### Khoo Jen-Au
+
+1. Originally, some of the variable names were all started in Uppercase by the other group mates, which were causing a little problem when creating creating and referencing the zombie class (more on that later). So to create less confusion, I changed them all into lowercase.
+
+2. Implemented a way so that every zombie that spawns on the board gets added into their own "Zombie" class. Somehow had a problem where the zombies are unable to generate due to my code interfering with it, so I slightly modified the variables I was using and used a vector array to save each zombies' stats. Which the code are then simplified by other group mates even more.
+
+3. At one point the board was unable to generate the row and column numbers properly and is interfering with the board generation. So I rewrote the code by making sure the loops print out the values after the board was done generating. For example, I let the row numbers generate after each board row was generated, and used two lines instead of one for the columns number at the bottom of the board so it fits within the size of the board and doesn't go off-scale.
+
+4. For the main menu, there was an issue where the inputs allows anything to be input, which will crash the program. So I added a switch case to prevent any other inputs being inserted. Even though it still doesn't fully work at this point, I have plans where I can change it into an if-else statement to prevent such cases.

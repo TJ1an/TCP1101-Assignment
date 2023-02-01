@@ -76,7 +76,7 @@ void ShowGameBoard(int rows, int columns, int zombie)
     // First row code
     for (int columnNumber1 = 0; columnNumber1 < columns; ++columnNumber1)
     {
-        cout << columnNumber1 / 10 << " ";
+        cout << (columnNumber1 + 1) / 10 << " ";
     }
     cout << endl;
 
@@ -95,7 +95,7 @@ void ShowGameBoard(int rows, int columns, int zombie)
     // Display alien stats
     displayAlien();
 
-    // Display zombie  stats (shelved)
+    // Display zombie stats (shelved)
     
 }
 
