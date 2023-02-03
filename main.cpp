@@ -11,6 +11,7 @@
 #include "board.h"
 #include "alien/alien.h"
 #include "zombie/zombie.h"
+#include "help/help.h"
 #include <vector>
 #include <cstdlib>
 #include <iostream>
@@ -18,40 +19,65 @@ using namespace std;
 
 int main()
 {   
-    int menuSelection;
+    double menuSelection = 0;
     int kRows = 5;
     int kColumns = 13;
     int kZombie = 3;
-    cout << " " << endl;
+
+    ClearScreen();
     cout << ".: Alien Vs Zombie :." << endl;
-    cout << "1. Play" << endl;
-    cout << "2. Load" << endl;
-    cout << "3. Quit" << endl;
     cout << endl;
-    cout << "Insert number on which action you want to perform (1, 2, 3)." << endl;
+    cout << "   1. Play" << endl;
+    cout << "   2. Load" << endl;
+    cout << "   3. Help Tutorial" << endl;
+    cout << "   4. Quit" << endl;
+    cout << endl;
+    cout << "Insert number on which action you want to perform (1, 2, 3, 4)." << endl;
     cout << "=> ";
     cin >> menuSelection;
-    switch (menuSelection)
+
+    if (menuSelection == 1)
     {
-        case 1:
         ClearScreen();
         GameSettings(kRows, kColumns, kZombie);
-        break;
-
-        case 2:
+    }
+    else if (menuSelection == 2)
+    {
         ClearScreen();
         cout << "test 2 works"<< endl;
         return main();
-
-        case 3:
+    }
+    else if (menuSelection == 3)
+    {
+        ClearScreen();
+        helpPage1();
+        cout << endl;
+        Pause();
+        ClearScreen();
+        helpPage2();
+        cout << endl;
+        Pause();
+        ClearScreen();
+        helpPage3();
+        cout << endl;
+        Pause();
+        ClearScreen();
+        helpPage4();
+        cout << endl;
+        Pause();
+        return main();
+    }
+    else if  (menuSelection == 4)
+    {
         ClearScreen();
         cout << "Thanks for playing." << endl;
         abort();
-
-        default:
-        ClearScreen();
+    }
+    else
+    {
         cout << "Invalid input. Please retry.";
         cout << endl;
+        Pause();
         return main();
     }
 }
