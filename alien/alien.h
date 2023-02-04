@@ -7,5 +7,6 @@ void moveright(int &x, int &y, int rows, int columns);
 void moveup(int &x, int &y, int rows, int columns);
 void movedown(int &x, int &y, int rows, int columns);
 void rockrandomobject(int &x, int &y, int rows, int columns);
+void changeArrow(int &x, int &y, int rows, int columns);
 void displayAlien();
 #endif

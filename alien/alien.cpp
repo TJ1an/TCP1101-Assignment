@@ -29,6 +29,30 @@ int alienhp()
     return alienhealth;
 }
 
+void changeArrow(int &x, int &y, int rows, int columns) // prompts the user to enter row and column values to change arrow direction
+{
+  int numrows;
+  int numcolumns;
+  cout << "Enter row: ";
+  cin >> numrows;
+  cout << "Enter columns: ";
+  cin >> numcolumns;
+  char selection;
+  if (board[numrows - 1][numcolumns - 1] == '<' || board[numrows - 1][numcolumns - 1] == '>' || board[numrows - 1][numcolumns - 1] == '^' || board[numrows - 1][numcolumns - 1] == 'v')
+  {
+    cout << "Chose a direction (<,^,>,v): ";
+    cin >> selection;
+    board[numrows - 1][numcolumns - 1] = selection;
+  }
+  else
+  {
+    cout << " " << endl;
+    cout << "bruh" << endl;
+    cout << " " << endl;
+  }
+
+}
+
 void moveup(int &x, int &y, int rows, int columns)
 {
     while (true)
@@ -570,6 +594,10 @@ void MoveAlien(int &x, int &y, int rows, int columns)
         helpPage4();
         cout << endl;
         myPause();
+    }
+    else if (direction == "arrow")
+    {
+      changeArrow(x, y, rows, columns);
     }
     else
     {
