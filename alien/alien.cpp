@@ -579,6 +579,7 @@ void MoveAlien(int &x, int &y, int rows, int columns)
     }
     else if (direction == "help")
     {
+        ClearScreen();
         helpPage1();
         cout << endl;
         myPause();
@@ -594,10 +595,19 @@ void MoveAlien(int &x, int &y, int rows, int columns)
         helpPage4();
         cout << endl;
         myPause();
+        ClearScreen();
     }
     else if (direction == "arrow")
     {
       changeArrow(x, y, rows, columns);
+    }
+    else if (direction == "quit")
+    {
+       cout << " " << endl;
+       cout << "Thanks for playing!" << endl;
+       cout << " " << endl;
+       myPause();
+       abort();
     }
     else
     {
