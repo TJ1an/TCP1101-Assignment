@@ -31,26 +31,25 @@ int alienhp()
 
 void changeArrow(int &x, int &y, int rows, int columns) // prompts the user to enter row and column values to change arrow direction
 {
-  int numrows;
-  int numcolumns;
-  cout << "Enter row: ";
-  cin >> numrows;
-  cout << "Enter columns: ";
-  cin >> numcolumns;
-  char selection;
-  if (board[numrows - 1][numcolumns - 1] == '<' || board[numrows - 1][numcolumns - 1] == '>' || board[numrows - 1][numcolumns - 1] == '^' || board[numrows - 1][numcolumns - 1] == 'v')
-  {
-    cout << "Chose a direction (<,^,>,v): ";
-    cin >> selection;
-    board[numrows - 1][numcolumns - 1] = selection;
-  }
-  else
-  {
-    cout << " " << endl;
-    cout << "bruh" << endl;
-    cout << " " << endl;
-  }
-
+    int numrows;
+    int numcolumns;
+    cout << "Enter row: ";
+    cin >> numrows;
+    cout << "Enter columns: ";
+    cin >> numcolumns;
+    char selection;
+    if (board[numrows - 1][numcolumns - 1] == '<' || board[numrows - 1][numcolumns - 1] == '>' || board[numrows - 1][numcolumns - 1] == '^' || board[numrows - 1][numcolumns - 1] == 'v')
+    {
+        cout << "Chose a direction (<,^,>,v): ";
+        cin >> selection;
+        board[numrows - 1][numcolumns - 1] = selection;
+    }
+    else
+    {
+        cout << " " << endl;
+        cout << "bruh" << endl;
+        cout << " " << endl;
+    }
 }
 
 void moveup(int &x, int &y, int rows, int columns)
@@ -542,43 +541,46 @@ void displayAlien()
 void MoveAlien(int &x, int &y, int rows, int columns)
 {
     string direction;
-    cout << "Enter the direction you want to move the alien (up, down, left, right): ";
+    cout << "- Input a direction you want to move the alien by using \"up\", \"down\", \"left\", \"right\"" << endl;
+    cout << "- Change an arrow's direction using the command \"arrow\"" << endl;
+    cout << "- For an brief tutorial, use the \"help\" command" << endl;
+    cout << "=> ";
     cin >> direction;
 
     if (direction == "up") // UP Input
     {
         while (true)
         {
-          moveup(x, y, rows, columns);
-          ClearScreen();
-          break;
+            moveup(x, y, rows, columns);
+            ClearScreen();
+            break;
         }
     }
     else if (direction == "down")
     { // DOWN Input
         while (true)
         {
-          movedown(x, y, rows, columns);
-          ClearScreen();
-          break;
+            movedown(x, y, rows, columns);
+            ClearScreen();
+            break;
         }
     }
     else if (direction == "left")
     { // LEFT Input
         while (true)
         {
-          moveleft(x, y, rows, columns);
-          ClearScreen();
-          break;
+            moveleft(x, y, rows, columns);
+            ClearScreen();
+            break;
         }
     }
     else if (direction == "right") // RIGHT Input
     {
         while (true)
         {
-           moveright(x, y, rows, columns);
-           ClearScreen();
-           break;
+            moveright(x, y, rows, columns);
+            ClearScreen();
+            break;
         }
     }
     else if (direction == "help")
@@ -600,25 +602,28 @@ void MoveAlien(int &x, int &y, int rows, int columns)
         cout << endl;
         myPause();
         ClearScreen();
+        helpPage5();
+        cout << endl;
+        myPause();
+        ClearScreen();
     }
     else if (direction == "arrow")
     {
-      changeArrow(x, y, rows, columns);
-      ClearScreen();
+        changeArrow(x, y, rows, columns);
+        ClearScreen();
     }
     else if (direction == "quit")
     {
-       cout << " " << endl;
-       cout << "Thanks for playing!" << endl;
-       cout << " " << endl;
-       myPause();
-       abort();
+        cout << " " << endl;
+        cout << "Thanks for playing!" << endl;
+        cout << " " << endl;
+        myPause();
+        abort();
     }
     else
     {
-      cout << " " << endl;
-      cout << "Invalid input!" << endl;
-      cout << " " << endl;
+        cout << " " << endl;
+        cout << "Invalid input!" << endl;
+        cout << " " << endl;
     }
 }
-

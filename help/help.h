@@ -5,4 +5,5 @@ void helpPage1();
 void helpPage2();
 void helpPage3();
 void helpPage4();
+void helpPage5();
 #endif

@@ -25,7 +25,25 @@ int Pause()
 #endif
 }
 
-void ShowGameBoard(int rows, int columns, int zombie, Zombie zomb)
+void changeTrail(int &x, int &y, int rows, int columns)
+{
+    srand((unsigned)time(NULL));
+    char objects[] = {'h', '<', '>', '^', 'v', 'r', ' ', ' '};
+    int objectsSize = sizeof(objects);
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < columns; j++)
+        {
+            if (board[i][j] == '.')
+            {
+                board[i][j] = objects[rand() % objectsSize];
+            }
+
+        }
+    }
+}
+
+void ShowGameBoard(int rows, int columns, int zombie)
 {
     //For when the board is bigger than 9 columns, the ".: Alien Vs Zombie :." text tries to center itself
     if (columns > 9)
@@ -157,7 +175,11 @@ void CreateBoard(int rows, int columns, int zombie)
     // Starts the game
     while(true) {
         MoveAlien(x, y, rows, columns);
-        ShowGameBoard(rows, columns, zombie, zomb);
+        ShowGameBoard(rows, columns, zombie);
+        changeTrail(x, y, rows, columns);
+        myPause();
+        ClearScreen();
+        ShowGameBoard(rows, columns, zombie);
     }
 }
 
