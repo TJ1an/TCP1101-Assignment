@@ -65,6 +65,10 @@ int main()
         helpPage4();
         cout << endl;
         Pause();
+        ClearScreen();
+        helpPage5();
+        cout << endl;
+        Pause();
         return main();
     }
     else if  (menuSelection == 4)

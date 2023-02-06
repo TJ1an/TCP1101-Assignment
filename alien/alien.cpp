@@ -542,7 +542,10 @@ void displayAlien()
 void MoveAlien(int &x, int &y, int rows, int columns)
 {
     string direction;
-    cout << "Enter the direction you want to move the alien (up, down, left, right): ";
+    cout << "- Input a direction you want to move the alien by using \"up\", \"down\", \"left\", \"right\"" << endl;
+    cout << "- Change an arrow's direction using the command \"arrow\"" << endl;
+    cout << "- For an brief tutorial, use the \"help\" command" << endl;
+    cout << "=> ";
     cin >> direction;
 
     if (direction == "up") // UP Input
@@ -597,6 +600,10 @@ void MoveAlien(int &x, int &y, int rows, int columns)
         myPause();
         ClearScreen();
         helpPage4();
+        cout << endl;
+        myPause();
+        ClearScreen();
+        helpPage5();
         cout << endl;
         myPause();
         ClearScreen();
