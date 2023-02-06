@@ -5,11 +5,11 @@
 class Zombie {
 public:
     // Functions
-    void Stats();
+    void Stats(std::vector<Zombie>&zombieList, int i);
     void GenerateZombie(int count);
-    void readAndDisplay();
+    void readAndDisplay(std::vector<Zombie>zombieList);
     void moveZombie();
-    void Location(int x, int y);
+    void Location(int x, int y,std::vector<Zombie>&zombieList, int i);
     
     // Variables
     int zombieHealth;

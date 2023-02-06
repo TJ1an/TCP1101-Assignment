@@ -8,7 +8,7 @@ using namespace std;
 
 extern vector< vector<char> > board;
 
-void Zombie::Stats() {
+void Zombie::Stats(std::vector<Zombie>&zombieList, int i) {
     //Range of Stats
     int zombieHPs[] = {100,150,200,250};
     int zombieATKs[] = {10,15,20,25};
@@ -18,9 +18,9 @@ void Zombie::Stats() {
     int randomATK= zombieATKs[rand()% size(zombieATKs)];
     int randomRG= zombieRGs[rand()% size(zombieRGs)];
     //Stats
-    this->zombieHealth= randomHP;
-    this->zombieAttack= randomATK;
-    this->zombieRange= randomRG;
+    zombieList[i].zombieHealth = randomHP;
+    zombieList[i].zombieAttack = randomATK;
+    zombieList[i].zombieRange = randomRG;
 }
 
 void Zombie::GenerateZombie(int count) {
@@ -30,21 +30,21 @@ void Zombie::GenerateZombie(int count) {
     }
 }
 
-// void Zombie::readAndDisplay(std::vector<Zombie>zombieList) {
-//     for (int i = 0; i < size(zombieList); i++)
-//     cout << "Zombie " << i+1 
-//     << " HP: " << zombieList[i].zombieHealth
-//     << " Attack: " << zombieList[i].zombieAttack
-//     << " Range: " << zombieList[i].zombieRange << endl;        
-// }
+void Zombie::readAndDisplay(std::vector<Zombie>zombieList) {
+    for (int i = 0; i < size(zombieList); i++)
+    cout << "Zombie " << i+1 
+    << " HP: " << zombieList[i].zombieHealth
+    << " Attack: " << zombieList[i].zombieAttack
+    << " Range: " << zombieList[i].zombieRange << endl;
+}
 
 void Zombie::moveZombie() {
 
 } 
 
-void Zombie::Location(int x, int y) {
-    this->zom_dimX = x;
-    this->zom_dimY = y;    
+void Zombie::Location(int x, int y,std::vector<Zombie>&zombieList, int i) {
+    zombieList[i].zom_dimX = x;
+    zombieList[i].zom_dimY = y;   
 }
 
 
