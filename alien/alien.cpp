@@ -550,6 +550,7 @@ void MoveAlien(int &x, int &y, int rows, int columns)
         while (true)
         {
           moveup(x, y, rows, columns);
+          ClearScreen();
           break;
         }
     }
@@ -558,6 +559,7 @@ void MoveAlien(int &x, int &y, int rows, int columns)
         while (true)
         {
           movedown(x, y, rows, columns);
+          ClearScreen();
           break;
         }
     }
@@ -566,6 +568,7 @@ void MoveAlien(int &x, int &y, int rows, int columns)
         while (true)
         {
           moveleft(x, y, rows, columns);
+          ClearScreen();
           break;
         }
     }
@@ -574,6 +577,7 @@ void MoveAlien(int &x, int &y, int rows, int columns)
         while (true)
         {
            moveright(x, y, rows, columns);
+           ClearScreen();
            break;
         }
     }
@@ -600,6 +604,7 @@ void MoveAlien(int &x, int &y, int rows, int columns)
     else if (direction == "arrow")
     {
       changeArrow(x, y, rows, columns);
+      ClearScreen();
     }
     else if (direction == "quit")
     {
