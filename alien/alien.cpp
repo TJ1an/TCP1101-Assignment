@@ -29,23 +29,6 @@ int alienhp()
     return alienhealth;
 }
 
-void changeTrail(int &x, int &y, int rows, int columns)
-{
-    srand((unsigned)time(NULL));
-    char objects[] = {'h', '<', '>', '^', 'v', 'r', ' ', ' '};
-    int objectsSize = sizeof(objects);
-    for (int i = 0; i < rows; i++)
-    {
-        for (int j = 0; j < columns; j++)
-        {
-            if (board[i][j] == '.')
-            {
-                board[i][j] = objects[rand() % objectsSize];
-            }
-        }
-    }
-}
-
 void changeArrow(int &x, int &y, int rows, int columns) // prompts the user to enter row and column values to change arrow direction
 {
     int numrows;
@@ -570,7 +553,6 @@ void MoveAlien(int &x, int &y, int rows, int columns)
         {
             moveup(x, y, rows, columns);
             ClearScreen();
-            changeTrail(x, y, rows, columns);
             break;
         }
     }
@@ -580,7 +562,6 @@ void MoveAlien(int &x, int &y, int rows, int columns)
         {
             movedown(x, y, rows, columns);
             ClearScreen();
-            changeTrail(x, y, rows, columns);
             break;
         }
     }
@@ -590,7 +571,6 @@ void MoveAlien(int &x, int &y, int rows, int columns)
         {
             moveleft(x, y, rows, columns);
             ClearScreen();
-            changeTrail(x, y, rows, columns);
             break;
         }
     }
@@ -600,7 +580,6 @@ void MoveAlien(int &x, int &y, int rows, int columns)
         {
             moveright(x, y, rows, columns);
             ClearScreen();
-            changeTrail(x, y, rows, columns);
             break;
         }
     }
