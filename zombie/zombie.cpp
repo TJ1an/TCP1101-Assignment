@@ -13,7 +13,7 @@ bool gotEntityObject(int x,int y) {
     bool gotEntity = false;
     for (int i = 0; i < sizeof(EntityObject); i++) { 
         if (board[x][y] == EntityObject[i]){
-            gotEntity = true;
+            gotEntity = true; //True when entity spotted
             break;
         }
     }
@@ -89,20 +89,21 @@ bool isStuck(int x, int y,bool blankUp, bool blankDown, bool blankLeft, bool bla
         return true;
     } else if (blankUp && gotDown && gotLeft && blankRight){
         return true;
-    // Not stuck
+    //  stuck
     } else {
         return false;
     }
 }
 
 bool Blank(int x, int y, int rows, int columns) {
+    // Verifies if position is valid (within the board)
     bool empty;
-    if (x <= rows && y <= columns) {
+    if (x <= rows && y <= columns) { // Inside board
         empty = false;
-    } else {
+    } else { // Outside board
         empty = true;
     }
-    return empty;
+    return empty; // Returns verdict
 }
 
 void Zombie::Stats(std::vector<Zombie>&zombieList, int i) {
@@ -148,6 +149,14 @@ void Zombie::moveZombie(std::vector<Zombie>&zombieList,int i,int rows, int colum
     bool blankLeft = Blank(x,y-1,rows-1,columns-1);
     bool blankRight = Blank(x,y+1,rows-1,columns-1);
 
+    // If all stuck is true, then zombie is stuck
+    bool stuckUp = false;
+    bool stuckDown = false;
+    bool stuckLeft = false;
+    bool stuckRight = false;
+
+    //////////////////////////////////////////////////////////////////////////
+    //PAUSED (WIP)
     //  //To check if zombie stuck
     //  bool stuck = isStuck(x,y,blankUp,blankDown,blankLeft,blankRight);
     //  // Exit if stuck
@@ -155,6 +164,7 @@ void Zombie::moveZombie(std::vector<Zombie>&zombieList,int i,int rows, int colum
     //      cout << "Zombie " << i+1 << " is stuck." <<endl;
     //      return;
     //  }
+    ///////////////////////////////////////////////////////////////////////////
 
     // Loop to make sure zombie moves
     while (turnIncomplete) {
@@ -167,7 +177,9 @@ void Zombie::moveZombie(std::vector<Zombie>&zombieList,int i,int rows, int colum
                 moveUp(x,y,i);
                 Location(x,y,zombieList,i);
                 turnIncomplete = false;
-            } else {}
+            } else {
+                stuckUp = true;
+            }
 
         // Move DOWN        
         } else if  (move == "down" && !blankDown) { 
@@ -176,7 +188,9 @@ void Zombie::moveZombie(std::vector<Zombie>&zombieList,int i,int rows, int colum
                 moveDown(x,y,i);
                 Location(x,y,zombieList,i);
                 turnIncomplete = false;
-            } else {}
+            } else {
+                stuckDown = true;
+            }
 
         // Move LEFT    
         } else if (move == "left" && !blankLeft) { 
@@ -185,7 +199,9 @@ void Zombie::moveZombie(std::vector<Zombie>&zombieList,int i,int rows, int colum
                 moveLeft(x,y,i);
                 Location(x,y,zombieList,i);
                 turnIncomplete = false;
-            } else {}
+            } else {
+                stuckLeft = true;
+            }
 
         // Move RIGHT
         } else if (move == "right" && !blankRight) { 
@@ -194,7 +210,13 @@ void Zombie::moveZombie(std::vector<Zombie>&zombieList,int i,int rows, int colum
                 moveRight(x,y,i);
                 Location(x,y,zombieList,i);
                 turnIncomplete = false;
-            } else {}
+            } else {
+                stuckRight = true;
+            }
+        // Fully stuck
+        } else if (stuckUp && stuckDown && stuckLeft && stuckRight) {
+            cout << "Zombie " << i+1 << " is stuck." <<endl;
+            return;
         }
     }
 }
