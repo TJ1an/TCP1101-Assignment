@@ -178,9 +178,11 @@ void CreateBoard(int rows, int columns, int zombie)
         MoveAlien(x, y, rows, columns);
         ShowGameBoard(rows, columns, zombie, zomb);
         // Zombie Turn
-        for (int i = 0; i < sizeof(zomb.zombieList); i++) {
-            zomb.moveZombie(zomb.zombieList,i);
+        for (int i = 0; i < size(zomb.zombieList); i++) {
+            srand((unsigned) time(NULL));
+            zomb.moveZombie(zomb.zombieList,i,rows,columns);
             ShowGameBoard(rows, columns, zombie, zomb);
+            myPause();
         }
         changeTrail(x, y, rows, columns);
         myPause();
