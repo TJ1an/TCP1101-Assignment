@@ -43,7 +43,7 @@ void changeTrail(int &x, int &y, int rows, int columns)
     }
 }
 
-void ShowGameBoard(int rows, int columns, int zombie)
+void ShowGameBoard(int rows, int columns, int zombie, Zombie zomb)
 {
     //For when the board is bigger than 9 columns, the ".: Alien Vs Zombie :." text tries to center itself
     if (columns > 9)
@@ -174,12 +174,18 @@ void CreateBoard(int rows, int columns, int zombie)
     int x = rows/2, y = columns/2;
     // Starts the game
     while(true) {
+        // Alien turn
         MoveAlien(x, y, rows, columns);
-        ShowGameBoard(rows, columns, zombie);
+        ShowGameBoard(rows, columns, zombie, zomb);
+        // Zombie Turn
+        for (int i = 0; i < sizeof(zomb.zombieList); i++) {
+            zomb.moveZombie(zomb.zombieList,i);
+            ShowGameBoard(rows, columns, zombie, zomb);
+        }
         changeTrail(x, y, rows, columns);
         myPause();
         ClearScreen();
-        ShowGameBoard(rows, columns, zombie);
+        ShowGameBoard(rows, columns, zombie, zomb);
     }
 }
 
