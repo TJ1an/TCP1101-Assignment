@@ -43,7 +43,7 @@ void changeTrail(int &x, int &y, int rows, int columns)
     }
 }
 
-void ShowGameBoard(int rows, int columns, int zombie, Zombie zomb)
+void ShowGameBoard(int rows, int columns, int zombie, Zombie zomb, Alien alien)
 {
     //For when the board is bigger than 9 columns, the ".: Alien Vs Zombie :." text tries to center itself
     if (columns > 9)
@@ -110,7 +110,7 @@ void ShowGameBoard(int rows, int columns, int zombie, Zombie zomb)
     }
     cout << endl;
     // Display alien stats
-    displayAlien();
+    displayAlien(alien);
     // Generates and displays zombie stats
     zomb.readAndDisplay(zomb.zombieList);
     
@@ -133,7 +133,12 @@ void CreateBoard(int rows, int columns, int zombie)
             int noObj = rand() % noOfObj;
             board[row][col] = Obj[noObj];
         }
-    board[rows / 2][columns / 2] = 'A'; // Spawns Alien
+    //Create Alien
+    Alien alien;
+    // Alien stats and location set
+    alien.alienStat(alien, rows, columns);
+    // Spawns Alien on board
+    board[rows / 2][columns / 2] = 'A';
 
     // Zombie(s) Object Created into zombieList
     Zombie zomb;
@@ -170,18 +175,19 @@ void CreateBoard(int rows, int columns, int zombie)
             count++;
         }    
     }
-    ShowGameBoard(rows, columns, zombie, zomb);
+    ShowGameBoard(rows, columns, zombie, zomb, alien);
     int x = rows/2, y = columns/2;
     // Starts the game
     while(true) {
         // Alien turn
-        MoveAlien(x, y, rows, columns);
-        ShowGameBoard(rows, columns, zombie, zomb);
+        MoveAlien(alien, x, y, rows, columns);
+        ShowGameBoard(rows, columns, zombie, zomb, alien);
+        alien.coordinates(alien,x,y);
         // Zombie Turn
         for (int i = 0; i < size(zomb.zombieList); i++) {
             ClearScreen();
             srand((unsigned) time(NULL));
-            ShowGameBoard(rows, columns, zombie, zomb);
+            ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << endl;
             zomb.moveZombie(zomb.zombieList, i, rows, columns);
             cout << endl;
@@ -189,7 +195,7 @@ void CreateBoard(int rows, int columns, int zombie)
         }
         changeTrail(x, y, rows, columns);
         ClearScreen();
-        ShowGameBoard(rows, columns, zombie, zomb);
+        ShowGameBoard(rows, columns, zombie, zomb, alien);
     }
 }
 
@@ -207,10 +213,14 @@ void GameSettings(int &rows, int &columns, int zombie)
 
     if (yesorno == 'y')
     {   
+        // Entities
+        Alien alien;
         Zombie zomb;
+        // Board dimensions and data
         int newRows;
         int newColumns;
         int newZombies;
+        // Execute first display
         ClearScreen();
         cout << "Board Settings \n" << endl;
         cout << "Max: Both numbers are ODD and less than 9 Zombies" << endl;
@@ -245,13 +255,16 @@ void GameSettings(int &rows, int &columns, int zombie)
         Pause();
         ClearScreen();
         CreateBoard(rows, columns, zombie);
-        ShowGameBoard(rows, columns, zombie, zomb);
+        ShowGameBoard(rows, columns, zombie, zomb, alien);
         
     }
     else if (yesorno == 'n')
 
     {   
+        // Entities
         Zombie zomb;
+        Alien alien;
+        // Code execution
         board.resize(rows);
         for (int i = 0; i < rows; ++i)
         {
@@ -259,7 +272,7 @@ void GameSettings(int &rows, int &columns, int zombie)
         }
         ClearScreen();
         CreateBoard(5, 13, 3);
-        ShowGameBoard(5, 13, 3, zomb);
+        ShowGameBoard(5, 13, 3, zomb, alien);
     }
     else
     {

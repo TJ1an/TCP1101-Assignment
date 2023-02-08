@@ -218,22 +218,22 @@ void Zombie::moveZombie(std::vector<Zombie>&zombieList,int i,int rows, int colum
     }
 }
 
-// void Zombie::Attack(std::vector<Zombie>zombieList,int i,int rows, int columns) {
-//     // Notes zombie range and position
-//     int range = zombieList[i].zombieRange;
-//     int x = zombieList[i].zom_dimX;
-//     int y = zombieList[i].zom_dimY; 
-//     // Alien scanning algorithm
-//     for (int i = 1; i <= range; i++){
-//         for (int j = 1; i <= range; i++) {
-//             if (board[x+i][y] == 'A' || board[x-i][y] == 'A' ||
-//                 board[x][y+j] == 'A' || board[x][y-j] == 'A' ||
-//                 board[x+i][y+j] == 'A' || board[x-i][y-j] == 'A' ||
-//                 board[x+i][y-j] == 'A' || board[x-i][y+j] == 'A' )
-//         }
-//     }
-//     
-// }
+//void Zombie::Attack(std::vector<Zombie>zombieList,int i,int rows, int columns) {
+//    // Notes zombie range and position
+//    int range = zombieList[i].zombieRange;
+//    int x = zombieList[i].zom_dimX;
+//    int y = zombieList[i].zom_dimY; 
+//    // Alien scanning algorithm
+//    for (int i = 1; i <= range; i++){
+//        for (int j = 1; i <= range; j++) {
+//            if (board[x+i][y] == 'A' || board[x-i][y] == 'A' ||
+//                board[x][y+j] == 'A' || board[x][y-j] == 'A' ||
+//                board[x+i][y+j] == 'A' || board[x-i][y-j] == 'A' ||
+//                board[x+i][y-j] == 'A' || board[x-i][y+j] == 'A' )
+//        }
+//    }
+//    
+//}
 
 void Zombie::Location(int x, int y,std::vector<Zombie>&zombieList, int i) {
     zombieList[i].zom_dimX = x;
