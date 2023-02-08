@@ -25,13 +25,13 @@ public:
 };
 
 void displayAlien(Alien &alien);
-void MoveAlien(Alien &alien,int &x, int &y, int rows, int columns);
-void moveleft(Alien &alien,int &x, int &y, int rows, int columns);
-void moveright(Alien &alien,int &x, int &y, int rows, int columns);
-void moveup(Alien &alien,int &x, int &y, int rows, int columns);
-void movedown(Alien &alien,int &x, int &y, int rows, int columns);
-void rockrandomobject(Alien &alien,int &x, int &y, int rows, int columns);
-void changeArrow(Alien &alien,int &x, int &y, int rows, int columns);
+void MoveAlien(Alien &alien,int &x, int &y, int rows, int columns, int zombies, Zombie zomb);
+void moveleft(Alien &alien,int &x, int &y, int rows, int columns, int zombies, Zombie zomb);
+void moveright(Alien &alien,int &x, int &y, int rows, int columns, int zombies, Zombie zomb);
+void moveup(Alien &alien,int &x, int &y, int rows, int columns, int zombies, Zombie zomb);
+void movedown(Alien &alien,int &x, int &y, int rows, int columns, int zombies, Zombie zomb);
+void rockrandomobject(Alien &alien,int &x, int &y, int rows, int columns, int zombies, Zombie zomb);
+void changeArrow(Alien &alien,int &x, int &y, int rows, int columns, int zombies, Zombie zomb);
 void myPause();
 void displayAlien();
 

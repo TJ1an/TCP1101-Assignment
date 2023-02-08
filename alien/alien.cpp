@@ -29,7 +29,7 @@ int alienhp()
     return alienhealth;
 }
 
-void changeArrow(Alien &alien, int &x, int &y, int rows, int columns) // prompts the user to enter row and column values to change arrow direction
+void changeArrow(Alien &alien, int &x, int &y, int rows, int columns, int zombies, Zombie zomb) // prompts the user to enter row and column values to change arrow direction
 {
     int numrows;
     int numcolumns;
@@ -50,7 +50,7 @@ void changeArrow(Alien &alien, int &x, int &y, int rows, int columns) // prompts
         cout << "That is not an arrow!" << endl;
         cout << "Please try again" << endl;
         cout << " " << endl;
-        changeArrow(x,y,rows,columns);
+        changeArrow(alien,x,y,rows,columns,zombies,zomb);
     }
 }
 
@@ -78,7 +78,7 @@ void moveup(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zom
             alien.alienHealth = alien.alienHealth + 20;
             myPause();
             ClearScreen();
-            ShowGameBoard(rows, columns, zombie, zomb);
+            ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << " " << endl;
             cout << "Alien finds a Healthpack!" << endl;
             cout << "You gained 20 Health!" << endl;
@@ -93,7 +93,7 @@ void moveup(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zom
             board[x][y] = 'A';
             myPause();
             ClearScreen();
-            ShowGameBoard(rows, columns, zombie, zomb);
+            ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << " " << endl;
             cout << "You hit a rock!" << endl;
             cout << " " << endl;
@@ -109,12 +109,12 @@ void moveup(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zom
             alien.alienAttack = alien.alienAttack + 20;
             myPause();
             ClearScreen();
-            ShowGameBoard(rows, columns, zombie, zomb);
+            ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << " " << endl;
             cout << "Alien finds a left arrow" << endl;
             cout << "You gained 20 Attack!" << endl;
             cout << " " << endl;
-            moveleft(x, y, rows, columns, zombie, zomb);
+            moveleft(alien, x, y, rows, columns, zombie, zomb);
             myPause();
             break;
         }
@@ -126,7 +126,7 @@ void moveup(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zom
             alien.alienAttack = alien.alienAttack + 20;
             myPause();
             ClearScreen();
-            ShowGameBoard(rows, columns, zombie, zomb);
+            ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << " " << endl;
             cout << "Alien finds a right arrow" << endl;
             cout << "You gained 20 Attack!" << endl;
@@ -142,12 +142,12 @@ void moveup(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zom
             alien.alienAttack = alien.alienAttack + 20;
             myPause();
             ClearScreen();
-            ShowGameBoard(rows, columns, zombie, zomb);
+            ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << " " << endl;
             cout << "Alien finds an up arrow" << endl;
             cout << "You gained 20 Attack!" << endl;
             cout << " " << endl;
-            moveup(x, y, rows, columns, zombie, zomb);
+            moveup(alien, x, y, rows, columns, zombie, zomb);
             myPause();
             break;
         }
@@ -159,19 +159,19 @@ void moveup(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zom
             alien.alienAttack = alien.alienAttack + 20;
             myPause();
             ClearScreen();
-            ShowGameBoard(rows, columns, zombie, zomb);
+            ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << " " << endl;
             cout << "Alien finds a down arrow" << endl;
             cout << "You gained 20 Attack!" << endl;
             cout << " " << endl;
-            movedown(x, y, rows, columns, zombie, zomb);
+            movedown(alien, x, y, rows, columns, zombie, zomb);
             myPause();
             break;
         }
         else
         {
             ClearScreen();
-            ShowGameBoard(rows, columns, zombie, zomb);
+            ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << " " << endl;
             cout << "Alien hits a wall!" << endl;
             cout << " " << endl;
@@ -205,7 +205,7 @@ void movedown(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Z
             alien.alienHealth = alien.alienHealth + 20;
             myPause();
             ClearScreen();
-            ShowGameBoard(rows, columns, zombie, zomb);
+            ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << " " << endl;
             cout << "Alien finds a Healthpack!" << endl;
             cout << "You gained 20 Health!" << endl;
@@ -220,7 +220,7 @@ void movedown(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Z
             board[x][y] = 'A';
             myPause();
             ClearScreen();
-            ShowGameBoard(rows, columns, zombie, zomb);
+            ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << " " << endl;
             cout << "You hit a rock!" << endl;
             cout << " " << endl;
@@ -236,12 +236,12 @@ void movedown(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Z
             alien.alienAttack = alien.alienAttack + 20;
             myPause();
             ClearScreen();
-            ShowGameBoard(rows, columns, zombie, zomb);
+            ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << " " << endl;
             cout << "Alien finds a left arrow" << endl;
             cout << "You gained 20 Attack!" << endl;
             cout << " " << endl;
-            moveleft(x, y, rows, columns, zombie, zomb);
+            moveleft(alien, x, y, rows, columns, zombie, zomb);
             myPause();
             break;
         }
@@ -253,12 +253,12 @@ void movedown(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Z
             alien.alienAttack = alien.alienAttack + 20;
             myPause();
             ClearScreen();
-            ShowGameBoard(rows, columns, zombie, zomb);
+            ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << " " << endl;
             cout << "Alien finds a right arrow" << endl;
             cout << "You gained 20 Attack!" << endl;
             cout << " " << endl;
-            moveright(x, y, rows, columns, zombie, zomb);
+            moveright(alien, x, y, rows, columns, zombie, zomb);
             myPause();
             break;
         }
@@ -270,12 +270,12 @@ void movedown(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Z
             alien.alienAttack = alien.alienAttack + 20;
             myPause();
             ClearScreen();
-            ShowGameBoard(rows, columns, zombie, zomb);
+            ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << " " << endl;
             cout << "Alien finds an up arrow" << endl;
             cout << "You gained 20 Attack!" << endl;
             cout << " " << endl;
-            moveup(x, y, rows, columns, zombie, zomb);
+            moveup(alien, x, y, rows, columns, zombie, zomb);
             myPause();
             break;
         }
@@ -287,19 +287,19 @@ void movedown(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Z
             alien.alienAttack = alien.alienAttack + 20;
             myPause();
             ClearScreen();
-            ShowGameBoard(rows, columns, zombie, zomb);
+            ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << " " << endl;
             cout << "Alien finds a down arrow" << endl;
             cout << "You gained 20 Attack!" << endl;
             cout << " " << endl;
-            movedown(x, y, rows, columns, zombie, zomb);
+            movedown(alien, x, y, rows, columns, zombie, zomb);
             myPause();
             break;
         }
         else
         {
             ClearScreen();
-            ShowGameBoard(rows, columns, zombie, zomb);
+            ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << " " << endl;
             cout << "Alien hits a wall!" << endl;
             cout << " " << endl;
@@ -332,7 +332,7 @@ void moveleft(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Z
             alien.alienHealth = alien.alienHealth + 20;
             myPause();
             ClearScreen();
-            ShowGameBoard(rows, columns, zombie, zomb);
+            ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << " " << endl;
             cout << "Alien finds a Healthpack!" << endl;
             cout << "You gained 20 Health!" << endl;
@@ -347,7 +347,7 @@ void moveleft(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Z
             board[x][y] = 'A';
             myPause();
             ClearScreen();
-            ShowGameBoard(rows, columns, zombie, zomb);
+            ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << " " << endl;
             cout << "You hit a rock!" << endl;
             cout << " " << endl;
@@ -363,12 +363,12 @@ void moveleft(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Z
             alien.alienAttack = alien.alienAttack + 20;
             myPause();
             ClearScreen();
-            ShowGameBoard(rows, columns, zombie, zomb);
+            ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << " " << endl;
             cout << "Alien finds a left arrow" << endl;
             cout << "You gained 20 Attack!" << endl;
             cout << " " << endl;
-            moveleft(x, y, rows, columns, zombie, zomb);
+            moveleft(alien, x, y, rows, columns, zombie, zomb);
             myPause();
             board[x][y] = '.';
             y--;
@@ -376,12 +376,12 @@ void moveleft(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Z
             alien.alienAttack = alien.alienAttack + 20;
             myPause();
             ClearScreen();
-            ShowGameBoard(rows, columns, zombie, zomb);
+            ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << " " << endl;
             cout << "Alien finds a right arrow" << endl;
             cout << "You gained 20 Attack!" << endl;
             cout << " " << endl;
-            moveright(x, y, rows, columns, zombie, zomb);
+            moveright(alien, x, y, rows, columns, zombie, zomb);
             myPause();
             break;
         }
@@ -393,12 +393,12 @@ void moveleft(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Z
             alien.alienAttack = alien.alienAttack + 20;
             myPause();
             ClearScreen();
-            ShowGameBoard(rows, columns, zombie, zomb);
+            ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << " " << endl;
             cout << "Alien finds an up arrow" << endl;
             cout << "You gained 20 Attack!" << endl;
             cout << " " << endl;
-            moveup(x, y, rows, columns, zombie, zomb);
+            moveup(alien, x, y, rows, columns, zombie, zomb);
             myPause();
             break;
         }
@@ -410,19 +410,19 @@ void moveleft(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Z
             alien.alienAttack = alien.alienAttack + 20;
             myPause();
             ClearScreen();
-            ShowGameBoard(rows, columns, zombie, zomb);
+            ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << " " << endl;
             cout << "Alien finds a down arrow" << endl;
             cout << "You gained 20 Attack!" << endl;
             cout << " " << endl;
-            movedown(x, y, rows, columns, zombie, zomb);
+            movedown(alien, x, y, rows, columns, zombie, zomb);
             myPause();
             break;
         }
         else
         {
             ClearScreen();
-            ShowGameBoard(rows, columns, zombie, zomb);
+            ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << " " << endl;
             cout << "Alien hits a wall!" << endl;
             cout << " " << endl;
@@ -455,7 +455,7 @@ void moveright(Alien &alien, int &x, int &y, int rows, int columns, int zombie, 
             alien.alienHealth = alien.alienHealth + 20;
             myPause();
             ClearScreen();
-            ShowGameBoard(rows, columns, zombie, zomb);
+            ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << " " << endl;
             cout << "Alien finds a Healthpack!" << endl;
             cout << "You gained 20 Health!" << endl;
@@ -470,7 +470,7 @@ void moveright(Alien &alien, int &x, int &y, int rows, int columns, int zombie, 
             board[x][y] = 'A';
             myPause();
             ClearScreen();
-            ShowGameBoard(rows, columns, zombie, zomb);
+            ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << " " << endl;
             cout << "You hit a rock!" << endl;
             cout << " " << endl;
@@ -486,12 +486,12 @@ void moveright(Alien &alien, int &x, int &y, int rows, int columns, int zombie, 
             alien.alienAttack = alien.alienAttack + 20;
             myPause();
             ClearScreen();
-            ShowGameBoard(rows, columns, zombie, zomb);
+            ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << " " << endl;
             cout << "Alien finds a left arrow" << endl;
             cout << "You gained 20 Attack!" << endl;
             cout << " " << endl;
-            moveleft(x, y, rows, columns, zombie, zomb);
+            moveleft(alien, x, y, rows, columns, zombie, zomb);
             myPause();
             break;
         }
@@ -503,12 +503,12 @@ void moveright(Alien &alien, int &x, int &y, int rows, int columns, int zombie, 
             alien.alienAttack = alien.alienAttack + 20;
             myPause();
             ClearScreen();
-            ShowGameBoard(rows, columns, zombie, zomb);
+            ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << " " << endl;
             cout << "Alien finds a right arrow" << endl;
             cout << "You gained 20 Attack!" << endl;
             cout << " " << endl;
-            moveright(x, y, rows, columns, zombie, zomb);
+            moveright(alien, x, y, rows, columns, zombie, zomb);
             myPause();
             break;
         }
@@ -520,12 +520,12 @@ void moveright(Alien &alien, int &x, int &y, int rows, int columns, int zombie, 
             alien.alienAttack = alien.alienAttack + 20;
             myPause();
             ClearScreen();
-            ShowGameBoard(rows, columns, zombie, zomb);
+            ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << " " << endl;
             cout << "Alien finds an up arrow" << endl;
             cout << "You gained 20 Attack!" << endl;
             cout << " " << endl;
-            moveup(x, y, rows, columns, zombie, zomb);
+            moveup(alien, x, y, rows, columns, zombie, zomb);
             myPause();
             break;
         }
@@ -537,15 +537,15 @@ void moveright(Alien &alien, int &x, int &y, int rows, int columns, int zombie, 
             alien.alienAttack = alien.alienAttack + 20;
             myPause();
             ClearScreen();
-            ShowGameBoard(rows, columns, zombie, zomb);
+            ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << " " << endl;
             cout << "Alien finds a down arrow" << endl;
             cout << "You gained 20 Attack!" << endl;
             cout << " " << endl;
-            movedown(x, y, rows, columns, zombie, zomb);
+            movedown(alien, x, y, rows, columns, zombie, zomb);
             myPause();
             ClearScreen();
-            ShowGameBoard(rows, columns, zombie, zomb);
+            ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << " " << endl;
             cout << "Alien hits a wall!" << endl;
             cout << " " << endl;
@@ -677,12 +677,12 @@ void MoveAlien(Alien &alien, int &x, int &y, int rows, int columns, int zombie, 
         cout << endl;
         myPause();
         ClearScreen();
-        ShowGameBoard(rows, columns, zombie, zomb);
-        MoveAlien(x, y, rows, columns, zombie, zomb);
+        ShowGameBoard(rows, columns, zombie, zomb, alien);
+        MoveAlien(alien, x, y, rows, columns, zombie, zomb);
     }
     else if (direction == "arrow")
     {
-        changeArrow(alien, x, y, rows, columns);
+        changeArrow(alien, x, y, rows, columns, zombie, zomb);
         ClearScreen();
     }
     else if (direction == "quit")
@@ -696,7 +696,7 @@ void MoveAlien(Alien &alien, int &x, int &y, int rows, int columns, int zombie, 
         cout << " " << endl;
         myPause();
         ClearScreen();
-        ShowGameBoard(rows, columns, zombie, zomb);
-        MoveAlien(x, y, rows, columns, zombie, zomb);
+        ShowGameBoard(rows, columns, zombie, zomb, alien);
+        MoveAlien(alien, x, y, rows, columns, zombie, zomb);
     }
 }
