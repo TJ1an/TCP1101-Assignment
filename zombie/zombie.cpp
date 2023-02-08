@@ -101,7 +101,8 @@ void moveRight(int x, int y, int i) {
 bool Blank(int x, int y, int rows, int columns) {
     // Verifies if position is valid (within the board)
     bool empty;
-    if (x <= rows && y <= columns) { // Inside board
+    // Makes sure x inside (0,rows) and y inside (0,columns)
+    if (0 <= x && x <= rows && 0 <= y && y <= columns) { // Inside board
         empty = false;
     } else { // Outside board
         empty = true;
