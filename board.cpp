@@ -175,7 +175,7 @@ void CreateBoard(int rows, int columns, int zombie)
     // Starts the game
     while(true) {
         // Alien turn
-        MoveAlien(x, y, rows, columns);
+        MoveAlien(x, y, rows, columns, zombie, zomb);
         ShowGameBoard(rows, columns, zombie, zomb);
         // Zombie Turn
         for (int i = 0; i < size(zomb.zombieList); i++) {
@@ -187,7 +187,13 @@ void CreateBoard(int rows, int columns, int zombie)
             cout << endl;
             myPause();
         }
+        ClearScreen();
+        ShowGameBoard(rows, columns, zombie, zomb);
         changeTrail(x, y, rows, columns);
+        cout << " " << endl;
+        cout << "Trail is reset!" << endl;
+        cout << " " << endl;
+        myPause();
         ClearScreen();
         ShowGameBoard(rows, columns, zombie, zomb);
     }
