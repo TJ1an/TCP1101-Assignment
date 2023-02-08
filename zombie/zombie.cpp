@@ -166,9 +166,9 @@ void Zombie::moveZombie(std::vector<Zombie>&zombieList,int i,int rows, int colum
 
         // Movement cases 
         // Move UP
-        if (move == "up" && !blankUp && !stuckUp) { 
+        if (move == "up" && !stuckUp) { 
             bool gotEntity = gotEntityObject(x-1,y);
-            if (gotEntity == false) {
+            if (gotEntity == false && !blankUp) {
                 moveUp(x,y,i);
                 x--;
                 Location(x,y,zombieList,i);
@@ -177,9 +177,9 @@ void Zombie::moveZombie(std::vector<Zombie>&zombieList,int i,int rows, int colum
                 stuckUp = true;
             }
         // Move DOWN        
-        } else if  (move == "down" && !blankDown && !stuckDown) { 
+        } else if  (move == "down" && !stuckDown) { 
             bool gotEntity = gotEntityObject(x+1,y);
-            if (gotEntity == false) {
+            if (gotEntity == false && !blankDown) {
                 moveDown(x,y,i);
                 x++;
                 Location(x,y,zombieList,i);
@@ -188,9 +188,9 @@ void Zombie::moveZombie(std::vector<Zombie>&zombieList,int i,int rows, int colum
                 stuckDown = true;
             }
         // Move LEFT    
-        } else if (move == "left" && !blankLeft && !stuckLeft) { 
+        } else if (move == "left" && !stuckLeft) { 
             bool gotEntity = gotEntityObject(x,y-1);
-            if (gotEntity == false) {
+            if (gotEntity == false && !blankLeft) {
                 moveLeft(x,y,i);
                 y--;
                 Location(x,y,zombieList,i);
@@ -199,9 +199,9 @@ void Zombie::moveZombie(std::vector<Zombie>&zombieList,int i,int rows, int colum
                 stuckLeft = true;
             }
         // Move RIGHT
-        } else if (move == "right" && !blankRight && !stuckRight) { 
+        } else if (move == "right" && !stuckRight) { 
             bool gotEntity = gotEntityObject(x,y+1);
-            if (gotEntity == false) {
+            if (gotEntity == false && !blankRight) {
                 moveRight(x,y,i);
                 y++;
                 Location(x,y,zombieList,i);
