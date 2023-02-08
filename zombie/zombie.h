@@ -24,8 +24,8 @@ void moveUp(int x, int y, int i);
 void moveDown(int x, int y, int i);
 void moveLeft(int x, int y, int i);
 void moveRight(int x, int y, int i);
-bool isStuck(int x, int y,bool blankUp, bool blankDown,
-            bool blankLeft, bool blankRight);
+//bool isStuck(int x, int y,bool blankUp, bool blankDown,
+//            bool blankLeft, bool blankRight);
 bool Blank(int x, int y, int rows, int columns);
 
 #endif
