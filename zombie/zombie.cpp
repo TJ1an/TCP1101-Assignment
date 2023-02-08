@@ -101,7 +101,7 @@ void moveRight(int x, int y, int i) {
 bool Blank(int x, int y, int rows, int columns) {
     // Verifies if position is valid (within the board)
     bool empty;
-    if (x < rows && y < columns) { // Inside board
+    if (x <= rows && y <= columns) { // Inside board
         empty = false;
     } else { // Outside board
         empty = true;
@@ -149,10 +149,10 @@ void Zombie::moveZombie(std::vector<Zombie>&zombieList,int i,int rows, int colum
     int y = zombieList[i].zom_dimY;
 
     // Checking for non-existent(blank) spots
-    bool blankUp = Blank(x-1,y,rows,columns);
-    bool blankDown = Blank(x+1,y,rows,columns);
-    bool blankLeft = Blank(x,y-1,rows,columns);
-    bool blankRight = Blank(x,y+1,rows,columns);
+    bool blankUp = Blank(x-1,y,rows-1,columns-1); // Rows and columns minus one because zero-indexed
+    bool blankDown = Blank(x+1,y,rows-1,columns-1);
+    bool blankLeft = Blank(x,y-1,rows-1,columns-1);
+    bool blankRight = Blank(x,y+1,rows-1,columns-1);
 
     // Stuck = blocked by entity
     // If all boolean stuck is true, it's fully stuck
@@ -218,23 +218,24 @@ void Zombie::moveZombie(std::vector<Zombie>&zombieList,int i,int rows, int colum
         }
     }
 }
-// 
+
 // void Zombie::Attack(std::vector<Zombie>zombieList,int i,int rows, int columns) {
 //     // Notes zombie range and position
 //     int range = zombieList[i].zombieRange;
 //     int x = zombieList[i].zom_dimX;
 //     int y = zombieList[i].zom_dimY; 
 //     // Alien scanning algorithm
-//     int distance = 1;
-//     while (distance <= range) {
-//         for (int i = 1; i <= range; i++){
-//             for (int j = 1; i <= range; i++) {
-//                 
-//             }
+//     for (int i = 1; i <= range; i++){
+//         for (int j = 1; i <= range; i++) {
+//             if (board[x+i][y] == 'A' || board[x-i][y] == 'A' ||
+//                 board[x][y+j] == 'A' || board[x][y-j] == 'A' ||
+//                 board[x+i][y+j] == 'A' || board[x-i][y-j] == 'A' ||
+//                 board[x+i][y-j] == 'A' || board[x-i][y+j] == 'A' )
 //         }
 //     }
+//     
 // }
-// 
+
 void Zombie::Location(int x, int y,std::vector<Zombie>&zombieList, int i) {
     zombieList[i].zom_dimX = x;
     zombieList[i].zom_dimY = y;   
