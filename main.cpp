@@ -75,6 +75,7 @@ int main()
     {
         ClearScreen();
         cout << "Thanks for playing." << endl;
+        cout << endl;
         abort();
     }
     else

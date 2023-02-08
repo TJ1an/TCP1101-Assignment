@@ -179,11 +179,12 @@ void CreateBoard(int rows, int columns, int zombie)
         ShowGameBoard(rows, columns, zombie, zomb);
         // Zombie Turn
         for (int i = 0; i < size(zomb.zombieList); i++) {
-            srand((unsigned) time(NULL));
-            zomb.moveZombie(zomb.zombieList,i,rows,columns);
             ClearScreen();
+            srand((unsigned) time(NULL));
             ShowGameBoard(rows, columns, zombie, zomb);
-            // Show message here I think (?)
+            cout << endl;
+            zomb.moveZombie(zomb.zombieList, i, rows, columns);
+            cout << endl;
             myPause();
         }
         changeTrail(x, y, rows, columns);
