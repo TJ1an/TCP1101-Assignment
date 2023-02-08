@@ -1,6 +1,7 @@
 #include "../board.h"
 #include "alien.h"
 #include "../help/help.h"
+#include "../saveload/saveload.h"
 #include <string>
 #include <vector>
 #include <cstdlib>
@@ -613,12 +614,8 @@ void MoveAlien(int &x, int &y, int rows, int columns)
         ClearScreen();
     }
     else if (direction == "quit")
-    {
-        cout << " " << endl;
-        cout << "Thanks for playing!" << endl;
-        cout << " " << endl;
-        myPause();
-        abort();
+    {   
+        savePrompt();
     }
     else
     {

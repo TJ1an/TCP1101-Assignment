@@ -24,21 +24,21 @@ void moveUp(int x, int y, int i) {
     board[x][y] = ' ';
     x--;
     board[x][y] = char('0' + (i+1));
-    //cout << "Zombie " << i+1 << " moved UP." << endl;
+    cout << "Zombie " << i+1 << " moved UP." << endl;
 }
 
 void moveDown(int x, int y, int i) {
     board[x][y] = ' ';
     x++;
     board[x][y] = char('0' + (i+1));
-    //cout << "Zombie " << i+1 << " moved DOWN." << endl;
+    cout << "Zombie " << i+1 << " moved DOWN." << endl;
 }
 
 void moveLeft(int x, int y, int i) {
     board[x][y] = ' ';
     y--;
     board[x][y] = char('0' + (i+1));
-    //cout << "Zombie " << i+1 << " moved LEFT." << endl;
+    cout << "Zombie " << i+1 << " moved LEFT." << endl;
 }
 
 void moveRight(int x, int y, int i) {
@@ -135,10 +135,8 @@ void Zombie::readAndDisplay(std::vector<Zombie>zombieList) {
     for (int i = 0; i < size(zombieList); i++)
     cout << "Zombie " << i+1 
     << " HP: " << zombieList[i].zombieHealth
-    << " Attack: " << zombieList[i].zombieAttack
-    << " Range: " << zombieList[i].zombieRange 
-    << " X: " << (zombieList[i].zom_dimX)+1
-    << " Y: " << (zombieList[i].zom_dimY)+1 << endl;
+    << " Atk: " << zombieList[i].zombieAttack
+    << " Range: " << zombieList[i].zombieRange << endl;
 }
 
 void Zombie::moveZombie(std::vector<Zombie>&zombieList,int i,int rows, int columns) {
