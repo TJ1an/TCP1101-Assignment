@@ -24,28 +24,28 @@ void moveUp(int x, int y, int i) {
     board[x][y] = ' ';
     x--;
     board[x][y] = char('0' + (i+1));
-    cout << "Zombie " << i+1 << " moved UP." << endl;
+    //cout << "Zombie " << i+1 << " moved UP." << endl;
 }
 
 void moveDown(int x, int y, int i) {
     board[x][y] = ' ';
     x++;
     board[x][y] = char('0' + (i+1));
-    cout << "Zombie " << i+1 << " moved DOWN." << endl;
+    //cout << "Zombie " << i+1 << " moved DOWN." << endl;
 }
 
 void moveLeft(int x, int y, int i) {
     board[x][y] = ' ';
     y--;
     board[x][y] = char('0' + (i+1));
-    cout << "Zombie " << i+1 << " moved LEFT." << endl;
+    //cout << "Zombie " << i+1 << " moved LEFT." << endl;
 }
 
 void moveRight(int x, int y, int i) {
     board[x][y] = ' ';
     y++;
     board[x][y] = char('0' + (i+1));
-    cout << "Zombie " << i+1 << " moved RIGHT." << endl;
+    //cout << "Zombie " << i+1 << " moved RIGHT." << endl;
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -136,7 +136,9 @@ void Zombie::readAndDisplay(std::vector<Zombie>zombieList) {
     cout << "Zombie " << i+1 
     << " HP: " << zombieList[i].zombieHealth
     << " Attack: " << zombieList[i].zombieAttack
-    << " Range: " << zombieList[i].zombieRange << endl;
+    << " Range: " << zombieList[i].zombieRange 
+    << " X: " << (zombieList[i].zom_dimX)+1
+    << " Y: " << (zombieList[i].zom_dimY)+1 << endl;
 }
 
 void Zombie::moveZombie(std::vector<Zombie>&zombieList,int i,int rows, int columns) {
@@ -170,6 +172,7 @@ void Zombie::moveZombie(std::vector<Zombie>&zombieList,int i,int rows, int colum
             bool gotEntity = gotEntityObject(x-1,y);
             if (gotEntity == false) {
                 moveUp(x,y,i);
+                x--;
                 Location(x,y,zombieList,i);
                 turnIncomplete = false;
             } else {
@@ -180,6 +183,7 @@ void Zombie::moveZombie(std::vector<Zombie>&zombieList,int i,int rows, int colum
             bool gotEntity = gotEntityObject(x+1,y);
             if (gotEntity == false) {
                 moveDown(x,y,i);
+                x++;
                 Location(x,y,zombieList,i);
                 turnIncomplete = false;
             } else {
@@ -190,6 +194,7 @@ void Zombie::moveZombie(std::vector<Zombie>&zombieList,int i,int rows, int colum
             bool gotEntity = gotEntityObject(x,y-1);
             if (gotEntity == false) {
                 moveLeft(x,y,i);
+                y--;
                 Location(x,y,zombieList,i);
                 turnIncomplete = false;
             } else {
@@ -200,6 +205,7 @@ void Zombie::moveZombie(std::vector<Zombie>&zombieList,int i,int rows, int colum
             bool gotEntity = gotEntityObject(x,y+1);
             if (gotEntity == false) {
                 moveRight(x,y,i);
+                y++;
                 Location(x,y,zombieList,i);
                 turnIncomplete = false;
             } else {
@@ -209,17 +215,26 @@ void Zombie::moveZombie(std::vector<Zombie>&zombieList,int i,int rows, int colum
         } else if (stuckUp && stuckDown && stuckLeft && stuckRight) {
             cout << "Zombie " << i+1 << " is stuck." <<endl;
             return;
-        } else {
-            cout << "This shouldn't be possible" <<endl;
-            return;
         }
     }
 }
-
-void Zombie::Attack() {
-    
-}
-
+// 
+// void Zombie::Attack(std::vector<Zombie>zombieList,int i,int rows, int columns) {
+//     // Notes zombie range and position
+//     int range = zombieList[i].zombieRange;
+//     int x = zombieList[i].zom_dimX;
+//     int y = zombieList[i].zom_dimY; 
+//     // Alien scanning algorithm
+//     int distance = 1;
+//     while (distance <= range) {
+//         for (int i = 1; i <= range; i++){
+//             for (int j = 1; i <= range; i++) {
+//                 
+//             }
+//         }
+//     }
+// }
+// 
 void Zombie::Location(int x, int y,std::vector<Zombie>&zombieList, int i) {
     zombieList[i].zom_dimX = x;
     zombieList[i].zom_dimY = y;   

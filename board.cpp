@@ -181,11 +181,12 @@ void CreateBoard(int rows, int columns, int zombie)
         for (int i = 0; i < size(zomb.zombieList); i++) {
             srand((unsigned) time(NULL));
             zomb.moveZombie(zomb.zombieList,i,rows,columns);
+            ClearScreen();
             ShowGameBoard(rows, columns, zombie, zomb);
+            // Show message here I think (?)
             myPause();
         }
         changeTrail(x, y, rows, columns);
-        myPause();
         ClearScreen();
         ShowGameBoard(rows, columns, zombie, zomb);
     }
