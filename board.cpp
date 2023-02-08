@@ -136,7 +136,10 @@ void CreateBoard(int rows, int columns, int zombie)
     //Create Alien
     Alien alien;
     // Alien stats and location set
+    int x = rows/2;
+    int y = columns/2;
     alien.alienStat(alien, rows, columns);
+    alien.coordinates(alien, x, y);
     // Spawns Alien on board
     board[rows / 2][columns / 2] = 'A';
 
@@ -176,13 +179,13 @@ void CreateBoard(int rows, int columns, int zombie)
         }    
     }
     ShowGameBoard(rows, columns, zombie, zomb, alien);
-    int x = rows/2, y = columns/2;
     // Starts the game
     while(true) {
         // Alien turn
         MoveAlien(alien, x, y, rows, columns, zombie, zomb);
-        ShowGameBoard(rows, columns, zombie, zomb, alien);
         alien.coordinates(alien,x,y);
+        ShowGameBoard(rows, columns, zombie, zomb, alien);
+        myPause();
         // Zombie Turn
         for (int i = 0; i < size(zomb.zombieList); i++) {
             ClearScreen();

@@ -14,13 +14,11 @@ public:
 
     void coordinates(Alien &alien, int x, int y) {
         alien.ali_dimX = x;
-        alien.ali_dimX = y;
+        alien.ali_dimY = y;
     };
     void alienStat(Alien &alien, int rows, int columns ) {
         alien.alienHealth = alienhp();
         alien.alienAttack = 0;
-        alien.ali_dimX = rows/2;
-        alien.ali_dimY = columns/2;
     };
 };
 
