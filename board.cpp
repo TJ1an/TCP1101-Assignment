@@ -193,7 +193,13 @@ void CreateBoard(int rows, int columns, int zombie)
             cout << endl;
             myPause();
         }
+        ClearScreen();
+        ShowGameBoard(rows, columns, zombie, zomb);
         changeTrail(x, y, rows, columns);
+        cout << " " << endl;
+        cout << "Trail is reset!" << endl;
+        cout << " " << endl;
+        myPause();
         ClearScreen();
         ShowGameBoard(rows, columns, zombie, zomb, alien);
     }
