@@ -45,7 +45,7 @@ void moveRight(int x, int y, int i) {
     board[x][y] = ' ';
     y++;
     board[x][y] = char('0' + (i+1));
-    //cout << "Zombie " << i+1 << " moved RIGHT." << endl;
+    cout << "Zombie " << i+1 << " moved RIGHT." << endl;
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -101,7 +101,7 @@ void moveRight(int x, int y, int i) {
 bool Blank(int x, int y, int rows, int columns) {
     // Verifies if position is valid (within the board)
     bool empty;
-    if (x <= rows && y <= columns) { // Inside board
+    if (x < rows && y < columns) { // Inside board
         empty = false;
     } else { // Outside board
         empty = true;
@@ -149,10 +149,10 @@ void Zombie::moveZombie(std::vector<Zombie>&zombieList,int i,int rows, int colum
     int y = zombieList[i].zom_dimY;
 
     // Checking for non-existent(blank) spots
-    bool blankUp = Blank(x-1,y,rows-1,columns-1); // Rows and columns minus one because zero-indexed
-    bool blankDown = Blank(x+1,y,rows-1,columns-1);
-    bool blankLeft = Blank(x,y-1,rows-1,columns-1);
-    bool blankRight = Blank(x,y+1,rows-1,columns-1);
+    bool blankUp = Blank(x-1,y,rows,columns);
+    bool blankDown = Blank(x+1,y,rows,columns);
+    bool blankLeft = Blank(x,y-1,rows,columns);
+    bool blankRight = Blank(x,y+1,rows,columns);
 
     // Stuck = blocked by entity
     // If all boolean stuck is true, it's fully stuck
