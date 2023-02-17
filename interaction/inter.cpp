@@ -27,3 +27,26 @@ void zombieAttack(std::vector<Zombie>zombieList,Alien &alien,int i) {
         alien.alienHealth-=attack;
     }
 }
+
+void alienAttack(std::vector<Zombie>&zombieList,Alien &alien)
+{
+    int x1 = alien.ali_dimX;
+    int y1 = alien.ali_dimY;
+    double nearest = std::numeric_limits<double>::max(); // initialize to a large number
+    int closestIndex = -1;
+
+    for (int i = 0; i < zombieList.size(); i++) {
+        int x2 = zombieList[i].zom_dimX;
+        int y2 = zombieList[i].zom_dimY;
+        double distance = sqrt(pow((x2 - x1), 2) + pow((y2 - y1), 2));
+
+        if (distance < nearest) {
+            nearest = distance;
+            closestIndex = i;
+        }
+    }
+    zombieList[closestIndex].zombieHealth = zombieList[closestIndex].zombieHealth - alien.alienAttack;
+    cout << " " << endl;
+    cout << "Alien attacks zombie "<< closestIndex + 1<< endl;
+    cout << " " << endl;
+}

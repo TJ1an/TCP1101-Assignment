@@ -6,5 +6,6 @@
 #include "../zombie/zombie.h"
 
 void zombieAttack(std::vector<Zombie>zombieList,Alien &alien,int i);
+void alienAttack(std::vector<Zombie>&zombieList,Alien &alien);
 
 #endif

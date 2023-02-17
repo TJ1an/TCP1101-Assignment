@@ -29,7 +29,7 @@ int Pause()
 void changeTrail(int &x, int &y, int rows, int columns)
 {
     srand((unsigned)time(NULL));
-    char objects[] = {'h', '<', '>', '^', 'v', 'r', ' ', ' '};
+    char objects[] = {'h', '<', '>', '^', 'v', 'r', 'p', ' ',' '};
     int objectsSize = sizeof(objects);
     for (int i = 0; i < rows; i++)
     {
@@ -134,7 +134,7 @@ void CreateBoard(int rows, int columns, int zombie, Alien &ex_alien, Zombie &ex_
     if(!ex_alien.set || !ex_zomb.set || !ex_board.size() || !(ex_board.size() == rows && ex_board[0].size() == columns)) { // No data loaded/Invalid data loaded
         // List (and probability) of rock and powerup generation
         // "r" for Rock and "!" for powerup
-        char Obj[] = {'^', 'v', '<', '>', ' ', ' ', ' ', 'h', 'r', ' ',' ',' ',' ',' '};
+        char Obj[] = {'^', 'v', '<', '>', ' ', 'p', 'p', 'h', 'r', ' ',' ',' ',' ',' '};
         int noOfObj = size(Obj);
         int zombieSpawns = 0; // Number of zombies spawned
         int count = 49; // Starts at '1' (for zombie spawning)

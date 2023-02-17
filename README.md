@@ -6,7 +6,7 @@
 - Khoo Jen Au
 
 ## Compilation Instructions
-```g++ -I./lib -I./lib/jsoncons -I./lib/jsoncons/include alien/alien.cpp main.cpp board.cpp zombie/zombie.cpp help/help.cpp saveload/saveload.cpp -o game.exe -static-libgcc -static-libstdc++ -O3```
+```g++ -I./lib -I./lib/jsoncons -I./lib/jsoncons/include alien/alien.cpp main.cpp board.cpp zombie/zombie.cpp help/help.cpp saveload/saveload.cpp interaction/inter.cpp -o game -static-libgcc -static-libstdc++ -O3```
 
 ## User Manual
 After compling, you are now in! There are 3 selections which include "1. Play", "2. Load", and "3. Quit".
