@@ -1,10 +1,8 @@
 #include <string>
-#include <cmath>
 #include <vector>
 #include <cstdlib>
 #include <iostream>
 #include "zombie.h"
-#include "../alien/alien.h"
 using namespace std;
 
 extern vector< vector<char> > board;
@@ -123,7 +121,7 @@ void Zombie::moveZombie(std::vector<Zombie>&zombieList,int i,int rows, int colum
     bool blankLeft = Blank(x,y-1,rows-1,columns-1);
     bool blankRight = Blank(x,y+1,rows-1,columns-1);
 
-    // Stuck = blocked by entities
+    // Stuck = blocked by entity
     // If all boolean stuck is true, it's fully stuck
     bool stuckUp = false;
     bool stuckDown = false;
