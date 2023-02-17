@@ -2,6 +2,7 @@
 #define ZOMBIE_H
 #include <vector>
 
+
 class Zombie {
 public:
     // Functions
@@ -10,6 +11,7 @@ public:
     void readAndDisplay(std::vector<Zombie>zombieList);
     void moveZombie(std::vector<Zombie>&zombieList,int i, int rows, int columns);
     void Location(int x, int y,std::vector<Zombie>&zombieList, int i);
+    void Attack(std::vector<Zombie>zombieList,Alien &alien,int i);
     
     // Variables
     bool set;
