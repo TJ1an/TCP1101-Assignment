@@ -64,9 +64,9 @@ bool Blank(int x, int y, int rows, int columns) {
 
 void Zombie::Stats(std::vector<Zombie>&zombieList, int i) {
     //Range of Stats
-    int zombieHPs[] = {100,150,200,250};
-    int zombieATKs[] = {10,15,20,25};
-    int zombieRGs[] = {1,2,3};
+    int zombieHPs[] = {100,150,200};
+    int zombieATKs[] = {10,15,20};
+    int zombieRGs[] = {1,2};
     //Randomizer
     int randomHP= zombieHPs[rand()% size(zombieHPs)];
     int randomATK= zombieATKs[rand()% size(zombieATKs)];
@@ -188,28 +188,8 @@ void Zombie::moveZombie(std::vector<Zombie>&zombieList,int i,int rows, int colum
     }
 }
 
-void Zombie::Attack(std::vector<Zombie>zombieList,Alien &alien,int i) {
-    // Notes alien position
-    int x1 = alien.ali_dimX;
-    int y1 = alien.ali_dimY;
-    // Notes zombie stats and position
-    int range = zombieList[i].zombieRange;
-    int attack = zombieList[i].zombieAttack;
-    int x2 = zombieList[i].zom_dimX;
-    int y2 = zombieList[i].zom_dimY;
-
-    // If Alien in range
-    int distance = sqrt(pow((x2 - x1),2) + pow((y2 - y1),2));
-    if (distance <= range) {
-        cout << "Alien has been attacked by Zombie " << i+1 << " !" <<endl;
-        cout << attack << " damage taken." << endl;
-        alien.alienHealth-=attack;
-    }
-}
-
 void Zombie::Location(int x, int y,std::vector<Zombie>&zombieList, int i) {
     zombieList[i].zom_dimX = x;
     zombieList[i].zom_dimY = y;   
 }
-
 

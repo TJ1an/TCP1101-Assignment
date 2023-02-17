@@ -216,8 +216,8 @@ void CreateBoard(int rows, int columns, int zombie, Alien &ex_alien, Zombie &ex_
             srand((unsigned) time(NULL));
             ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << endl;
-            zomb.moveZombie(zomb.zombieList, i, rows, columns);
-            //zomb.Attack(zomb.zombieList, alien, i);
+            zomb.moveZombie(zomb.zombieList, i, rows, columns); // Move
+            zombieAttack(zomb.zombieList, alien, i); // Attack (if possible)
             cout << endl;
             myPause();
         }
