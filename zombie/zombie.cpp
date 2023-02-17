@@ -48,56 +48,6 @@ void moveRight(int x, int y, int i) {
     cout << "Zombie " << i+1 << " moved RIGHT." << endl;
 }
 
-/////////////////////////////////////////////////////////////////////////////////////////////////
-//PAUSE (Shelved)                                                                              //                 
-//bool isStuck(int x, int y,bool blankUp, bool blankDown, bool blankLeft, bool blankRight) {   //                                                                                                                                         
-//    // Existing boolean to verify presence                                                   //                                                                                         
-//    bool gotUp = false;                                                                      //                                                                     
-//    bool gotDown = false;                                                                    //                                                                     
-//    bool gotLeft = false;                                                                    //                                                                     
-//    bool gotRight = false;                                                                   //                                                                         
-//    // Checks surrounding (if got no blank)                                                  //                                                                                         
-//    if (!(blankUp)) {                                                                        //                                                                 
-//        gotUp = gotEntityObject(x-1,y);                                                      //                                                                                     
-//    }                                                                                        //                                                 
-//    if (!(blankDown)) {                                                                      //                                                                     
-//        gotDown = gotEntityObject(x+1,y);                                                    //                                                                                     
-//    }                                                                                        //                                                 
-//    if (!(blankLeft)) {                                                                      //                                                                     
-//        gotLeft = gotEntityObject(x,y-1);                                                    //                                                                                     
-//    }                                                                                        //                                                 
-//    if (!(blankRight)) {                                                                     //                                                                     
-//        gotRight = gotEntityObject(x,y+1);                                                   //                                                                                         
-//    }                                                                                        //                                                 
-//    // Delivers verdict                                                                      //                                                                     
-//    // 0 blank                                                                               //                                                             
-//    if (gotUp && gotDown && gotLeft && gotRight) {                                           //                                                                                                 
-//        return true;                                                                         //                                                                 
-//    // 1 blank                                                                               //                                                             
-//    } else if (gotUp && gotDown && gotLeft && blankRight) {                                  //                                                                                                         
-//        return true;                                                                         //                                                                 
-//    } else if (gotUp && gotDown && blankLeft && gotRight){                                   //                                                                                                         
-//        return true;                                                                         //                                                                 
-//    } else if (gotUp && blankDown && gotLeft && gotRight){                                   //                                                                                                         
-//        return true;                                                                         //                                                                 
-//    } else if (blankUp && gotDown && gotLeft && gotRight){                                   //                                                                                                         
-//        return true;                                                                         //                                                                 
-//    // 2 blank                                                                               //                                                             
-//    } else if (gotUp && blankDown && blankLeft && gotRight){                                 //                                                                                                         
-//        return true;                                                                         //                                                                 
-//    } else if (gotUp && blankDown && gotLeft && blankRight){                                 //                                                                                                         
-//        return true;                                                                         //                                                                 
-//    } else if (blankUp && gotDown && blankLeft && gotRight){                                 //                                                                                                         
-//        return true;                                                                         //                                                                 
-//    } else if (blankUp && gotDown && gotLeft && blankRight){                                 //                                                                                                         
-//        return true;                                                                         //                                                                 
-//    //  stuck                                                                                //                                                         
-//    } else {                                                                                 //                                                         
-//        return false;                                                                        //                                                                 
-//    }                                                                                        //                                                 
-//}                                                                                            //                                             
-/////////////////////////////////////////////////////////////////////////////////////////////////                                             
-
 bool Blank(int x, int y, int rows, int columns) {
     // Verifies if position is valid (within the board)
     bool empty;
@@ -235,23 +185,6 @@ void Zombie::moveZombie(std::vector<Zombie>&zombieList,int i,int rows, int colum
         }
     }
 }
-
-//void Zombie::Attack(std::vector<Zombie>zombieList,int i,int rows, int columns) {
-//    // Notes zombie range and position
-//    int range = zombieList[i].zombieRange;
-//    int x = zombieList[i].zom_dimX;
-//    int y = zombieList[i].zom_dimY; 
-//    // Alien scanning algorithm
-//    for (int i = 1; i <= range; i++){
-//        for (int j = 1; i <= range; j++) {
-//            if (board[x+i][y] == 'A' || board[x-i][y] == 'A' ||
-//                board[x][y+j] == 'A' || board[x][y-j] == 'A' ||
-//                board[x+i][y+j] == 'A' || board[x-i][y-j] == 'A' ||
-//                board[x+i][y-j] == 'A' || board[x-i][y+j] == 'A' )
-//        }
-//    }
-//    
-//}
 
 void Zombie::Location(int x, int y,std::vector<Zombie>&zombieList, int i) {
     zombieList[i].zom_dimX = x;

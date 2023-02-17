@@ -1,5 +1,6 @@
 #include "alien/alien.h"
 #include "zombie/zombie.h"
+#include "interaction/inter.h"
 #include <vector>
 #include <cstdlib>
 #include <iostream>
@@ -214,7 +215,8 @@ void CreateBoard(int rows, int columns, int zombie, Alien &ex_alien, Zombie &ex_
             srand((unsigned) time(NULL));
             ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << endl;
-            zomb.moveZombie(zomb.zombieList, i, rows, columns);
+            zombieAttack(zomb.zombieList, alien, i); // Attack (if possible)
+            zomb.moveZombie(zomb.zombieList, i, rows, columns); // Move
             cout << endl;
             myPause();
         }
