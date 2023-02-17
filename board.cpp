@@ -1,6 +1,5 @@
 #include "alien/alien.h"
 #include "zombie/zombie.h"
-#include "interaction/inter.h"
 #include <vector>
 #include <cstdlib>
 #include <iostream>
@@ -155,9 +154,8 @@ void CreateBoard(int rows, int columns, int zombie, Alien &ex_alien, Zombie &ex_
 
         zomb.set = true;
         zomb.GenerateZombie(zombie);
-    
-    // Spawns zombies based on input
-        while(zombieSpawns < zombie) {  
+
+        while(zombieSpawns < zombie) {  // Spawns zombies based on input
             //All possible zombie entities
             char entities[] = {'1','2','3','4','5','6','7','8','9'}; 
             int x = rand() % rows; // Randomizes x,y dimensions
@@ -217,11 +215,9 @@ void CreateBoard(int rows, int columns, int zombie, Alien &ex_alien, Zombie &ex_
             ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << endl;
             zomb.moveZombie(zomb.zombieList, i, rows, columns);
-            //zomb.Attack(zomb.zombieList, alien, i);
             cout << endl;
             myPause();
         }
-        // Return to alien turn
         ClearScreen();
         ShowGameBoard(rows, columns, zombie, zomb, alien);
         changeTrail(x, y, rows, columns);
