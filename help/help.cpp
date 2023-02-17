@@ -2,7 +2,31 @@
 #include <vector>
 #include <cstdlib>
 #include <iostream>
+#include "../board.h"
+#include "./help.h"
 using namespace std;
+
+void helpMenu() {
+    helpPage1();
+    cout << endl;
+    Pause();
+    ClearScreen();
+    helpPage2();
+    cout << endl;
+    Pause();
+    ClearScreen();
+    helpPage3();
+    cout << endl;
+    Pause();
+    ClearScreen();
+    helpPage4();
+    cout << endl;
+    Pause();
+    ClearScreen();
+    helpPage5();
+    cout << endl;
+    Pause();
+}
 
 void helpPage1()
 {

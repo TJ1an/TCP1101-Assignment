@@ -133,11 +133,29 @@ void Zombie::GenerateZombie(int count) {
 }
 
 void Zombie::readAndDisplay(std::vector<Zombie>zombieList) {
-    for (int i = 0; i < size(zombieList); i++)
-    cout << "Zombie " << i+1 
-    << " HP: " << zombieList[i].zombieHealth
-    << " Atk: " << zombieList[i].zombieAttack
-    << " Range: " << zombieList[i].zombieRange << endl;
+    for (int i = 0; i < size(zombieList); i++) {
+        cout << " Zombie " << i+1 
+        << " HP: " << zombieList[i].zombieHealth
+        << " Atk: " << zombieList[i].zombieAttack
+        << " Range: " << zombieList[i].zombieRange;
+
+        // To make sure it looks nice and not shifted
+        if ((zombieList[i].zom_dimX) + 1 < 10) {
+            cout << " X:  " << (zombieList[i].zom_dimX) + 1;
+        }
+        else {
+            cout << " X: " << (zombieList[i].zom_dimX) + 1;
+        }
+
+        if (zombieList[i].zom_dimY < 10) {
+            cout << " Y:  " << (zombieList[i].zom_dimY) + 1;
+        }
+        else {
+            cout << " Y: " << (zombieList[i].zom_dimY) + 1;
+        }
+
+        cout << endl;
+    }
 }
 
 void Zombie::moveZombie(std::vector<Zombie>&zombieList,int i,int rows, int columns) {

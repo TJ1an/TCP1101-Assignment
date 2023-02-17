@@ -8,6 +8,7 @@ int alienhp();
 class Alien {
 public:
     // Variables
+    bool set;
     int alienHealth;
     int alienAttack;
     int ali_dimX, ali_dimY;
@@ -23,7 +24,7 @@ public:
 };
 
 void displayAlien(Alien &alien);
-void MoveAlien(Alien &alien,int &x, int &y, int rows, int columns, int zombies, Zombie zomb);
+void MoveAlien(Alien &alien,int &x, int &y, int rows, int columns, int zombies, Zombie zomb, std::vector<std::vector<char>> &ex_board);
 void moveleft(Alien &alien,int &x, int &y, int rows, int columns, int zombies, Zombie zomb);
 void moveright(Alien &alien,int &x, int &y, int rows, int columns, int zombies, Zombie zomb);
 void moveup(Alien &alien,int &x, int &y, int rows, int columns, int zombies, Zombie zomb);

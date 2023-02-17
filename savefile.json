@@ -1,0 +1,56 @@
+{
+    "alien": {
+        "ali_dimX": 4, 
+        "ali_dimY": 4, 
+        "alienAttack": 40, 
+        "alienHealth": 250, 
+        "set": true
+    }, 
+    "board": [
+        [62, 32, 118, 32, 62, 32, 62, 104, 60, 32, 60, 118, 32], 
+        [114, 32, 32, 32, 32, 60, 62, 32, 32, 104, 32, 32, 32], 
+        [32, 32, 51, 118, 50, 104, 62, 32, 104, 32, 49, 32, 32], 
+        [32, 32, 62, 32, 60, 32, 118, 94, 32, 104, 32, 104, 60], 
+        [104, 32, 118, 94, 65, 94, 104, 94, 32, 32, 32, 32, 94]
+    ], 
+    "columns": 13, 
+    "rows": 5, 
+    "zomb": {
+        "set": true, 
+        "zom_dimX": 0, 
+        "zom_dimY": 0, 
+        "zombieAttack": -73098084, 
+        "zombieHealth": 0, 
+        "zombieList": [
+            {
+                "set": true, 
+                "zom_dimX": 2, 
+                "zom_dimY": 10, 
+                "zombieAttack": 25, 
+                "zombieHealth": 150, 
+                "zombieList": [], 
+                "zombieRange": 1
+            }, 
+            {
+                "set": true, 
+                "zom_dimX": 2, 
+                "zom_dimY": 4, 
+                "zombieAttack": 15, 
+                "zombieHealth": 100, 
+                "zombieList": [], 
+                "zombieRange": 3
+            }, 
+            {
+                "set": true, 
+                "zom_dimX": 2, 
+                "zom_dimY": 2, 
+                "zombieAttack": 10, 
+                "zombieHealth": 100, 
+                "zombieList": [], 
+                "zombieRange": 1
+            }
+        ], 
+        "zombieRange": 32760
+    }, 
+    "zombies_count": 3
+}

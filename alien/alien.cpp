@@ -97,6 +97,7 @@ void moveup(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zom
             cout << " " << endl;
             cout << "You hit a rock!" << endl;
             cout << " " << endl;
+            myPause();
             rockrandomobject(alien, x, y, rows, columns, zombie, zomb);
             cout << " " << endl;
             break;
@@ -606,15 +607,29 @@ void displayAlien(Alien &alien)
 {
     cout << "Alien Health: " << alien.alienHealth;
     cout << " Alien Attack: " << alien.alienAttack;
-    cout << " X: " << (alien.ali_dimX)+1;
-    cout << " Y: " << (alien.ali_dimY)+1 <<endl;
+
+    // To make sure the alien stats are not shifted off (looks nicer)
+    if ((alien.ali_dimX)+1 < 10) {
+        cout << " X:  " << (alien.ali_dimX)+1;
+    }
+    else {
+        cout << " X: " << (alien.ali_dimX)+1;
+    }
+
+    if ((alien.ali_dimY)+1 < 10) {
+        cout << " Y:  " << (alien.ali_dimY)+1 << endl;
+    }
+    else {
+        cout << " Y: " << (alien.ali_dimY)+1 << endl;
+    }
+    
 }
-void MoveAlien(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zombie zomb)
+void MoveAlien(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zombie zomb, vector<vector<char>> &board)
 {
     string direction;
     cout << "- Input a direction you want to move the alien by using \"up\", \"down\", \"left\", \"right\"" << endl;
     cout << "- Change an arrow's direction using the command \"arrow\"" << endl;
-    cout << "- For an brief tutorial, use the \"help\" command" << endl;
+    cout << "- For a brief tutorial, use the \"help\" command" << endl;
     cout << "=> ";
     cin >> direction;
 
@@ -678,7 +693,7 @@ void MoveAlien(Alien &alien, int &x, int &y, int rows, int columns, int zombie, 
         myPause();
         ClearScreen();
         ShowGameBoard(rows, columns, zombie, zomb, alien);
-        MoveAlien(alien, x, y, rows, columns, zombie, zomb);
+        MoveAlien(alien, x, y, rows, columns, zombie, zomb, board);
     }
     else if (direction == "arrow")
     {
@@ -687,7 +702,7 @@ void MoveAlien(Alien &alien, int &x, int &y, int rows, int columns, int zombie, 
     }
     else if (direction == "quit")
     {   
-        savePrompt();
+        savePrompt(rows, columns, zombie, alien, zomb, board);
     }
     else
     {
@@ -697,6 +712,6 @@ void MoveAlien(Alien &alien, int &x, int &y, int rows, int columns, int zombie, 
         myPause();
         ClearScreen();
         ShowGameBoard(rows, columns, zombie, zomb, alien);
-        MoveAlien(alien, x, y, rows, columns, zombie, zomb);
+        MoveAlien(alien, x, y, rows, columns, zombie, zomb, board);
     }
 }

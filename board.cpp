@@ -45,31 +45,30 @@ void changeTrail(int &x, int &y, int rows, int columns)
 
 void ShowGameBoard(int rows, int columns, int zombie, Zombie zomb, Alien alien)
 {
-    //For when the board is bigger than 9 columns, the ".: Alien Vs Zombie :." text tries to center itself
-    if (columns > 9)
+    //For ".: Alien Vs Zombie :." text tries to center itself
+    for (int spaces = 0; spaces <= (((columns + 1) + ((columns - 1) * 3)) / 2) - 10; ++spaces)
     {
-        for (int spaces = 0; spaces < columns - 10 ; spaces++)
-        {
-            cout << " ";
-        }
+        cout << " ";
     }
-    cout << ".: Alien Vs Zombie :." << endl;
+    cout << " .: Alien Vs Zombie :." << endl;
+
     for (int row = 0; row < rows; ++row)
     {
         // Displaying the top border
+        cout << " ";
         for (int col = 0; col < columns; ++col)
         {
-            cout << "+-";
+            cout << "+---";
         }
         cout << "+";
         cout << endl;
         // Displaying content (including their LEFT and RIGHT borders)
         for (int col = 0; col < columns; ++col)
         {
-            cout << "|";
+            cout << " | ";
             cout << board[row][col];
         }
-        cout << "|";
+        cout << " | ";
 
         // Displaying the row number
         cout << " " << row + 1;
@@ -78,9 +77,10 @@ void ShowGameBoard(int rows, int columns, int zombie, Zombie zomb, Alien alien)
         
     }
     // Displaying the final bottom border
+    cout << " ";
     for (int col = 0; col < columns; ++col)
     {
-        cout << "+-";
+        cout << "+---";
     }
 
     // Displaying the final "+" edge for the board
@@ -88,101 +88,123 @@ void ShowGameBoard(int rows, int columns, int zombie, Zombie zomb, Alien alien)
     cout << endl;
 
     // Displaying the column number
-    cout << " ";
-    
-    // First row code
+        // First row code
+    cout << "  ";
     for (int columnNumber1 = 0; columnNumber1 < columns; ++columnNumber1)
     {
-        cout << (columnNumber1 + 1) / 10 << " ";
+        cout << " " << (columnNumber1 + 1) / 10 << "  ";
     }
     cout << endl;
 
-    // Second row code
+        // Second row code
+    cout << "  ";
     for (int columnNumber2 = 1; columnNumber2 <= columns; ++columnNumber2) 
     {
         if (columnNumber2 < 10){
-        cout << " " << columnNumber2;
+        cout << " " << columnNumber2 << "  ";
         }
 
         else if (columnNumber2 >= 10) {
-            cout << " " << columnNumber2 % 10;
+            cout << " " << columnNumber2 % 10 << "  ";
         }
     }
     cout << endl;
+    cout << endl;
     // Display alien stats
+    cout << " ";
     displayAlien(alien);
+    cout << endl;
     // Generates and displays zombie stats
     zomb.readAndDisplay(zomb.zombieList);
+    cout << endl;
     
 }
 
-void CreateBoard(int rows, int columns, int zombie)
+void CreateBoard(int rows, int columns, int zombie, Alien &ex_alien, Zombie &ex_zomb, vector<vector<char>> &ex_board)
 {
-    srand((unsigned)time(NULL));
-    // List (and probability) of rock and powerup generation
-    // "r" for Rock and "!" for powerup
-    char Obj[] = {'^', 'v', '<', '>', ' ', ' ', ' ', 'h', 'r', ' ',' ',' ',' ',' '};
-    int noOfObj = size(Obj);
-    int zombieSpawns = 0; // Number of zombies spawned
-    int count = 49; // Starts at '1' (for zombie spawning)
-
-    for (int row = 0; row < rows; ++row)
-        for (int col = 0; col < columns; ++col)
-        {
-            // Rock and Powerup randomizer
-            int noObj = rand() % noOfObj;
-            board[row][col] = Obj[noObj];
-        }
+    srand((unsigned)time(NULL)); // Initialise the rng
     //Create Alien
     Alien alien;
-    // Alien stats and location set
+    // Alien location set
     int x = rows/2;
     int y = columns/2;
-    alien.alienStat(alien, rows, columns);
-    alien.coordinates(alien, x, y);
-    // Spawns Alien on board
-    board[rows / 2][columns / 2] = 'A';
-
     // Zombie(s) Object Created into zombieList
     Zombie zomb;
-    zomb.GenerateZombie(zombie);
+    if(!ex_alien.set || !ex_zomb.set || !ex_board.size() || !(ex_board.size() == rows && ex_board[0].size() == columns)) { // No data loaded/Invalid data loaded
+        // List (and probability) of rock and powerup generation
+        // "r" for Rock and "!" for powerup
+        char Obj[] = {'^', 'v', '<', '>', ' ', ' ', ' ', 'h', 'r', ' ',' ',' ',' ',' '};
+        int noOfObj = size(Obj);
+        int zombieSpawns = 0; // Number of zombies spawned
+        int count = 49; // Starts at '1' (for zombie spawning)
 
-    while(zombieSpawns < zombie) {  // Spawns zombies based on input
-        //All possible zombie entities
-        srand((unsigned) time(NULL));
-        char entities[] = {'1','2','3','4','5','6','7','8','9'}; 
-        int x = rand() % rows; // Randomizes x,y dimensions
-        int y = rand() % columns;
-        //Iterates through entity array for possible entities
-        bool gotEntity = false;
-        for (int i = 0; i < sizeof(entities); i++) { 
-            if (board[x][y] == entities[i]){
-                gotEntity = true;
-                break;
+        for (int row = 0; row < rows; ++row)
+            for (int col = 0; col < columns; ++col)
+            {
+                // Rock and Powerup randomizer
+                int noObj = rand() % noOfObj;
+                board[row][col] = Obj[noObj];
             }
-        }
+        // Alien stats set
+        alien.set = true;
+        alien.alienStat(alien, rows, columns);
+        alien.coordinates(alien, x, y);
+        // Spawns Alien on board
+        board[rows / 2][columns / 2] = 'A';
 
-        if ( gotEntity || board[x][y] == 'A'){ //Rerolls x,y dimensions if entities are present in point.
-            x = rand() % rows;
-            y = rand() % columns;
+        zomb.set = true;
+        zomb.GenerateZombie(zombie);
+
+        while(zombieSpawns < zombie) {  // Spawns zombies based on input
+            //All possible zombie entities
+            char entities[] = {'1','2','3','4','5','6','7','8','9'}; 
+            int x = rand() % rows; // Randomizes x,y dimensions
+            int y = rand() % columns;
+            //Iterates through entity array for possible entities
+            bool gotEntity = false;
+            for (int i = 0; i < sizeof(entities); i++) { 
+                if (board[x][y] == entities[i]){
+                    gotEntity = true;
+                    break;
+                }
+            }
+
+            if ( gotEntity || board[x][y] == 'A'){ //Rerolls x,y dimensions if entities are present in point.
+                x = rand() % rows;
+                y = rand() % columns;
+            }
+            //Executes commands if no entities on point.
+            else { 
+                // Places zombie on board based on randomizer
+                board[x][y] = char(count); 
+
+                // Saves location and fully creates zombie entity 
+                zomb.Location(x,y,zomb.zombieList,zombieSpawns);
+                zomb.Stats(zomb.zombieList,zombieSpawns);
+
+                // Increases key variables
+                zombieSpawns++;
+                count++;
+            }    
         }
-        //Executes commands if no entities on point.
-        else { 
-            // Places zombie on board based on randomizer
-            board [x][y] = char(count); 
-            // Saves location and fully creates zombie entity 
-            zomb.Location(x,y,zomb.zombieList,zombieSpawns);
-            zomb.Stats(zomb.zombieList,zombieSpawns);
-            // Increases key variables
-            zombieSpawns++;
-            count++;
-        }    
+        // Pass the generated data to the menu loop for saving purposes
+        ex_alien = alien;
+        ex_zomb = zomb;
+        ex_board = board;
     }
+    else { // Valid data loaded -> restore
+        alien = ex_alien;
+        zomb = ex_zomb;
+        board = ex_board;
+        x = alien.ali_dimX;
+        y = alien.ali_dimY;
+    }
+    
     ShowGameBoard(rows, columns, zombie, zomb, alien);
     // Starts the game
     while(true) {
         // Alien turn
-        MoveAlien(alien, x, y, rows, columns, zombie, zomb);
+        MoveAlien(alien, x, y, rows, columns, zombie, zomb, board);
         alien.coordinates(alien,x,y);
         ShowGameBoard(rows, columns, zombie, zomb, alien);
         myPause();
@@ -208,7 +230,7 @@ void CreateBoard(int rows, int columns, int zombie)
     }
 }
 
-void GameSettings(int &rows, int &columns, int zombie)
+void GameSettings(int &rows, int &columns, int &zombie, Alien &ex_alien, Zombie &ex_zomb, vector<vector<char>> &ex_board)
 {
     char yesorno;
     cout << "Default game settings  \n"<< endl;
@@ -217,7 +239,7 @@ void GameSettings(int &rows, int &columns, int zombie)
     cout << "Board columns : " << columns << endl;
     cout << "Zombie count : " << zombie << endl;
     cout << " " << endl;
-    cout << "Do you want to change the game settings? (y/n) => ";
+    cout << "Do you want to change the game settings? (y/n, input \"n\" if you loaded data) => ";
     cin >> yesorno;
 
     if (yesorno == 'y')
@@ -263,7 +285,7 @@ void GameSettings(int &rows, int &columns, int zombie)
         cout << "\nSettings Updated" << endl;
         Pause();
         ClearScreen();
-        CreateBoard(rows, columns, zombie);
+        CreateBoard(rows, columns, zombie, ex_alien, ex_zomb, ex_board);
         ShowGameBoard(rows, columns, zombie, zomb, alien);
         
     }
@@ -280,8 +302,8 @@ void GameSettings(int &rows, int &columns, int zombie)
             board[i].resize(columns);
         }
         ClearScreen();
-        CreateBoard(5, 13, 3);
-        ShowGameBoard(5, 13, 3, zomb, alien);
+        CreateBoard(rows, columns, zombie, ex_alien, ex_zomb, ex_board);
+        ShowGameBoard(rows, columns, zombie, zomb, alien);
     }
     else
     {

@@ -1,0 +1,1 @@
+g++ -I./lib -I./lib/jsoncons -I./lib/jsoncons/include alien/alien.cpp main.cpp board.cpp zombie/zombie.cpp help/help.cpp saveload/saveload.cpp -o game.exe -static-libgcc -static-libstdc++ -O3

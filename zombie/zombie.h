@@ -12,6 +12,7 @@ public:
     void Location(int x, int y,std::vector<Zombie>&zombieList, int i);
     
     // Variables
+    bool set;
     int zombieHealth;
     int zombieAttack;
     int zombieRange;

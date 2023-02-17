@@ -3,6 +3,7 @@
 
 
 
-void saveStats();
-void savePrompt();
+void loadStats(int &rows, int &columns, int &zombie, Alien &ex_alien, Zombie &ex_zomb, std::vector<std::vector<char>> &ex_board);
+void saveStats(int rows, int columns, int zombies, Alien alien, Zombie zomb, std::vector<std::vector<char>> &ex_board);
+void savePrompt(int rows, int columns, int zombies, Alien alien, Zombie zomb, std::vector<std::vector<char>> &ex_board);
 #endif
