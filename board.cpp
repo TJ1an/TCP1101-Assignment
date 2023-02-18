@@ -44,6 +44,29 @@ void changeTrail(int &x, int &y, int rows, int columns)
     }
 }
 
+bool ifWin(Zombie zomb) {
+    int kill = 0;
+    for (int i = 0; i < zomb.zombieList.size(); i++) {
+        if (zomb.zombieList[i].zombieHealth <= 0) {
+            kill++;
+        }
+    }
+    if (kill == zomb.zombieList.size()) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+void autoKill(Zombie &zomb) {
+    for (int i = 0; i < zomb.zombieList.size(); i++) {
+        zomb.zombieList[i].zombieHealth = 0;
+    }
+    cout << endl;
+    cout << "All zombies have been killed" << endl;
+    myPause();
+}
+
 void ShowGameBoard(int rows, int columns, int zombie, Zombie &zomb, Alien &alien)
 {
     //For ".: Alien Vs Zombie :." text tries to center itself
@@ -203,23 +226,50 @@ void CreateBoard(int rows, int columns, int zombie, Alien &ex_alien, Zombie &ex_
     
     ShowGameBoard(rows, columns, zombie, zomb, alien);
     // Starts the game
+    bool alive = true;
     while(true) {
         // Alien turn
         MoveAlien(alien, x, y, rows, columns, zombie, zomb, board);
         alien.coordinates(alien,x,y);
         ShowGameBoard(rows, columns, zombie, zomb, alien);
         myPause();
+
+        // Auto kill zombies 
+
+        //autoKill(zomb);
+
+        // Check if win
+        bool win = ifWin(zomb);
+        if (win) {
+            cout << "YOU WIN" << endl;
+            myPause();
+            break;
+        } 
         // Zombie Turn
         for (int i = 0; i < size(zomb.zombieList); i++) {
             ClearScreen();
             srand((unsigned) time(NULL));
             ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << endl;
-            zombieAttack(zomb.zombieList, alien, i); // Attack (if possible)
-            zomb.moveZombie(zomb.zombieList, i, rows, columns); // Move
+            // If zombie alive
+            if (zomb.zombieList[i].zombieHealth > 0) { 
+                zombieAttack(zomb.zombieList, alien, i); // Attack
+                if (alien.alienHealth <= 0) { // Check if Alien dead
+                    alive = false;
+                    break;
+                } 
+                zomb.moveZombie(zomb.zombieList, i, rows, columns); // Move
+            }
             cout << endl;
             myPause();
         }
+        if (!alive) { // Defeat screen
+            cout << "YOU ARE DEAD" << endl;
+            myPause();
+            break;
+        }
+
+        // Reset trail into objects
         ClearScreen();
         ShowGameBoard(rows, columns, zombie, zomb, alien);
         changeTrail(x, y, rows, columns);

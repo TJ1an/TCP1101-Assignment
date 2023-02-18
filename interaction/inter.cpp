@@ -47,6 +47,6 @@ void alienAttack(std::vector<Zombie>&zombieList,Alien &alien)
     }
     zombieList[closestIndex].zombieHealth = zombieList[closestIndex].zombieHealth - alien.alienAttack;
     cout << " " << endl;
-    cout << "Alien attacks zombie "<< closestIndex + 1<< endl;
+    cout << "Alien attacks Zombie "<< closestIndex + 1 << " for " << alien.alienAttack << " damage." endl;
     cout << " " << endl;
 }
