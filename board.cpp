@@ -44,7 +44,7 @@ void changeTrail(int &x, int &y, int rows, int columns)
     }
 }
 
-void ShowGameBoard(int rows, int columns, int zombie, Zombie zomb, Alien alien)
+void ShowGameBoard(int rows, int columns, int zombie, Zombie &zomb, Alien &alien)
 {
     //For ".: Alien Vs Zombie :." text tries to center itself
     for (int spaces = 0; spaces <= (((columns + 1) + ((columns - 1) * 3)) / 2) - 10; ++spaces)

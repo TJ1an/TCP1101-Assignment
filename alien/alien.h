@@ -24,13 +24,13 @@ public:
 };
 
 void displayAlien(Alien &alien);
-void MoveAlien(Alien &alien,int &x, int &y, int rows, int columns, int zombies, Zombie zomb, std::vector<std::vector<char>> &ex_board);
-void moveleft(Alien &alien,int &x, int &y, int rows, int columns, int zombies, Zombie zomb);
-void moveright(Alien &alien,int &x, int &y, int rows, int columns, int zombies, Zombie zomb);
-void moveup(Alien &alien,int &x, int &y, int rows, int columns, int zombies, Zombie zomb);
-void movedown(Alien &alien,int &x, int &y, int rows, int columns, int zombies, Zombie zomb);
-void rockrandomobject(Alien &alien,int &x, int &y, int rows, int columns, int zombies, Zombie zomb);
-void changeArrow(Alien &alien,int &x, int &y, int rows, int columns, int zombies, Zombie zomb);
+void MoveAlien(Alien &alien,int &x, int &y, int rows, int columns, int zombies, Zombie &zomb, std::vector<std::vector<char>> &ex_board);
+void moveleft(Alien &alien,int &x, int &y, int rows, int columns, int zombies, Zombie &zomb);
+void moveright(Alien &alien,int &x, int &y, int rows, int columns, int zombies, Zombie &zomb);
+void moveup(Alien &alien,int &x, int &y, int rows, int columns, int zombies, Zombie &zomb);
+void movedown(Alien &alien,int &x, int &y, int rows, int columns, int zombies, Zombie &zomb);
+void rockrandomobject(Alien &alien,int &x, int &y, int rows, int columns, int zombies, Zombie &zomb);
+void changeArrow(Alien &alien,int &x, int &y, int rows, int columns, int zombies, Zombie &zomb);
 void myPause();
 void displayAlien();
 

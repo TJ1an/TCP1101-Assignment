@@ -30,7 +30,7 @@ int alienhp()
     return alienhealth;
 }
 
-void changeArrow(Alien &alien, int &x, int &y, int rows, int columns, int zombies, Zombie zomb) // prompts the user to enter row and column values to change arrow direction
+void changeArrow(Alien &alien, int &x, int &y, int rows, int columns, int zombies, Zombie &zomb) // prompts the user to enter row and column values to change arrow direction
 {
     int numrows;
     int numcolumns;
@@ -55,7 +55,7 @@ void changeArrow(Alien &alien, int &x, int &y, int rows, int columns, int zombie
     }
 }
 
-void moveup(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zombie zomb)
+void moveup(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zombie &zomb)
 {
     while (true)
     {
@@ -197,7 +197,7 @@ void moveup(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zom
     }
 }
 
-void movedown(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zombie zomb)
+void movedown(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zombie &zomb)
 {
     while (true)
     {
@@ -338,7 +338,7 @@ void movedown(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Z
         }
     }
 }
-void moveleft(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zombie zomb)
+void moveleft(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zombie &zomb)
 {
     while (true)
     {
@@ -400,6 +400,9 @@ void moveleft(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Z
             cout << " " << endl;
             moveleft(alien, x, y, rows, columns, zombie, zomb);
             myPause();
+        }
+        else if(y - 1 >= 0 && board[x][y - 1] == '>')
+        {
             board[x][y] = '.';
             y--;
             board[x][y] = 'A';
@@ -475,7 +478,7 @@ void moveleft(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Z
         }
     }
 }
-void moveright(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zombie zomb)
+void moveright(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zombie &zomb)
 {
     while (true)
     {
@@ -617,7 +620,7 @@ void moveright(Alien &alien, int &x, int &y, int rows, int columns, int zombie, 
     }
 }
 
-void rockrandomobject(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zombie zomb)
+void rockrandomobject(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zombie &zomb)
 {
     srand((unsigned)time(NULL));
     char objects[] = {'h', '<', '>', '^', 'v'};
@@ -685,7 +688,7 @@ void displayAlien(Alien &alien)
     }
     
 }
-void MoveAlien(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zombie zomb, vector<vector<char>> &board)
+void MoveAlien(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zombie &zomb, vector<vector<char>> &board)
 {
     string direction;
     cout << "- Input a direction you want to move the alien by using \"up\", \"down\", \"left\", \"right\"" << endl;
