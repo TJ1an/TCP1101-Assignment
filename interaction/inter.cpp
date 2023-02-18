@@ -28,7 +28,7 @@ void zombieAttack(std::vector<Zombie>zombieList,Alien &alien,int i) {
     }
 }
 
-void alienAttack(std::vector<Zombie>&zombieList,Alien &alien)
+void alienPod(std::vector<Zombie>&zombieList,Alien &alien)
 {
     int x1 = alien.ali_dimX;
     int y1 = alien.ali_dimY;
@@ -51,9 +51,17 @@ void alienAttack(std::vector<Zombie>&zombieList,Alien &alien)
     cout << " " << endl;
     cout << "Alien attacks Zombie "<< closestIndex + 1 << " for 10 damage." << endl;
     cout << " " << endl;
+    // If zombie killed
+    if (zombieList[closestIndex].zombieHealth <= 0) {
+        cout << "Alien killed Zombie " << closestIndex + 1 << endl;
+        // Removes zombie from board
+        zombieList[closestIndex].zombieHealth = 0;
+        zombieList[closestIndex].zom_dimX = 10000;
+        zombieList[closestIndex].zom_dimY = 10000;
+    }
 }
 
-void alienAttack2(std::vector<Zombie>&zombieList,Alien &alien)
+void alienAttack(std::vector<Zombie>&zombieList,Alien &alien, bool &kill)
 {
     int x1 = alien.ali_dimX;
     int y1 = alien.ali_dimY;
@@ -70,10 +78,22 @@ void alienAttack2(std::vector<Zombie>&zombieList,Alien &alien)
             closestIndex = i;
         }
     }
+
     zombieList[closestIndex].zombieHealth = zombieList[closestIndex].zombieHealth - alien.alienAttack;
     cout << " " << endl;
     cout << "Alien encounters zombie! " << endl;
     cout << " " << endl;
-    cout << "Alien attacks zombie "<< closestIndex + 1<< " for " << alien.alienAttack << " damage!"<< endl;
+    cout << "Alien attacks zombie "<< closestIndex + 1 << " for " << alien.alienAttack << " damage!"<< endl;
     cout << " " << endl;
+    // Resets attack
+    alien.alienAttack = 0;
+    // If zombie killed
+    if (zombieList[closestIndex].zombieHealth <= 0) {
+        cout << "Alien killed Zombie " << closestIndex + 1 << endl;
+        // Removes zombie from board
+        zombieList[closestIndex].zombieHealth = 0;
+        zombieList[closestIndex].zom_dimX = 10000;
+        zombieList[closestIndex].zom_dimY = 10000;
+        kill = true;
+    }
 }

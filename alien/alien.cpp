@@ -59,6 +59,7 @@ void moveup(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zom
 {
     while (true)
     {
+        bool kill = false;
         if (x - 1 >= 0 && board[x - 1][y] == ' ') // Empty path
         {
             board[x][y] = '.';
@@ -175,7 +176,7 @@ void moveup(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zom
             board[x][y] = '.';
             x--;
             board[x][y] = 'A';
-            alienAttack(zomb.zombieList, alien);
+            alienPod(zomb.zombieList, alien);
             myPause();
             ClearScreen();
             ShowGameBoard(rows, columns, zombie, zomb, alien);
@@ -188,7 +189,11 @@ void moveup(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zom
         {
             board[x][y] = 'A';
             alien.coordinates(alien,x,y);
-            alienAttack2(zomb.zombieList, alien);
+            alienAttack(zomb.zombieList, alien, kill);
+            if (kill) {
+                board[x][y] = '.';
+                board[x-1][y] = 'A';
+            }
             myPause();
             ClearScreen();
             ShowGameBoard(rows, columns, zombie, zomb, alien);
@@ -214,6 +219,7 @@ void movedown(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Z
 {
     while (true)
     {
+        bool kill = false;
         if (x + 1 < rows && board[x + 1][y] == ' ')
         {
             board[x][y] = '.';
@@ -330,7 +336,7 @@ void movedown(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Z
             board[x][y] = '.';
             x++;
             board[x][y] = 'A';
-            alienAttack(zomb.zombieList, alien);
+            alienPod(zomb.zombieList, alien);
             myPause();
             ClearScreen();
             ShowGameBoard(rows, columns, zombie, zomb, alien);
@@ -343,7 +349,11 @@ void movedown(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Z
         {
             board[x][y] = 'A';
             alien.coordinates(alien,x,y);
-            alienAttack2(zomb.zombieList, alien);
+            alienAttack(zomb.zombieList, alien, kill);
+            if (kill) {
+                board[x][y] = '.';
+                board[x+1][y] = 'A';
+            }
             myPause();
             ClearScreen();
             ShowGameBoard(rows, columns, zombie, zomb, alien);
@@ -368,6 +378,7 @@ void moveleft(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Z
 {
     while (true)
     {
+        bool kill = false;
         if (y - 1 >= 0 && board[x][y - 1] == ' ')
         {
             board[x][y] = '.';
@@ -483,7 +494,7 @@ void moveleft(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Z
             board[x][y] = '.';
             y--;
             board[x][y] = 'A';
-            alienAttack(zomb.zombieList, alien);
+            alienPod(zomb.zombieList, alien);
             myPause();
             ClearScreen();
             ShowGameBoard(rows, columns, zombie, zomb, alien);
@@ -496,7 +507,11 @@ void moveleft(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Z
         {
             board[x][y] = 'A';
             alien.coordinates(alien,x,y);
-            alienAttack2(zomb.zombieList, alien);
+            alienAttack(zomb.zombieList, alien, kill);
+            if (kill) {
+                board[x][y] = '.';
+                board[x][y-1] = 'A';
+            }
             myPause();
             ClearScreen();
             ShowGameBoard(rows, columns, zombie, zomb, alien);
@@ -521,6 +536,7 @@ void moveright(Alien &alien, int &x, int &y, int rows, int columns, int zombie, 
 {
     while (true)
     {
+        bool kill = false;
         if (y + 1 < columns && board[x][y + 1] == ' ')
         {
             board[x][y] = '.';
@@ -637,7 +653,7 @@ void moveright(Alien &alien, int &x, int &y, int rows, int columns, int zombie, 
             board[x][y] = '.';
             y++;
             board[x][y] = 'A';
-            alienAttack(zomb.zombieList, alien);
+            alienPod(zomb.zombieList, alien);
             myPause();
             ClearScreen();
             ShowGameBoard(rows, columns, zombie, zomb, alien);
@@ -649,7 +665,11 @@ void moveright(Alien &alien, int &x, int &y, int rows, int columns, int zombie, 
         else if (y + 1 < columns && (board[x][y + 1] == '1' || board[x][y + 1] == '2' || board[x][y + 1] == '3' || board[x][y + 1] == '4' || board[x][y + 1] == '5' || board[x][y + 1] == '6' || board[x][y + 1] == '7' || board[x][y + 1] == '8' || board[x][y + 1] == '9')) // pod
         {
             board[x][y] = 'A';
-            alienAttack2(zomb.zombieList, alien);
+            alienAttack(zomb.zombieList, alien, kill);
+            if (kill) {
+                board[x][y] = '.';
+                board[x][y+1] = 'A';
+            }
             myPause();
             ClearScreen();
             ShowGameBoard(rows, columns, zombie, zomb, alien);

@@ -20,7 +20,7 @@ public:
     std::vector<Zombie>zombieList;  // List of zombies
 };
 
-bool gotEntityObject(int x,int y);
+bool gotEntityObject(int x,int y,std::vector<Zombie> zombieList);
 void moveUp(int x, int y, int i);
 void moveDown(int x, int y, int i);
 void moveLeft(int x, int y, int i);
