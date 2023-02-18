@@ -27,7 +27,7 @@ int main()
 }
 
 void menuLoop() {
-    double menuSelection = 0;
+    char menuSelection = '0';
     int kRows = 5;
     int kColumns = 13;
     int kZombie = 3;
@@ -51,22 +51,22 @@ void menuLoop() {
         cout << "=> ";
         cin >> menuSelection;
 
-        if (menuSelection == 1)
+        if (menuSelection == '1')
         {
             ClearScreen();
             GameSettings(kRows, kColumns, kZombie, kAlien, kZomb, kBoard);
         }
-        else if (menuSelection == 2)
+        else if (menuSelection == '2')
         {
             ClearScreen();
             loadStats(kRows, kColumns, kZombie, kAlien, kZomb, kBoard);
         }
-        else if (menuSelection == 3)
+        else if (menuSelection == '3')
         {
             ClearScreen();
             helpMenu();
         }
-        else if (menuSelection == 4)
+        else if (menuSelection == '4')
         {
             ClearScreen();
             savePrompt(kRows, kColumns, kZombie, kAlien, kZomb, kBoard);
