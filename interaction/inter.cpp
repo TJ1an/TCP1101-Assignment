@@ -80,14 +80,18 @@ void alienAttack(std::vector<Zombie>&zombieList,Alien &alien, bool &kill)
     }
 
     zombieList[closestIndex].zombieHealth = zombieList[closestIndex].zombieHealth - alien.alienAttack;
+    alien.energy+=25;
     cout << " " << endl;
     cout << "Alien encounters zombie! " << endl;
     cout << " " << endl;
     cout << "Alien attacks zombie "<< closestIndex + 1 << " for " << alien.alienAttack << " damage!"<< endl;
     cout << " " << endl;
+    cout << "25 energy gained." << endl;
     // If zombie killed
     if (zombieList[closestIndex].zombieHealth <= 0) {
         cout << "Alien killed Zombie " << closestIndex + 1 << endl;
+        cout << "Extra 10 energy gained." << endl;
+        alien.energy+=10;
         // Removes zombie from board
         zombieList[closestIndex].zombieHealth = 0;
         zombieList[closestIndex].zom_dimX = 10000;

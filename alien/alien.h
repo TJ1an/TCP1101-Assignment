@@ -12,6 +12,7 @@ public:
     int alienHealth;
     int alienAttack;
     int ali_dimX, ali_dimY;
+    int energy;
 
     void coordinates(Alien &alien, int x, int y) {
         alien.ali_dimX = x;
@@ -19,6 +20,7 @@ public:
     };
     void alienStat(Alien &alien, int rows, int columns ) {
         alien.alienHealth = alienhp();
+        alien.energy = 0;
         alien.alienAttack = 0;
     };
 };

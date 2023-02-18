@@ -214,8 +214,6 @@ void moveup(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zom
             myPause();
             break;
         }
-        // Reset Alien attack after turn
-        alien.alienAttack = 0;
     }
 }
 
@@ -376,8 +374,6 @@ void movedown(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Z
             myPause();
             break;
         }
-        // Reset Alien attack after turn
-        alien.alienAttack = 0;
     }
 }
 void moveleft(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zombie &zomb)
@@ -536,8 +532,6 @@ void moveleft(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Z
             myPause();
             break;
         }
-        // Reset Alien attack after turn
-        alien.alienAttack = 0;
     }
 }
 void moveright(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zombie &zomb)
@@ -696,8 +690,6 @@ void moveright(Alien &alien, int &x, int &y, int rows, int columns, int zombie, 
             myPause();
             break;
         }
-        // Reset Alien attack after turn
-        alien.alienAttack = 0;
     }
 }
 
@@ -756,15 +748,16 @@ void displayAlien(Alien &alien)
 {
     cout << "Alien Health: " << alien.alienHealth;
     cout << " Alien Attack: " << alien.alienAttack;
+    cout << " Energy: " << alien.energy << "/100";
 
     // To make sure the alien stats are not shifted off (looks nicer)
     if ((alien.ali_dimX) + 1 < 10)
     {
-        cout << " X:  " << (alien.ali_dimX) + 1;
+        cout << " X:  " << (alien.ali_dimX) + 1; 
     }
     else
     {
-        cout << " X: " << (alien.ali_dimX) + 1;
+        cout << " X: " << (alien.ali_dimX) + 1; 
     }
 
     if ((alien.ali_dimY) + 1 < 10)
@@ -782,6 +775,12 @@ void MoveAlien(Alien &alien, int &x, int &y, int rows, int columns, int zombie, 
     cout << "- Input a direction you want to move the alien by using \"up\", \"down\", \"left\", \"right\"" << endl;
     cout << "- Change an arrow's direction using the command \"arrow\"" << endl;
     cout << "- For a brief tutorial, use the \"help\" command" << endl;
+    // Ability 
+    if (alien.energy == 100) {
+        cout << "Ability is Ready, use \"ability\" to activate." << endl;
+    } else if (alien.energy > 100) {
+        cout << "Ability is OVERCHARGED, use \"ability\" to activate." << endl;
+    }
     cout << "=> ";
     cin >> direction;
 
@@ -791,6 +790,7 @@ void MoveAlien(Alien &alien, int &x, int &y, int rows, int columns, int zombie, 
         {
             moveup(alien, x, y, rows, columns, zombie, zomb);
             ClearScreen();
+            alien.alienAttack = 0;
             break;
         }
     }
@@ -800,6 +800,7 @@ void MoveAlien(Alien &alien, int &x, int &y, int rows, int columns, int zombie, 
         {
             movedown(alien, x, y, rows, columns, zombie, zomb);
             ClearScreen();
+            alien.alienAttack = 0;
             break;
         }
     }
@@ -809,6 +810,7 @@ void MoveAlien(Alien &alien, int &x, int &y, int rows, int columns, int zombie, 
         {
             moveleft(alien, x, y, rows, columns, zombie, zomb);
             ClearScreen();
+            alien.alienAttack = 0;
             break;
         }
     }
@@ -818,6 +820,7 @@ void MoveAlien(Alien &alien, int &x, int &y, int rows, int columns, int zombie, 
         {
             moveright(alien, x, y, rows, columns, zombie, zomb);
             ClearScreen();
+            alien.alienAttack = 0;
             break;
         }
     }

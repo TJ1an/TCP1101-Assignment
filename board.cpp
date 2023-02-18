@@ -235,10 +235,8 @@ void CreateBoard(int rows, int columns, int zombie, Alien &ex_alien, Zombie &ex_
             alien.coordinates(alien,x,y);
             ShowGameBoard(rows, columns, zombie, zomb, alien);
             myPause();
-
-            // Auto kill zombies (for admins to test)
+            // Auto kill zombies 
             //autoKill(zomb);
-
             // Check if win
             bool win = ifWin(zomb);
             if (win) {
