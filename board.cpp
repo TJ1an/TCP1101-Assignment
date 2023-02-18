@@ -236,7 +236,7 @@ void CreateBoard(int rows, int columns, int zombie, Alien &ex_alien, Zombie &ex_
             ShowGameBoard(rows, columns, zombie, zomb, alien);
             myPause();
             // Auto kill zombies 
-            //autoKill(zomb);
+            ///autoKill(zomb);
             // Check if win
             bool win = ifWin(zomb);
             if (win) {
@@ -294,16 +294,16 @@ void CreateBoard(int rows, int columns, int zombie, Alien &ex_alien, Zombie &ex_
         }
         while (true) {
             cout << "Would you like to play again? (y/n) " << endl;
-            char again;
+            string again;
             cin >> again;
-            if (again == 'y') {
+            if (again == "y") {
                 ClearScreen();
                 cout << "Alright let's kill zombies!"<< endl;
                 myPause();
                 playing = true;
                 return;
 
-            } else if (again == 'n') {
+            } else if (again == "n") {
                 ClearScreen();
                 cout << "Thanks for playing!"<< endl;
                 myPause();
@@ -311,6 +311,7 @@ void CreateBoard(int rows, int columns, int zombie, Alien &ex_alien, Zombie &ex_
                 abort();
             } else {
                 cout << "That's not a valid input."<< endl;
+                cout << " " << endl;
             }
         }
     }
