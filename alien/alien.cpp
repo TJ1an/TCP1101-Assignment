@@ -184,6 +184,18 @@ void moveup(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zom
             myPause();
             break;
         }
+        else if (x - 1 >= 0 && (board[x - 1][y] == '1' || board[x - 1][y] == '2' || board[x - 1][y] == '3' || board[x - 1][y] == '4' || board[x - 1][y] == '5' 
+        || board[x - 1][y] == '6' || board[x - 1][y] == '7' || board[x - 1][y] == '8' || board[x - 1][y] == '9'))
+        {
+            alienAttack(zomb.zombieList, alien);
+            myPause();
+            ClearScreen();
+            ShowGameBoard(rows, columns, zombie, zomb, alien);
+            cout << " " << endl;
+            cout << " " << endl;
+            myPause();
+            break;
+        }
         else
         {
             ClearScreen();
@@ -318,6 +330,18 @@ void movedown(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Z
             x++;
             board[x][y] = 'A';
             alienAttack(zomb.zombieList, alien);
+            myPause();
+            ClearScreen();
+            ShowGameBoard(rows, columns, zombie, zomb, alien);
+            cout << " " << endl;
+            cout << " " << endl;
+            myPause();
+            break;
+        }
+        else if (x + 1 < rows && (board[x + 1][y] == '1' || board[x + 1][y] == '2' || board[x + 1][y] == '3' || board[x + 1][y] == '4' || board[x + 1][y] == '5'|| board[x + 1][y] == '6' 
+        || board[x + 1][y] == '7' || board[x + 1][y] == '8' || board[x + 1][y] == '9')) 
+        {
+            alienAttack2(zomb.zombieList, alien);
             myPause();
             ClearScreen();
             ShowGameBoard(rows, columns, zombie, zomb, alien);
@@ -466,6 +490,18 @@ void moveleft(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Z
             myPause();
             break;
         }
+        else if (y - 1 >= 0 && (board[x][y - 1] == '1' || board[x][y - 1] == '2' || board[x][y - 1] == '3' || board[x][y - 1] == '4' || board[x][y - 1] == '5' || board[x][y - 1] == '6' 
+        || board[x][y - 1] == '7' || board[x][y - 1] == '8' || board[x][y - 1] == '9')) 
+        {
+            alienAttack2(zomb.zombieList, alien);
+            myPause();
+            ClearScreen();
+            ShowGameBoard(rows, columns, zombie, zomb, alien);
+            cout << " " << endl;
+            cout << " " << endl;
+            myPause();
+            break;
+        }
         else
         {
             ClearScreen();
@@ -599,6 +635,18 @@ void moveright(Alien &alien, int &x, int &y, int rows, int columns, int zombie, 
             y++;
             board[x][y] = 'A';
             alienAttack(zomb.zombieList, alien);
+            myPause();
+            ClearScreen();
+            ShowGameBoard(rows, columns, zombie, zomb, alien);
+            cout << " " << endl;
+            cout << " " << endl;
+            myPause();
+            break;
+        }
+        else if (y + 1 < columns && (board[x][y + 1] == '1' || board[x][y + 1] == '2' || board[x][y + 1] == '3' || board[x][y + 1] == '4' || board[x][y + 1] == '5' || board[x][y + 1] == '6' 
+        || board[x][y + 1] == '7' || board[x][y + 1] == '8' || board[x][y + 1] == '9')) // pod
+        {
+            alienAttack2(zomb.zombieList, alien);
             myPause();
             ClearScreen();
             ShowGameBoard(rows, columns, zombie, zomb, alien);

@@ -45,8 +45,33 @@ void alienAttack(std::vector<Zombie>&zombieList,Alien &alien)
             closestIndex = i;
         }
     }
-    zombieList[closestIndex].zombieHealth = zombieList[closestIndex].zombieHealth - alien.alienAttack;
+    zombieList[closestIndex].zombieHealth = zombieList[closestIndex].zombieHealth - 10;
+    cout << "Alien finds pod!" << endl;
     cout << " " << endl;
     cout << "Alien attacks Zombie "<< closestIndex + 1 << " for " << alien.alienAttack << " damage." endl;
+    cout << " " << endl;
+}
+
+void alienAttack2(std::vector<Zombie>&zombieList,Alien &alien)
+{
+    int x1 = alien.ali_dimX;
+    int y1 = alien.ali_dimY;
+    double nearest = std::numeric_limits<double>::max(); // initialize to a large number
+    int closestIndex = -1;
+
+    for (int i = 0; i < zombieList.size(); i++) {
+        int x2 = zombieList[i].zom_dimX;
+        int y2 = zombieList[i].zom_dimY;
+        double distance = sqrt(pow((x2 - x1), 2) + pow((y2 - y1), 2));
+
+        if (distance < nearest) {
+            nearest = distance;
+            closestIndex = i;
+        }
+    }
+    zombieList[closestIndex].zombieHealth = zombieList[closestIndex].zombieHealth - alien.alienAttack;
+    cout << "Alien encounters zombie!" << endl;
+    cout << " " << endl;
+    cout << "Alien attacks zombie "<< closestIndex + 1<< endl;
     cout << " " << endl;
 }
