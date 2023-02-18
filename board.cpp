@@ -58,7 +58,7 @@ bool ifWin(Zombie zomb) {
     }
 }
 
-void autoKill(Zombie &zomb) {
+void autoKill(Zombie &zomb) { //Admin function to kill all zombies after a turn to test
     for (int i = 0; i < zomb.zombieList.size(); i++) {
         zomb.zombieList[i].zombieHealth = 0;
     }
@@ -235,13 +235,21 @@ void CreateBoard(int rows, int columns, int zombie, Alien &ex_alien, Zombie &ex_
             alien.coordinates(alien,x,y);
             ShowGameBoard(rows, columns, zombie, zomb, alien);
             myPause();
-            // Auto kill zombies 
-            autoKill(zomb);
+
+            // Auto kill zombies (for admins to test)
+            //autoKill(zomb);
+
             // Check if win
             bool win = ifWin(zomb);
             if (win) {
                 ClearScreen();
-                cout << "YOU WIN" << endl;
+                cout << "Y   Y    OOO    U   U         W   W   W   III   N   N   !" << endl;
+                cout << "Y   Y   O   O   U   U         W   W   W    I    NN  N   !" << endl;
+                cout << " Y Y    O   O   U   U         W   W   W    I    N N N   !" << endl;
+                cout << "  Y     O   O   U   U          W  W  W     I    N  NN    " << endl;
+                cout << "  Y      OOO     UUU            WW WW     III   N   N   !" << endl;
+                cout << endl;
+
                 myPause();
                 break;
             } 
@@ -265,9 +273,14 @@ void CreateBoard(int rows, int columns, int zombie, Alien &ex_alien, Zombie &ex_
             }
             if (!alive) { // Defeat screen
                 ClearScreen();
-                cout << "YOU ARE DEAD" << endl;
+                cout << "Y   Y    OOO    U   U         DDD   III   EEE   DDD    !" << endl;
+                cout << "Y   Y   O   O   U   U         D  D   I    E     D  D   !" << endl;
+                cout << " Y Y    O   O   U   U         D  D   I    EEE   D  D   !" << endl;
+                cout << "  Y     O   O   U   U         D  D   I    E     D  D    " << endl;
+                cout << "  Y      OOO     UUU          DDD   III   EEE   DDD    !" << endl;
+                cout << endl;
                 myPause();
-                break;
+                return;
             }
 
             // Reset trail into objects
@@ -282,23 +295,24 @@ void CreateBoard(int rows, int columns, int zombie, Alien &ex_alien, Zombie &ex_
             ShowGameBoard(rows, columns, zombie, zomb, alien);
         }
         while (true) {
-            cout << "Would you like to play again? (Y/N) " << endl;
+            cout << "Would you like to play again? (y/n) " << endl;
             char again;
             cin >> again;
-            if (again == 'Y') {
+            if (again == 'y') {
                 ClearScreen();
-                cout << "Alright let's kill zombies!"<<endl;
+                cout << "Alright let's kill zombies!"<< endl;
                 myPause();
                 playing = true;
-                break;
-            } else if ( again == 'N') {
+                return;
+
+            } else if (again == 'n') {
                 ClearScreen();
-                cout << "Thanks for playing!"<<endl;
+                cout << "Thanks for playing!"<< endl;
                 myPause();
                 playing = false;
-                break;
+                abort();
             } else {
-                cout << "That's not a valid input."<<endl;
+                cout << "That's not a valid input."<< endl;
             }
         }
     }
@@ -381,6 +395,6 @@ void GameSettings(int &rows, int &columns, int &zombie, Alien &ex_alien, Zombie 
     }
     else
     {
-        cout << "Ever considered puttin y/n only? " << endl;
+        cout << "Invalid input" << endl;
     }
 }
