@@ -53,6 +53,8 @@ void changeArrow(Alien &alien, int &x, int &y, int rows, int columns, int zombie
         cout << " " << endl;
         changeArrow(alien, x, y, rows, columns, zombies, zomb);
     }
+    // Reset Alien attack after turn
+    alien.alienAttack = 0;
 }
 
 void moveup(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zombie &zomb)
@@ -212,6 +214,8 @@ void moveup(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zom
             myPause();
             break;
         }
+        // Reset Alien attack after turn
+        alien.alienAttack = 0;
     }
 }
 
@@ -372,6 +376,8 @@ void movedown(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Z
             myPause();
             break;
         }
+        // Reset Alien attack after turn
+        alien.alienAttack = 0;
     }
 }
 void moveleft(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zombie &zomb)
@@ -530,6 +536,8 @@ void moveleft(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Z
             myPause();
             break;
         }
+        // Reset Alien attack after turn
+        alien.alienAttack = 0;
     }
 }
 void moveright(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zombie &zomb)
@@ -688,6 +696,8 @@ void moveright(Alien &alien, int &x, int &y, int rows, int columns, int zombie, 
             myPause();
             break;
         }
+        // Reset Alien attack after turn
+        alien.alienAttack = 0;
     }
 }
 

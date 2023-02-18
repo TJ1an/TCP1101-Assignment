@@ -226,59 +226,81 @@ void CreateBoard(int rows, int columns, int zombie, Alien &ex_alien, Zombie &ex_
     
     ShowGameBoard(rows, columns, zombie, zomb, alien);
     // Starts the game
-    bool alive = true;
-    while(true) {
-        // Alien turn
-        MoveAlien(alien, x, y, rows, columns, zombie, zomb, board);
-        alien.coordinates(alien,x,y);
-        ShowGameBoard(rows, columns, zombie, zomb, alien);
-        myPause();
-
-        // Auto kill zombies 
-
-        //autoKill(zomb);
-
-        // Check if win
-        bool win = ifWin(zomb);
-        if (win) {
-            cout << "YOU WIN" << endl;
-            myPause();
-            break;
-        } 
-        // Zombie Turn
-        for (int i = 0; i < size(zomb.zombieList); i++) {
-            ClearScreen();
-            srand((unsigned) time(NULL));
+    bool playing = true;
+    while(playing) {
+        bool alive = true;
+        while (true) {
+            // Alien turn
+            MoveAlien(alien, x, y, rows, columns, zombie, zomb, board);
+            alien.coordinates(alien,x,y);
             ShowGameBoard(rows, columns, zombie, zomb, alien);
-            cout << endl;
-            // If zombie alive
-            if (zomb.zombieList[i].zombieHealth > 0) { 
-                zombieAttack(zomb.zombieList, alien, i); // Attack
-                if (alien.alienHealth <= 0) { // Check if Alien dead
-                    alive = false;
-                    break;
-                } 
-                zomb.moveZombie(zomb.zombieList, i, rows, columns); // Move
+            myPause();
+            // Auto kill zombies 
+            autoKill(zomb);
+            // Check if win
+            bool win = ifWin(zomb);
+            if (win) {
+                ClearScreen();
+                cout << "YOU WIN" << endl;
+                myPause();
+                break;
+            } 
+            // Zombie Turn
+            for (int i = 0; i < size(zomb.zombieList); i++) {
+                ClearScreen();
+                srand((unsigned) time(NULL));
+                ShowGameBoard(rows, columns, zombie, zomb, alien);
+                cout << endl;
+                // If zombie alive
+                if (zomb.zombieList[i].zombieHealth > 0) { 
+                    zombieAttack(zomb.zombieList, alien, i); // Attack
+                    if (alien.alienHealth <= 0) { // Check if Alien dead
+                        alive = false;
+                        break;
+                    } 
+                    zomb.moveZombie(zomb.zombieList, i, rows, columns); // Move
+                }
+                cout << endl;
+                myPause();
             }
-            cout << endl;
-            myPause();
-        }
-        if (!alive) { // Defeat screen
-            cout << "YOU ARE DEAD" << endl;
-            myPause();
-            break;
-        }
+            if (!alive) { // Defeat screen
+                ClearScreen();
+                cout << "YOU ARE DEAD" << endl;
+                myPause();
+                break;
+            }
 
-        // Reset trail into objects
-        ClearScreen();
-        ShowGameBoard(rows, columns, zombie, zomb, alien);
-        changeTrail(x, y, rows, columns);
-        cout << " " << endl;
-        cout << "Trail is reset!" << endl;
-        cout << " " << endl;
-        myPause();
-        ClearScreen();
-        ShowGameBoard(rows, columns, zombie, zomb, alien);
+            // Reset trail into objects
+            ClearScreen();
+            ShowGameBoard(rows, columns, zombie, zomb, alien);
+            changeTrail(x, y, rows, columns);
+            cout << " " << endl;
+            cout << "Trail is reset!" << endl;
+            cout << " " << endl;
+            myPause();
+            ClearScreen();
+            ShowGameBoard(rows, columns, zombie, zomb, alien);
+        }
+        while (true) {
+            cout << "Would you like to play again? (Y/N) " << endl;
+            char again;
+            cin >> again;
+            if (again == 'Y') {
+                ClearScreen();
+                cout << "Alright let's kill zombies!"<<endl;
+                myPause();
+                playing = true;
+                break;
+            } else if ( again == 'N') {
+                ClearScreen();
+                cout << "Thanks for playing!"<<endl;
+                myPause();
+                playing = false;
+                break;
+            } else {
+                cout << "That's not a valid input."<<endl;
+            }
+        }
     }
 }
 

@@ -85,8 +85,6 @@ void alienAttack(std::vector<Zombie>&zombieList,Alien &alien, bool &kill)
     cout << " " << endl;
     cout << "Alien attacks zombie "<< closestIndex + 1 << " for " << alien.alienAttack << " damage!"<< endl;
     cout << " " << endl;
-    // Resets attack
-    alien.alienAttack = 0;
     // If zombie killed
     if (zombieList[closestIndex].zombieHealth <= 0) {
         cout << "Alien killed Zombie " << closestIndex + 1 << endl;
