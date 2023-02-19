@@ -72,8 +72,11 @@ List all the features not yet done. Remove this section if there is no incomplet
 
 ### Ian Leong Tsung Jii
 
-1. Implement all game objects.
-2. *add more*
+1. Implemented all game objects.
+2. Implemented alien interaction with zombie, zombie takes damage when hit by alien.
+3. Implemented code so that the gameboard refreshes after every move.
+4. Implemented arrow command to change the the direction of arrows on the board. 
+5. Implemented code so that "." or trail resets after each round.
 
 ## Problems Encountered & Solutions
 
@@ -94,3 +97,10 @@ Describe the problems encountered and provide the solutions / plan for the solut
 
 
 ### Ian Leong Tsung Jii
+
+1. I had some trouble where alien would continue moving even when it should have stopped. Turn out I forgot a break in one of the lines of code.
+
+2. Before this, the gameboard would only refresh after each round, after alien and zombies have moved. I added a myPause() function and used ClearScreen() in the game flow so that it refreshes
+after every move.
+
+3. There was also a bug where "Press ENTER to continue..." would appear multiple times after each move. Turns out I had some redundant myPause() functions in my lines of code. I removed it and it worked as intended.
