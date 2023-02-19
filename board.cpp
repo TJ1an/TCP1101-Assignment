@@ -305,8 +305,7 @@ void CreateBoard(int rows, int columns, int zombie, Alien &ex_alien, Zombie &ex_
                 ClearScreen();
                 cout << "Alright let's kill some zombies!"<< endl;
                 myPause();
-                playing = true;
-                ShowGameBoard(rows, columns, zombie, zomb, alien);
+                return;
 
             } else if (again == "n") {
                 ClearScreen();

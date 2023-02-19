@@ -60,6 +60,8 @@ void menuLoop() {
         {
             ClearScreen();
             loadStats(kRows, kColumns, kZombie, kAlien, kZomb, kBoard);
+            ClearScreen();
+            GameSettings(kRows, kColumns, kZombie, kAlien, kZomb, kBoard);
         }
         else if (menuSelection == '3')
         {

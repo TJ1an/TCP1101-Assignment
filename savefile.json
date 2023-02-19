@@ -1,17 +1,17 @@
 {
     "alien": {
-        "ali_dimX": 4, 
-        "ali_dimY": 4, 
-        "alienAttack": 40, 
-        "alienHealth": 250, 
+        "ali_dimX": 2, 
+        "ali_dimY": 7, 
+        "alienAttack": 0, 
+        "alienHealth": 150, 
         "set": true
     }, 
     "board": [
-        [62, 32, 118, 32, 62, 32, 62, 104, 60, 32, 60, 118, 32], 
-        [114, 32, 32, 32, 32, 60, 62, 32, 32, 104, 32, 32, 32], 
-        [32, 32, 51, 118, 50, 104, 62, 32, 104, 32, 49, 32, 32], 
-        [32, 32, 62, 32, 60, 32, 118, 94, 32, 104, 32, 104, 60], 
-        [104, 32, 118, 94, 65, 94, 104, 94, 32, 32, 32, 32, 94]
+        [118, 32, 32, 32, 104, 32, 32, 32, 112, 60, 94, 32, 60], 
+        [118, 118, 94, 94, 112, 60, 50, 118, 114, 104, 32, 32, 32], 
+        [51, 32, 94, 32, 60, 114, 112, 65, 60, 62, 32, 32, 60], 
+        [32, 114, 32, 32, 112, 114, 32, 114, 32, 32, 112, 32, 94], 
+        [32, 32, 32, 32, 62, 32, 49, 62, 118, 114, 32, 104, 32]
     ], 
     "columns": 13, 
     "rows": 5, 
@@ -19,38 +19,38 @@
         "set": true, 
         "zom_dimX": 0, 
         "zom_dimY": 0, 
-        "zombieAttack": -73098084, 
+        "zombieAttack": -1682145443, 
         "zombieHealth": 0, 
         "zombieList": [
             {
                 "set": true, 
-                "zom_dimX": 2, 
-                "zom_dimY": 10, 
-                "zombieAttack": 25, 
-                "zombieHealth": 150, 
-                "zombieList": [], 
-                "zombieRange": 1
-            }, 
-            {
-                "set": true, 
-                "zom_dimX": 2, 
-                "zom_dimY": 4, 
+                "zom_dimX": 4, 
+                "zom_dimY": 6, 
                 "zombieAttack": 15, 
-                "zombieHealth": 100, 
+                "zombieHealth": 140, 
                 "zombieList": [], 
-                "zombieRange": 3
+                "zombieRange": 1
+            }, 
+            {
+                "set": true, 
+                "zom_dimX": 1, 
+                "zom_dimY": 6, 
+                "zombieAttack": 10, 
+                "zombieHealth": 250, 
+                "zombieList": [], 
+                "zombieRange": 2
             }, 
             {
                 "set": true, 
                 "zom_dimX": 2, 
-                "zom_dimY": 2, 
-                "zombieAttack": 10, 
-                "zombieHealth": 100, 
+                "zom_dimY": 0, 
+                "zombieAttack": 15, 
+                "zombieHealth": 250, 
                 "zombieList": [], 
-                "zombieRange": 1
+                "zombieRange": 2
             }
         ], 
-        "zombieRange": 32760
+        "zombieRange": 32764
     }, 
     "zombies_count": 3
 }
