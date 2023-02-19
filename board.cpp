@@ -81,6 +81,47 @@ void autoKill(Zombie &zomb) { //Admin function to kill all zombies after a turn 
     myPause();
 }
 
+void turnDisplay(Zombie &zomb, Alien &alien, int turn) {
+    // Creates vector for indicating turns
+    vector<string> turnIndicator;
+    for (int i = 0; i < size(zomb.zombieList)+1 ; i++) {
+        turnIndicator.push_back("  ");
+    }
+    // No one turn
+    if (turn > size(turnIndicator)) {
+        // Display alien stats
+        cout << turnIndicator[0];
+        displayAlien(alien);
+        // Display zombie stats
+        for (int i = 1; i < size(turnIndicator); i++) {
+            cout << turnIndicator[i];
+            zomb.readAndDisplay(zomb.zombieList, i-1); // i-1 to account for alien's turn 
+        }
+    }
+    // Alien turn
+    if (turn == 0) {
+        // Display alien stats
+        turnIndicator[0] = "->";
+        cout << turnIndicator[0];
+        displayAlien(alien);
+        // Display zombie stats
+        for (int i = 1; i < size(turnIndicator); i++) {
+            cout << turnIndicator[i];
+            zomb.readAndDisplay(zomb.zombieList, i-1); // i-1 to account for alien's turn 
+        }
+    } else { // Zombie turn
+        // Display alien stats
+        turnIndicator[turn] = "->";
+        cout << turnIndicator[0];
+        displayAlien(alien);
+        // Display zombie stats
+        for (int i = 1; i < size(turnIndicator); i++) {
+            cout << turnIndicator[i];
+            zomb.readAndDisplay(zomb.zombieList, i-1);
+        }
+    }
+}
+
 void ShowGameBoard(int rows, int columns, int zombie, Zombie &zomb, Alien &alien)
 {
     //For ".: Alien Vs Zombie :." text tries to center itself
@@ -101,6 +142,7 @@ void ShowGameBoard(int rows, int columns, int zombie, Zombie &zomb, Alien &alien
         cout << "+";
         cout << endl;
         // Displaying content (including their LEFT and RIGHT borders)
+        
         for (int col = 0; col < columns; ++col)
         {
             cout << " | ";
@@ -148,18 +190,10 @@ void ShowGameBoard(int rows, int columns, int zombie, Zombie &zomb, Alien &alien
     }
     cout << endl;
     cout << endl;
-    // Display alien stats
-    cout << " ";
-    displayAlien(alien);
-    cout << endl;
-    // Generates and displays zombie stats
-    zomb.readAndDisplay(zomb.zombieList);
-    cout << endl;
-    
 }
 
 void playGame(int rows, int columns, int zombie, Alien &alien, Zombie &zomb, vector<vector<char>> &board) 
-{
+{   
     // Sets alien location
     int x = alien.ali_dimX;
     int y = alien.ali_dimY;
@@ -170,6 +204,7 @@ void playGame(int rows, int columns, int zombie, Alien &alien, Zombie &zomb, vec
         MoveAlien(alien, x, y, rows, columns, zombie, zomb, board);
         alien.coordinates(alien,x,y);
         ShowGameBoard(rows, columns, zombie, zomb, alien);
+        turnDisplay(zomb, alien, 0);
         myPause();
         // Auto kill zombies (uncomment when testing if needed)
         //autoKill(zomb);
@@ -192,6 +227,7 @@ void playGame(int rows, int columns, int zombie, Alien &alien, Zombie &zomb, vec
             ClearScreen();
             srand((unsigned) time(NULL));
             ShowGameBoard(rows, columns, zombie, zomb, alien);
+            turnDisplay(zomb, alien, i+1);
             cout << endl;
             // If zombie alive
             if (zomb.zombieList[i].zombieHealth > 0) { 
@@ -219,6 +255,7 @@ void playGame(int rows, int columns, int zombie, Alien &alien, Zombie &zomb, vec
         // Reset trail into objects
         ClearScreen();
         ShowGameBoard(rows, columns, zombie, zomb, alien);
+        turnDisplay(zomb,alien,15);
         changeTrail(x, y, rows, columns);
         cout << " " << endl;
         cout << "Trail is reset!" << endl;
@@ -226,6 +263,7 @@ void playGame(int rows, int columns, int zombie, Alien &alien, Zombie &zomb, vec
         myPause();
         ClearScreen();
         ShowGameBoard(rows, columns, zombie, zomb, alien);
+        turnDisplay(zomb,alien,15);
     }
     // Checks if play again
     while (true) {
@@ -328,6 +366,7 @@ void loadGame(int &rows, int &columns, int &zombie, Alien &alien, Zombie &zomb, 
     // Code Execution
     ClearScreen();
     ShowGameBoard(rows, columns, zombie, zomb, alien);
+    turnDisplay(zomb,alien,0);
     playGame(rows, columns, zombie, alien, zomb, board);
 }
 
@@ -381,6 +420,7 @@ void GameSettings(int &rows, int &columns, int &zombie, Alien &alien, Zombie &zo
         ClearScreen();
         CreateBoard(rows, columns, zombie, alien, zomb, board);
         ShowGameBoard(rows, columns, zombie, zomb, alien);
+        turnDisplay(zomb,alien,0);
         playGame(rows, columns, zombie, alien, zomb, board);
         
     }
@@ -390,6 +430,7 @@ void GameSettings(int &rows, int &columns, int &zombie, Alien &alien, Zombie &zo
         ClearScreen();
         CreateBoard(rows, columns, zombie, alien, zomb, board);
         ShowGameBoard(rows, columns, zombie, zomb, alien);
+        turnDisplay(zomb,alien,0);
         playGame(rows, columns, zombie, alien, zomb, board);
     }
     else

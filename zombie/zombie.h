@@ -7,7 +7,7 @@ public:
     // Functions
     void Stats(std::vector<Zombie>&zombieList, int i);
     void GenerateZombie(int count);
-    void readAndDisplay(std::vector<Zombie>zombieList);
+    void readAndDisplay(std::vector<Zombie>zombieList, int i);
     void moveZombie(std::vector<Zombie>&zombieList,int i, int rows, int columns);
     void Location(int x, int y,std::vector<Zombie>&zombieList, int i);
     

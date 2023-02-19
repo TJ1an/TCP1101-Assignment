@@ -13,6 +13,7 @@ void changeTrail(int &x, int &y, int rows, int columns);
 bool ifWin(Zombie zomb);
 void autoKill(Zombie &zomb);
 
+void turnDisplay(Zombie &zomb, Alien &alien, int turn);
 void ShowGameBoard(int rows, int columns, int zombie, Zombie &zomb, Alien &alien);
 void playGame(int rows, int columns, int zombie, Alien &alien, Zombie &zomb, vector<vector<char>> &board);
 void CreateBoard(int rows, int columns, int zombie, Alien &alien, Zombie &zomb, vector<vector<char>> &board);
