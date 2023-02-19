@@ -152,6 +152,7 @@ void CreateBoard(int rows, int columns, int zombie, Alien &ex_alien, Zombie &ex_
     // Alien location set
     int x = rows/2;
     int y = columns/2;
+
     // Zombie(s) Object Created into zombieList
     Zombie zomb;
     if(!ex_alien.set || !ex_zomb.set || !ex_board.size() || !(ex_board.size() == rows && ex_board[0].size() == columns)) { // No data loaded/Invalid data loaded
@@ -235,8 +236,10 @@ void CreateBoard(int rows, int columns, int zombie, Alien &ex_alien, Zombie &ex_
             alien.coordinates(alien,x,y);
             ShowGameBoard(rows, columns, zombie, zomb, alien);
             myPause();
+
             // Auto kill zombies 
-            ///autoKill(zomb);
+            //autoKill(zomb);
+
             // Check if win
             bool win = ifWin(zomb);
             if (win) {
@@ -248,6 +251,7 @@ void CreateBoard(int rows, int columns, int zombie, Alien &ex_alien, Zombie &ex_
                 cout << "  Y      OOO     UUU            WW WW     III   N   N   !" << endl;
                 cout << endl;
 
+                playing = false;
                 myPause();
                 break;
             } 
@@ -293,15 +297,16 @@ void CreateBoard(int rows, int columns, int zombie, Alien &ex_alien, Zombie &ex_
             ShowGameBoard(rows, columns, zombie, zomb, alien);
         }
         while (true) {
-            cout << "Would you like to play again? (y/n) " << endl;
+            cout << "Would you like to play again? (y/n)" << endl;
+            cout << "=> ";
             string again;
             cin >> again;
             if (again == "y") {
                 ClearScreen();
-                cout << "Alright let's kill zombies!"<< endl;
+                cout << "Alright let's kill some zombies!"<< endl;
                 myPause();
                 playing = true;
-                return;
+                ShowGameBoard(rows, columns, zombie, zomb, alien);
 
             } else if (again == "n") {
                 ClearScreen();
