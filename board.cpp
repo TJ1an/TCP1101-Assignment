@@ -205,7 +205,7 @@ void playGame(int rows, int columns, int zombie, Alien &alien, Zombie &zomb, vec
         myPause();
         // Auto kill entities (for testing reasons)
         //autoKill(zomb);
-        //killAlien(alien);
+        killAlien(alien);
         // Check if win
         bool win = ifWin(zomb);
         if (win) {
