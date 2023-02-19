@@ -16,15 +16,15 @@ Please provide the YouTube link to your [Video Demo](https://youtube.com).
 ### Completed
 1. Game Board
     - Display of board and Alien stats are complete.
+    - Board rows, columns and number of zombies are adjustable (rows and columns must be odd numbered while MAX(9) unique zombies.)
     - Clearing of previous board.
     - Arrow pointer for each "entities" turn.
 2. Alien
     - Movement is implemented correctly and stops when in contact with borders/objects.
     - Can interact with "arrow","health","rock","empty" and "trails".
     - Interaction with pod.
-    - Alien interaction with Zombie
+    - Alien interaction with Zombie (will move into Zombie position if it kills it)
 3. Zombies
-    - MAX(9) unique zombie can spawn on the board.
     - Their stats (which include Health, Attack, Range, X and Y dimensions) are recorded.
     - Display of Zombie stats under Alien Stats.
     - Random movement of zombie.
@@ -39,7 +39,11 @@ Please provide the YouTube link to your [Video Demo](https://youtube.com).
     - Save option
     - Load option
     - Quit option
-
+6. Game Flow
+    - Characters do not overlap.
+    - Each character takes turns to move and each move is explained what occurs.
+    - Game ends when Alien or zombie is defeated.
+    - Can choose to play again with board loaded up again or exit.
 ### To Do
 
 List all the features not yet done. Remove this section if there is no incomplete requirements.

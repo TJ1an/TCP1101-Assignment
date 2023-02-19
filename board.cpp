@@ -229,12 +229,12 @@ void playGame(int rows, int columns, int zombie, Alien &alien, Zombie &zomb, vec
             cout << endl;
             // If zombie alive
             if (zomb.zombieList[i].zombieHealth > 0) { 
+                zomb.moveZombie(zomb.zombieList, i, rows, columns); // Move
                 zombieAttack(zomb.zombieList, alien, i); // Attack
                 if (alien.alienHealth <= 0) { // Check if Alien dead
                     alive = false;
                     break;
                 } 
-                zomb.moveZombie(zomb.zombieList, i, rows, columns); // Move
             }
             cout << endl;
             myPause();
