@@ -8,10 +8,10 @@ using namespace std;
 extern vector< vector<char> > board;
 
 bool gotEntityObject(int x,int y, std::vector<Zombie> zombieList) {
-    // Creates list of entities based on zombieList
+    //Creates list of entities based on zombieList
     vector<char> entities;
     for (int i = 0; i < zombieList.size(); i++) {
-        entities.push_back(char(48+i+1));
+        entities.push_back(char(49+i));
     }
     entities.push_back('A');
     //Iterates through entity array for possible entities
@@ -28,41 +28,41 @@ bool gotEntityObject(int x,int y, std::vector<Zombie> zombieList) {
 void moveUp(int x, int y, int i) {
     board[x][y] = ' ';
     x--;
-    board[x][y] = char('0' + (i+1));
+    board[x][y] = char(49+i);
     cout << "Zombie " << i+1 << " moved UP." << endl;
 }
 
 void moveDown(int x, int y, int i) {
     board[x][y] = ' ';
     x++;
-    board[x][y] = char('0' + (i+1));
+    board[x][y] = char(49+i);
     cout << "Zombie " << i+1 << " moved DOWN." << endl;
 }
 
 void moveLeft(int x, int y, int i) {
     board[x][y] = ' ';
     y--;
-    board[x][y] = char('0' + (i+1));
+    board[x][y] = char(49+i);
     cout << "Zombie " << i+1 << " moved LEFT." << endl;
 }
 
 void moveRight(int x, int y, int i) {
     board[x][y] = ' ';
     y++;
-    board[x][y] = char('0' + (i+1));
+    board[x][y] = char(49+i);
     cout << "Zombie " << i+1 << " moved RIGHT." << endl;
 }
 
 bool Blank(int x, int y, int rows, int columns) {
     // Verifies if position is valid (within the board)
-    bool empty;
+    bool outsideBoard;
     // Makes sure x inside (0,rows) and y inside (0,columns)
     if (0 <= x && x <= rows && 0 <= y && y <= columns) { // Inside board
-        empty = false;
+        outsideBoard = false;
     } else { // Outside board
-        empty = true;
+        outsideBoard = true;
     }
-    return empty; // Returns verdict
+    return outsideBoard; // Returns verdict
 }
 
 void Zombie::Stats(std::vector<Zombie>&zombieList, int i) {
@@ -115,18 +115,17 @@ void Zombie::readAndDisplay(std::vector<Zombie>zombieList) {
 
 void Zombie::moveZombie(std::vector<Zombie>&zombieList,int i,int rows, int columns) {
     string movements[] = {"up","down","left","right"};
-    bool turnIncomplete = true;
     // Taking zombie position
     int x = zombieList[i].zom_dimX;
     int y = zombieList[i].zom_dimY;
 
     // Checking for non-existent(blank) spots
-    bool blankUp = Blank(x-1,y,rows-1,columns-1); // Rows and columns minus one because zero-indexed
-    bool blankDown = Blank(x+1,y,rows-1,columns-1);
-    bool blankLeft = Blank(x,y-1,rows-1,columns-1);
-    bool blankRight = Blank(x,y+1,rows-1,columns-1);
+    bool blankUp = Blank(x-1,y,rows,columns); // Rows and columns minus one because zero-indexed
+    bool blankDown = Blank(x+1,y,rows,columns);
+    bool blankLeft = Blank(x,y-1,rows,columns);
+    bool blankRight = Blank(x,y+1,rows,columns);
 
-    // Stuck = blocked by entity
+    // Stuck = blocked by entities
     // If all boolean stuck is true, it's fully stuck
     bool stuckUp = false;
     bool stuckDown = false;
@@ -134,7 +133,7 @@ void Zombie::moveZombie(std::vector<Zombie>&zombieList,int i,int rows, int colum
     bool stuckRight = false;
 
     // Loop to make sure zombie moves
-    while (turnIncomplete) {
+    while (true) {
         // Randomizer and reroller (if specific spot is blocked)
         string move = movements[rand()%size(movements)];
 
@@ -142,49 +141,50 @@ void Zombie::moveZombie(std::vector<Zombie>&zombieList,int i,int rows, int colum
         // Move UP
         if (move == "up" && !stuckUp) { 
             bool gotEntity = gotEntityObject(x-1,y,zombieList);
-            if (gotEntity == false && !blankUp) {
+            if (gotEntity == false && !blankUp ) {
                 moveUp(x,y,i);
                 x--;
                 Location(x,y,zombieList,i);
-                turnIncomplete = false;
+                return;
             } else {
                 stuckUp = true;
             }
         // Move DOWN        
         } else if  (move == "down" && !stuckDown) { 
             bool gotEntity = gotEntityObject(x+1,y,zombieList);
-            if (gotEntity == false && !blankDown) {
+            if (gotEntity == false && !blankDown ) {
                 moveDown(x,y,i);
                 x++;
                 Location(x,y,zombieList,i);
-                turnIncomplete = false;
+                return;
             } else {
                 stuckDown = true;
             }
         // Move LEFT    
         } else if (move == "left" && !stuckLeft) { 
             bool gotEntity = gotEntityObject(x,y-1,zombieList);
-            if (gotEntity == false && !blankLeft) {
+            if (gotEntity == false && !blankLeft ) {
                 moveLeft(x,y,i);
                 y--;
                 Location(x,y,zombieList,i);
-                turnIncomplete = false;
+                return;
             } else {
                 stuckLeft = true;
             }
         // Move RIGHT
         } else if (move == "right" && !stuckRight) { 
             bool gotEntity = gotEntityObject(x,y+1,zombieList);
-            if (gotEntity == false && !blankRight) {
+            if (gotEntity == false && !blankRight ) {
                 moveRight(x,y,i);
                 y++;
                 Location(x,y,zombieList,i);
-                turnIncomplete = false;
+                return;
             } else {
                 stuckRight = true;
             }
+        } 
         // Fully stuck
-        } else if (stuckUp && stuckDown && stuckLeft && stuckRight) {
+        if (stuckUp && stuckDown && stuckLeft && stuckRight) {
             cout << "Zombie " << i+1 << " is stuck." <<endl;
             return;
         }

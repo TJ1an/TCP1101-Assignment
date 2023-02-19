@@ -63,6 +63,10 @@ void alienPod(std::vector<Zombie>&zombieList,Alien &alien)
 
 void alienAttack(std::vector<Zombie>&zombieList,Alien &alien, bool &kill)
 {
+    // Return if zero attack
+    if (alien.alienAttack == 0) {
+        return;
+    }
     int x1 = alien.ali_dimX;
     int y1 = alien.ali_dimY;
     double nearest = std::numeric_limits<double>::max(); // initialize to a large number
