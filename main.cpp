@@ -18,13 +18,7 @@
 #include <iostream>
 using namespace std;
 
-void menuLoop();
-
-int main()
-{   
-    menuLoop();
-    return 0;
-}
+vector<vector<char>> board;
 
 void menuLoop() {
     char menuSelection = '0';
@@ -33,10 +27,6 @@ void menuLoop() {
     int kZombie = 3;
     Alien kAlien;
     Zombie kZomb;
-    vector<vector<char>> kBoard;
-    kAlien.set = false;
-    kZomb.set = false;
-
     bool running = true;
     while(running) {
         ClearScreen();
@@ -54,12 +44,13 @@ void menuLoop() {
         if (menuSelection == '1')
         {
             ClearScreen();
-            GameSettings(kRows, kColumns, kZombie, kAlien, kZomb, kBoard);
+            GameSettings(kRows, kColumns, kZombie, kAlien, kZomb, board);
         }
         else if (menuSelection == '2')
         {
             ClearScreen();
-            loadStats(kRows, kColumns, kZombie, kAlien, kZomb, kBoard);
+            loadStats(kRows, kColumns, kZombie, kAlien, kZomb, board);
+            loadGame(kRows, kColumns, kZombie, kAlien, kZomb, board);
         }
         else if (menuSelection == '3')
         {
@@ -69,8 +60,7 @@ void menuLoop() {
         else if (menuSelection == '4')
         {
             ClearScreen();
-            savePrompt(kRows, kColumns, kZombie, kAlien, kZomb, kBoard);
-            running = false;
+            savePrompt(kRows, kColumns, kZombie, kAlien, kZomb, board);
             abort();
         }
         else
@@ -81,3 +71,10 @@ void menuLoop() {
         }
     }
 }
+
+int main()
+{   
+    menuLoop();
+    return 0;
+}
+

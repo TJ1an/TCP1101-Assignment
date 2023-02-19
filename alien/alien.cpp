@@ -775,12 +775,6 @@ void MoveAlien(Alien &alien, int &x, int &y, int rows, int columns, int zombie, 
     cout << "- Input a direction you want to move the alien by using \"up\", \"down\", \"left\", \"right\"" << endl;
     cout << "- Change an arrow's direction using the command \"arrow\"" << endl;
     cout << "- For a brief tutorial, use the \"help\" command" << endl;
-    // Ability 
-    if (alien.energy == 100) {
-        cout << "Ability is Ready, use \"ability\" to activate." << endl;
-    } else if (alien.energy > 100) {
-        cout << "Ability is OVERCHARGED, use \"ability\" to activate." << endl;
-    }
     cout << "=> ";
     cin >> direction;
 
