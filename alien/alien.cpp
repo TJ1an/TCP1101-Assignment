@@ -24,7 +24,7 @@ void myPause()
 int alienhp()
 {
     srand((unsigned)time(NULL));
-    int alienHealths[] = {100, 150, 200, 250};
+    int alienHealths[] = {150, 200, 250};
     int randomAlienHealth = alienHealths[rand() % size(alienHealths)];
     int alienhealth = randomAlienHealth;
     return alienhealth;
@@ -778,35 +778,46 @@ void rockrandomobject(Alien &alien, int &x, int &y, int rows, int columns, int z
 
 void displayAlien(Alien &alien)
 {
-    cout << " Alien    HP: " << alien.alienHealth;
-    cout << " Atk: " << alien.alienAttack;
+    cout << " Alien ";
+    if (alien.alienHealth >= 100) {
+        cout << "   HP: " << alien.alienHealth;
+    } else {
+        cout << "   HP:  " << alien.alienHealth;
+    }
+    if (alien.alienAttack >= 100) {
+        cout << " Atk: " << alien.alienAttack << endl;
+    } else if (alien.alienAttack >= 10) {
+        cout << " Atk:  " << alien.alienAttack << endl;
+    } else {
+        cout << " Atk:   " << alien.alienAttack << endl;
+    }
 
-    // To make sure the alien stats are not shifted off (looks nicer)
-    if ((alien.ali_dimX) + 1 < 10)
-    {
-        cout << " X:  " << (alien.ali_dimX) + 1;
-    }
-    else
-    {
-        cout << " X: " << (alien.ali_dimX) + 1;
-    }
-
-    if ((alien.ali_dimY) + 1 < 10)
-    {
-        cout << " Y:  " << (alien.ali_dimY) + 1 << endl;
-    }
-    else
-    {
-        cout << " Y: " << (alien.ali_dimY) + 1 << endl;
-    }
+    // Display alien location for reference
+    //if ((alien.ali_dimX) + 1 < 10)
+    //{
+    //    cout << " X:  " << (alien.ali_dimX) + 1;
+    //}
+    //else
+    //{
+    //    cout << " X: " << (alien.ali_dimX) + 1;
+    //}
+    //if ((alien.ali_dimY) + 1 < 10)
+    //{
+    //    cout << " Y:  " << (alien.ali_dimY) + 1 << endl;
+    //}
+    //else
+    //{
+    //    cout << " Y: " << (alien.ali_dimY) + 1 << endl;
+    //}
 }
 void MoveAlien(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zombie &zomb, vector<vector<char>> &board)
 {
     string direction;
+    cout << " " << endl;
     cout << "- Input a direction you want to move the alien by using \"up\", \"down\", \"left\", \"right\"" << endl;
     cout << "- Change an arrow's direction using the command \"arrow\"" << endl;
     cout << "- For a brief tutorial, use the \"help\" command" << endl;
-    cout << "- If  you wish to exit you can use \"quit\"" << endl;
+    cout << "- If you wish to exit you can use \"quit\"" << endl;
     cout << "=> ";
     cin >> direction;
 

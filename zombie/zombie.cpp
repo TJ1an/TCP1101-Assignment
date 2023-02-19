@@ -67,8 +67,8 @@ bool Blank(int x, int y, int rows, int columns) {
 
 void Zombie::Stats(std::vector<Zombie>&zombieList, int i) {
     //Range of Stats
-    int zombieHPs[] = {100,150,200,250};
-    int zombieATKs[] = {10,15,20,25};
+    int zombieHPs[] = {100,150,200};
+    int zombieATKs[] = {10,15,20};
     int zombieRGs[] = {1,2,3};
     //Randomizer
     int randomHP= zombieHPs[rand()% size(zombieHPs)];
@@ -88,25 +88,29 @@ void Zombie::GenerateZombie(int count) {
 }
 
 void Zombie::readAndDisplay(std::vector<Zombie>zombieList, int i) {
-    cout << " Zombie " << i+1 
-    << " HP: " << zombieList[i].zombieHealth
-    << " Atk: " << zombieList[i].zombieAttack
-    << " Range: " << zombieList[i].zombieRange;
+    cout << " Zombie " << i+1; 
+    if (zombieList[i].zombieHealth >= 100) {
+        cout << " HP: " << zombieList[i].zombieHealth;
+    } else {
+        cout << " HP:  " << zombieList[i].zombieHealth;
+    }
+    cout << " Atk:  " << zombieList[i].zombieAttack
+    << " Range: " << zombieList[i].zombieRange << endl;
 
-    // To make sure it looks nice and not shifted
-    if ((zombieList[i].zom_dimX) + 1 < 10) {
-        cout << " X:  " << (zombieList[i].zom_dimX) + 1;
-    }
-    else {
-        cout << " X: " << (zombieList[i].zom_dimX) + 1;
-    }
-    if (zombieList[i].zom_dimY < 10) {
-        cout << " Y:  " << (zombieList[i].zom_dimY) + 1;
-    }
-    else {
-        cout << " Y: " << (zombieList[i].zom_dimY) + 1;
-    }
-    cout << endl;
+    // Display zombie location for reference
+    // if ((zombieList[i].zom_dimX) + 1 < 10) {
+    //     cout << " X:  " << (zombieList[i].zom_dimX) + 1;
+    // }
+    // else {
+    //     cout << " X: " << (zombieList[i].zom_dimX) + 1;
+    // }
+    // if (zombieList[i].zom_dimY < 10) {
+    //     cout << " Y:  " << (zombieList[i].zom_dimY) + 1;
+    // }
+    // else {
+    //     cout << " Y: " << (zombieList[i].zom_dimY) + 1;
+    // }
+    // cout << endl;
     
 }
 

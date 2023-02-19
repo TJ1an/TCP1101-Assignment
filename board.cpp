@@ -30,7 +30,7 @@ int Pause()
 void changeTrail(int &x, int &y, int rows, int columns)
 {
     srand((unsigned)time(NULL));
-    char objects[] = {'h', '<', '>', '^', 'v', 'r', 'p', ' ',' '};
+    char objects[] = {'h', '<', '>', '^', 'v', 'r', 'p', ' ',' ',' ',' '};
     int objectsSize = sizeof(objects);
     for (int i = 0; i < rows; i++)
     {
@@ -77,7 +77,14 @@ void autoKill(Zombie &zomb) { //Admin function to kill all zombies after a turn 
         zomb.zombieList[i].zombieHealth = 0;
     }
     cout << endl;
-    cout << "All zombies have been killed" << endl;
+    cout << "All zombies have been killed." << endl;
+    myPause();
+}
+
+void killAlien(Alien &alien) {
+    alien.alienHealth = 0;
+    cout << endl;
+    cout << "Alien has been killed." << endl;
     myPause();
 }
 
@@ -86,7 +93,7 @@ void turnDisplay(Zombie &zomb, Alien &alien, int turn) {
     vector<string> turnIndicator;
     for (int i = 0; i < size(zomb.zombieList)+1 ; i++) {
         turnIndicator.push_back("  ");
-    }
+    } 
     // Alien turn
     if (turn == 0) {
         // Display alien stats
@@ -194,9 +201,11 @@ void playGame(int rows, int columns, int zombie, Alien &alien, Zombie &zomb, vec
         alien.coordinates(alien,x,y);
         ShowGameBoard(rows, columns, zombie, zomb, alien);
         turnDisplay(zomb, alien, 0);
+        cout << endl;
         myPause();
-        // Auto kill zombies (uncomment when testing if needed)
+        // Auto kill entities (for testing reasons)
         //autoKill(zomb);
+        //killAlien(alien);
         // Check if win
         bool win = ifWin(zomb);
         if (win) {
@@ -296,7 +305,7 @@ void CreateBoard(int rows, int columns, int zombie, Alien &alien, Zombie &zomb, 
 
     // List (and probability) of rock and powerup generation
     // "r" for rock, "p" for pod, "^","v",">","<" are arrows and "h" are healthpacks.
-    char Obj[] = {'^', 'v', '<', '>', ' ', 'p', 'p', 'h', 'r', ' ',' ',' ',' ',' '};
+    char Obj[] = {'^', ' ', ' ', '<', ' ', ' ', 'p', 'h', ' ', 'v',' ','r',' ','p',' ','>','p',' ',' '};
     int zombieSpawns = 0; // Number of zombies spawned
     int count = 49; // Starts at '1' (for zombie spawning)
     // Generates objects in board
@@ -369,7 +378,7 @@ void GameSettings(int &rows, int &columns, int &zombie, Alien &alien, Zombie &zo
     cout << "Board columns : " << columns << endl;
     cout << "Zombie count : " << zombie << endl;
     cout << " " << endl;
-    cout << "Do you want to change the game settings? (y/n, input \"n\" if you loaded data) => ";
+    cout << "Do you want to change the game settings? (y/n) => ";
     cin >> yesorno;
 
     if (yesorno == 'y')
