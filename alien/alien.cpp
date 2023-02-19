@@ -673,6 +673,7 @@ void moveright(Alien &alien, int &x, int &y, int rows, int columns, int zombie, 
             cout << "Alien hits a wall!" << endl;
             cout << " " << endl;
             myPause();
+            break;
         }
     }
 }
@@ -769,6 +770,8 @@ void MoveAlien(Alien &alien, int &x, int &y, int rows, int columns, int zombie, 
     cout << "- Input a direction you want to move the alien by using \"up\", \"down\", \"left\", \"right\"" << endl;
     cout << "- Change an arrow's direction using the command \"arrow\"" << endl;
     cout << "- For a brief tutorial, use the \"help\" command" << endl;
+    cout << "- To save your progress into a savefile, use the \"save\" command" << endl;
+    
     // Ability
     if (alien.energy == 100)
     {
@@ -854,7 +857,34 @@ void MoveAlien(Alien &alien, int &x, int &y, int rows, int columns, int zombie, 
     }
     else if (direction == "quit")
     {
-        savePrompt(rows, columns, zombie, alien, zomb, board);
+        char quitting;
+
+        cout << " " << endl;
+        cout << "Are you sure you want to quit? (y/n)" << endl;
+        cout << "=> ";
+        cin >> quitting;
+
+        if (quitting == 'y') {
+            cout << endl;
+            savePrompt(rows, columns, zombie, alien, zomb, board);
+        }
+        else if (quitting == 'n') {
+            ClearScreen();
+            return;
+        }
+        else {
+            cout << "Invalid input. Please try again." << endl;
+            myPause();
+            ClearScreen();
+            return;
+        }
+    }
+    else if (direction == "save")
+    {
+        saveStats(rows, columns, zombie, alien, zomb, board);
+        ClearScreen();
+        ShowGameBoard(rows, columns, zombie, zomb, alien);
+        MoveAlien(alien, x, y, rows, columns, zombie, zomb, board);
     }
     else
     {

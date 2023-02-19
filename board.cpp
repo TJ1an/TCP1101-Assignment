@@ -171,8 +171,8 @@ void playGame(int rows, int columns, int zombie, Alien &alien, Zombie &zomb, vec
         alien.coordinates(alien,x,y);
         ShowGameBoard(rows, columns, zombie, zomb, alien);
         myPause();
-        // Auto kill zombies 
-        autoKill(zomb);
+        // Auto kill zombies (uncomment when testing if needed)
+        //autoKill(zomb);
         // Check if win
         bool win = ifWin(zomb);
         if (win) {

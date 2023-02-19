@@ -24,7 +24,13 @@ JSONCONS_ALL_MEMBER_TRAITS(Alien, set, alienHealth, alienAttack, ali_dimX, ali_d
 JSONCONS_ALL_MEMBER_TRAITS(Zombie, set, zombieHealth, zombieAttack, zombieRange, zom_dimX, zom_dimY, zombieList);
 
 void saveStats(int rows, int columns, int zombies, Alien alien, Zombie zomb, vector<vector<char>> &ex_board) {
-    ofstream SaveFile("savefile.json"); // Create and open a JSON file called savefile.json
+    string userFileName;
+    cout << " " << endl;
+    cout << "Insert filename for your savefile: "; // Asks the user what filename they want to use
+    cin >> userFileName;
+    string completeFilename = userFileName + ".json"; // Adds .json at the end of said filename
+
+    ofstream SaveFile(completeFilename); // Create and open a file under user's desired name
     vector<vector<int>> b{{1, 2, 3},{5, 15}};
     SaveData data = SaveData {
         rows, columns, zombies, alien, zomb, ex_board
@@ -32,10 +38,16 @@ void saveStats(int rows, int columns, int zombies, Alien alien, Zombie zomb, vec
     string encoded;
     jc::encode_json(data, encoded, jc::indenting::indent); // Encode the data into indented JSON
     SaveFile << encoded; // Push the encoded data into the file
+    SaveFile.close();
 }
 
 void loadStats(int &rows, int &columns, int &zombie, Alien &ex_alien, Zombie &ex_zomb, vector<vector<char>> &ex_board) {
-    ifstream SaveFile("savefile.json"); // Create and open a JSON file called savefile.json
+    string inputSavefile;
+    cout << "Enter the savefile's filename (without the file format): ";
+    cin >> inputSavefile;
+    string outputSavefile = inputSavefile + ".json";
+
+    ifstream SaveFile(outputSavefile); // Create and open a JSON file called savefile.json
     
     auto data = jc::decode_json<SaveData>(SaveFile);
 

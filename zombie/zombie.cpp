@@ -120,10 +120,10 @@ void Zombie::moveZombie(std::vector<Zombie>&zombieList,int i,int rows, int colum
     int y = zombieList[i].zom_dimY;
 
     // Checking for non-existent(blank) spots
-    bool blankUp = Blank(x-1,y,rows,columns); // Rows and columns minus one because zero-indexed
-    bool blankDown = Blank(x+1,y,rows,columns);
-    bool blankLeft = Blank(x,y-1,rows,columns);
-    bool blankRight = Blank(x,y+1,rows,columns);
+    bool blankUp = Blank(x - 1,y,rows - 1,columns - 1); // Rows and columns minus one because zero-indexed
+    bool blankDown = Blank(x + 1,y,rows - 1,columns - 1);
+    bool blankLeft = Blank(x,y - 1,rows - 1,columns - 1);
+    bool blankRight = Blank(x,y + 1,rows - 1,columns - 1);
 
     // Stuck = blocked by entities
     // If all boolean stuck is true, it's fully stuck
