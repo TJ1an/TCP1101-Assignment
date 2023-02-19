@@ -101,7 +101,6 @@ void moveup(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zom
             cout << " " << endl;
             cout << "You hit a rock!" << endl;
             cout << " " << endl;
-            myPause();
             rockrandomobject(alien, x, y, rows, columns, zombie, zomb);
             cout << " " << endl;
             break;
@@ -120,7 +119,6 @@ void moveup(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zom
             cout << "You gained 20 Attack!" << endl;
             cout << " " << endl;
             moveleft(alien, x, y, rows, columns, zombie, zomb);
-            myPause();
             break;
         }
         else if (x - 1 >= 0 && board[x - 1][y] == '>') // Right boost/dash
@@ -153,7 +151,6 @@ void moveup(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zom
             cout << "You gained 20 Attack!" << endl;
             cout << " " << endl;
             moveup(alien, x, y, rows, columns, zombie, zomb);
-            myPause();
             break;
         }
         else if (x - 1 >= 0 && board[x - 1][y] == 'v') // Down boost/dash
@@ -170,7 +167,6 @@ void moveup(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zom
             cout << "You gained 20 Attack!" << endl;
             cout << " " << endl;
             movedown(alien, x, y, rows, columns, zombie, zomb);
-            myPause();
             break;
         }
         else if (x - 1 >= 0 && board[x - 1][y] == 'p') // pod
@@ -178,30 +174,30 @@ void moveup(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Zom
             board[x][y] = '.';
             x--;
             board[x][y] = 'A';
+            alien.coordinates(alien, x, y);
             alienPod(zomb.zombieList, alien);
             myPause();
             ClearScreen();
             ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << " " << endl;
             cout << " " << endl;
-            myPause();
             break;
         }
         else if (x - 1 >= 0 && (board[x - 1][y] == '1' || board[x - 1][y] == '2' || board[x - 1][y] == '3' || board[x - 1][y] == '4' || board[x - 1][y] == '5' || board[x - 1][y] == '6' || board[x - 1][y] == '7' || board[x - 1][y] == '8' || board[x - 1][y] == '9'))
         {
             board[x][y] = 'A';
-            alien.coordinates(alien,x,y);
+            alien.coordinates(alien, x, y);
             alienAttack(zomb.zombieList, alien, kill);
-            if (kill) {
+            if (kill)
+            {
                 board[x][y] = '.';
-                board[x-1][y] = 'A';
+                board[x - 1][y] = 'A';
             }
             myPause();
             ClearScreen();
             ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << " " << endl;
             cout << " " << endl;
-            myPause();
             break;
         }
         else
@@ -279,7 +275,6 @@ void movedown(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Z
             cout << "You gained 20 Attack!" << endl;
             cout << " " << endl;
             moveleft(alien, x, y, rows, columns, zombie, zomb);
-            myPause();
             break;
         }
         else if (x + 1 < rows && board[x + 1][y] == '>')
@@ -296,7 +291,6 @@ void movedown(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Z
             cout << "You gained 20 Attack!" << endl;
             cout << " " << endl;
             moveright(alien, x, y, rows, columns, zombie, zomb);
-            myPause();
             break;
         }
         else if (x + 1 < rows && board[x + 1][y] == '^')
@@ -313,7 +307,6 @@ void movedown(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Z
             cout << "You gained 20 Attack!" << endl;
             cout << " " << endl;
             moveup(alien, x, y, rows, columns, zombie, zomb);
-            myPause();
             break;
         }
         else if (x + 1 < rows && board[x + 1][y] == 'v')
@@ -330,7 +323,6 @@ void movedown(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Z
             cout << "You gained 20 Attack!" << endl;
             cout << " " << endl;
             movedown(alien, x, y, rows, columns, zombie, zomb);
-            myPause();
             break;
         }
         else if (x + 1 < rows && board[x + 1][y] == 'p') // pod
@@ -338,30 +330,30 @@ void movedown(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Z
             board[x][y] = '.';
             x++;
             board[x][y] = 'A';
+            alien.coordinates(alien, x, y);
             alienPod(zomb.zombieList, alien);
             myPause();
             ClearScreen();
             ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << " " << endl;
             cout << " " << endl;
-            myPause();
             break;
         }
         else if (x + 1 < rows && (board[x + 1][y] == '1' || board[x + 1][y] == '2' || board[x + 1][y] == '3' || board[x + 1][y] == '4' || board[x + 1][y] == '5' || board[x + 1][y] == '6' || board[x + 1][y] == '7' || board[x + 1][y] == '8' || board[x + 1][y] == '9'))
         {
             board[x][y] = 'A';
-            alien.coordinates(alien,x,y);
+            alien.coordinates(alien, x, y);
             alienAttack(zomb.zombieList, alien, kill);
-            if (kill) {
+            if (kill)
+            {
                 board[x][y] = '.';
-                board[x+1][y] = 'A';
+                board[x + 1][y] = 'A';
             }
             myPause();
             ClearScreen();
             ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << " " << endl;
             cout << " " << endl;
-            myPause();
             break;
         }
         else
@@ -438,7 +430,7 @@ void moveleft(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Z
             cout << "You gained 20 Attack!" << endl;
             cout << " " << endl;
             moveleft(alien, x, y, rows, columns, zombie, zomb);
-            myPause();
+            break;
         }
         else if (y - 1 >= 0 && board[x][y - 1] == '>')
         {
@@ -454,7 +446,6 @@ void moveleft(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Z
             cout << "You gained 20 Attack!" << endl;
             cout << " " << endl;
             moveright(alien, x, y, rows, columns, zombie, zomb);
-            myPause();
             break;
         }
         else if (y - 1 >= 0 && board[x][y - 1] == '^')
@@ -471,7 +462,6 @@ void moveleft(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Z
             cout << "You gained 20 Attack!" << endl;
             cout << " " << endl;
             moveup(alien, x, y, rows, columns, zombie, zomb);
-            myPause();
             break;
         }
         else if (y - 1 >= 0 && board[x][y - 1] == 'v')
@@ -488,7 +478,6 @@ void moveleft(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Z
             cout << "You gained 20 Attack!" << endl;
             cout << " " << endl;
             movedown(alien, x, y, rows, columns, zombie, zomb);
-            myPause();
             break;
         }
         else if (y - 1 >= 0 && board[x][y - 1] == 'p') // pod
@@ -496,30 +485,30 @@ void moveleft(Alien &alien, int &x, int &y, int rows, int columns, int zombie, Z
             board[x][y] = '.';
             y--;
             board[x][y] = 'A';
+            alien.coordinates(alien, x, y);
             alienPod(zomb.zombieList, alien);
             myPause();
             ClearScreen();
             ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << " " << endl;
             cout << " " << endl;
-            myPause();
             break;
         }
         else if (y - 1 >= 0 && (board[x][y - 1] == '1' || board[x][y - 1] == '2' || board[x][y - 1] == '3' || board[x][y - 1] == '4' || board[x][y - 1] == '5' || board[x][y - 1] == '6' || board[x][y - 1] == '7' || board[x][y - 1] == '8' || board[x][y - 1] == '9'))
         {
             board[x][y] = 'A';
-            alien.coordinates(alien,x,y);
+            alien.coordinates(alien, x, y);
             alienAttack(zomb.zombieList, alien, kill);
-            if (kill) {
+            if (kill)
+            {
                 board[x][y] = '.';
-                board[x][y-1] = 'A';
+                board[x][y - 1] = 'A';
             }
             myPause();
             ClearScreen();
             ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << " " << endl;
             cout << " " << endl;
-            myPause();
             break;
         }
         else
@@ -596,7 +585,6 @@ void moveright(Alien &alien, int &x, int &y, int rows, int columns, int zombie, 
             cout << "You gained 20 Attack!" << endl;
             cout << " " << endl;
             moveleft(alien, x, y, rows, columns, zombie, zomb);
-            myPause();
             break;
         }
         else if (y + 1 < columns && board[x][y + 1] == '>')
@@ -613,7 +601,6 @@ void moveright(Alien &alien, int &x, int &y, int rows, int columns, int zombie, 
             cout << "You gained 20 Attack!" << endl;
             cout << " " << endl;
             moveright(alien, x, y, rows, columns, zombie, zomb);
-            myPause();
             break;
         }
         else if (y + 1 < columns && board[x][y + 1] == '^')
@@ -630,7 +617,6 @@ void moveright(Alien &alien, int &x, int &y, int rows, int columns, int zombie, 
             cout << "You gained 20 Attack!" << endl;
             cout << " " << endl;
             moveup(alien, x, y, rows, columns, zombie, zomb);
-            myPause();
             break;
         }
         else if (y + 1 < columns && board[x][y + 1] == 'v')
@@ -647,7 +633,6 @@ void moveright(Alien &alien, int &x, int &y, int rows, int columns, int zombie, 
             cout << "You gained 20 Attack!" << endl;
             cout << " " << endl;
             movedown(alien, x, y, rows, columns, zombie, zomb);
-            myPause();
             break;
         }
         else if (y + 1 < columns && board[x][y + 1] == 'p') // pod
@@ -655,29 +640,29 @@ void moveright(Alien &alien, int &x, int &y, int rows, int columns, int zombie, 
             board[x][y] = '.';
             y++;
             board[x][y] = 'A';
+            alien.coordinates(alien, x, y);
             alienPod(zomb.zombieList, alien);
             myPause();
             ClearScreen();
             ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << " " << endl;
             cout << " " << endl;
-            myPause();
             break;
         }
         else if (y + 1 < columns && (board[x][y + 1] == '1' || board[x][y + 1] == '2' || board[x][y + 1] == '3' || board[x][y + 1] == '4' || board[x][y + 1] == '5' || board[x][y + 1] == '6' || board[x][y + 1] == '7' || board[x][y + 1] == '8' || board[x][y + 1] == '9')) // pod
         {
             board[x][y] = 'A';
             alienAttack(zomb.zombieList, alien, kill);
-            if (kill) {
+            if (kill)
+            {
                 board[x][y] = '.';
-                board[x][y+1] = 'A';
+                board[x][y + 1] = 'A';
             }
             myPause();
             ClearScreen();
             ShowGameBoard(rows, columns, zombie, zomb, alien);
             cout << " " << endl;
             cout << " " << endl;
-            myPause();
             break;
         }
         else
@@ -688,7 +673,6 @@ void moveright(Alien &alien, int &x, int &y, int rows, int columns, int zombie, 
             cout << "Alien hits a wall!" << endl;
             cout << " " << endl;
             myPause();
-            break;
         }
     }
 }
@@ -741,6 +725,16 @@ void rockrandomobject(Alien &alien, int &x, int &y, int rows, int columns, int z
         myPause();
         movedown(alien, x, y, rows, columns, zombie, zomb);
         break;
+    case 'p':
+        alien.coordinates(alien, x, y);
+        alienPod(zomb.zombieList, alien);
+        myPause();
+        ClearScreen();
+        ShowGameBoard(rows, columns, zombie, zomb, alien);
+        cout << " " << endl;
+        cout << " " << endl;
+        myPause();
+        break;
     }
 }
 
@@ -753,11 +747,11 @@ void displayAlien(Alien &alien)
     // To make sure the alien stats are not shifted off (looks nicer)
     if ((alien.ali_dimX) + 1 < 10)
     {
-        cout << " X:  " << (alien.ali_dimX) + 1; 
+        cout << " X:  " << (alien.ali_dimX) + 1;
     }
     else
     {
-        cout << " X: " << (alien.ali_dimX) + 1; 
+        cout << " X: " << (alien.ali_dimX) + 1;
     }
 
     if ((alien.ali_dimY) + 1 < 10)
@@ -775,6 +769,15 @@ void MoveAlien(Alien &alien, int &x, int &y, int rows, int columns, int zombie, 
     cout << "- Input a direction you want to move the alien by using \"up\", \"down\", \"left\", \"right\"" << endl;
     cout << "- Change an arrow's direction using the command \"arrow\"" << endl;
     cout << "- For a brief tutorial, use the \"help\" command" << endl;
+    // Ability
+    if (alien.energy == 100)
+    {
+        cout << "Ability is Ready, use \"ability\" to activate." << endl;
+    }
+    else if (alien.energy > 100)
+    {
+        cout << "Ability is OVERCHARGED, use \"ability\" to activate." << endl;
+    }
     cout << "=> ";
     cin >> direction;
 
