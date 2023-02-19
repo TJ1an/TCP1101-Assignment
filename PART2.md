@@ -67,8 +67,11 @@ List all the features not yet done. Remove this section if there is no incomplet
 
 ### Khoo Jen-Au
 
-1. Zombie movement and attack behaviour.
-2. *add more*
+1. Almost all the UI/UX stuff are mainly done by me.
+2. Implemented the help menu.
+3. Implemented code where you can save mid-game.
+4. Implemented the entire save/load feature.
+5. Discover and help fix bugs/glitches/crashes.
 
 ### Ian Leong Tsung Jii
 
@@ -94,7 +97,11 @@ Describe the problems encountered and provide the solutions / plan for the solut
 5. Towards the end, I've also noticed that there isn't an arrow to indicate each turn. At first I wasn't too sure on  how to do that as the display of alien and zombie stats were inside of ShowGameBoard(), to combat this, I've created a new function altogether to particularly display the turn indicators and entity stats. This function in particular would be paired with ShowGameBoard() to display what you see now in the current game.
 
 ### Khoo Jen-Au 
+1. I am for sure the worst at programming out of us 3. Had a lot of problems understanding the entire game flow because it was originally a huge mess of an amalgamation of our code summed up in 3 functions. I had to ask around our members back and forth and then ultimately Chong decided to redo everything in board.cpp and main.cpp. After that, the code was easier to understand and I started helping out with the UI/UX.
 
+2. The UI/UX part wasn't that bad, but I had a problem of where I keep messing up calculating and recoding the size of each box when creating the board. Had to basically rebuild the entire board part from scratch because it was a little messy.
+
+3. The save and loading function was a pain to implement, I had to learn the fstream library from the ground up so that I can make this happen. The main trouble was saving each data and putting it into the save file. Some variables cannot be referenced due to the nature of our original board.cpp file, so I had to add new variables to transfer them into said savefile.
 
 ### Ian Leong Tsung Jii
 

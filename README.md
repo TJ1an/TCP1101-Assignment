@@ -9,21 +9,16 @@
 ```g++ -I./lib -I./lib/jsoncons -I./lib/jsoncons/include alien/alien.cpp main.cpp board.cpp zombie/zombie.cpp help/help.cpp saveload/saveload.cpp interaction/inter.cpp -o game -static-libgcc -static-libstdc++ -O3```
 
 ## User Manual
-After compling, you are now in! There are 3 selections which include "1. Play", "2. Load", and "3. Quit".
+After compling, you are now in! There are 3 selections which include "1. Play", "2. Load", "3. Help", and "4. Quit".
 - 1. Play: You can start playing the game.
-- 2. Load:
-    - Yet to be implemented. 
-- 3. Quit: Sends you back to the terminal after outputting "Thanks for playing".
+- 2. Load: Loads a game from a savefile you saved.
+- 3. Help: Shows thew help menu on how the game essentially works.
+- 4. Quit: Exits the game with the text "Thanks for playing".
  
 If you choose the "Play" selection, you can decide to maintain the default board dimensions and zombie count. If not, this can be modified. By accepting the modification option.
 
-After that process, you're now in the game. As far as the game is implemented as of now, only the Alien can interact with the board. Input "up, down, left, or right" to make your move.
+After that process, you're now in the game. Good luck, have fun!
 
 ## Progress Log
 - [Part 1](PART1.md)
 - [Part 2](PART2.md)
-
-
-
-
-
