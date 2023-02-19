@@ -87,17 +87,6 @@ void turnDisplay(Zombie &zomb, Alien &alien, int turn) {
     for (int i = 0; i < size(zomb.zombieList)+1 ; i++) {
         turnIndicator.push_back("  ");
     }
-    // No one turn
-    if (turn > size(turnIndicator)) {
-        // Display alien stats
-        cout << turnIndicator[0];
-        displayAlien(alien);
-        // Display zombie stats
-        for (int i = 1; i < size(turnIndicator); i++) {
-            cout << turnIndicator[i];
-            zomb.readAndDisplay(zomb.zombieList, i-1); // i-1 to account for alien's turn 
-        }
-    }
     // Alien turn
     if (turn == 0) {
         // Display alien stats
@@ -255,7 +244,7 @@ void playGame(int rows, int columns, int zombie, Alien &alien, Zombie &zomb, vec
         // Reset trail into objects
         ClearScreen();
         ShowGameBoard(rows, columns, zombie, zomb, alien);
-        turnDisplay(zomb,alien,15);
+        turnDisplay(zomb,alien,0);
         changeTrail(x, y, rows, columns);
         cout << " " << endl;
         cout << "Trail is reset!" << endl;
@@ -263,7 +252,7 @@ void playGame(int rows, int columns, int zombie, Alien &alien, Zombie &zomb, vec
         myPause();
         ClearScreen();
         ShowGameBoard(rows, columns, zombie, zomb, alien);
-        turnDisplay(zomb,alien,15);
+        turnDisplay(zomb,alien,0);
     }
     // Checks if play again
     while (true) {

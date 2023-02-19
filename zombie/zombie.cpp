@@ -131,6 +131,7 @@ void Zombie::moveZombie(std::vector<Zombie>&zombieList,int i,int rows, int colum
 
     // Loop to make sure zombie moves
     while (true) {
+        int count = 0;
         // Randomizer and reroller (if specific spot is blocked)
         string move = movements[rand()%size(movements)];
 
@@ -183,6 +184,11 @@ void Zombie::moveZombie(std::vector<Zombie>&zombieList,int i,int rows, int colum
         // Fully stuck
         if (stuckUp && stuckDown && stuckLeft && stuckRight) {
             cout << "Zombie " << i+1 << " is stuck." <<endl;
+            return;
+        }
+        count++;
+        if (count == 30) {
+            cout << "Error in code" << endl;
             return;
         }
     }
